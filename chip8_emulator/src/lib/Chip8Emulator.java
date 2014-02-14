@@ -19,6 +19,4 @@ public class Chip8Emulator {
     public void tick() {
     }
 
-    public void draw() {
-    }
 }

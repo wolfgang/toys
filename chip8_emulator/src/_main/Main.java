@@ -17,7 +17,6 @@ public class Main {
         {
             mainWindow.clear(Color.blue);
             emulator.tick();
-            emulator.draw();
             mainWindow.showBuffer();
             Thread.sleep(1);
         }
