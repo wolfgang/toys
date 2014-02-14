@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d727c84c-174d-4ce3-b008-1ac4feed1729" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/lib/Chip8Emulator.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Main.java" afterPath="$PROJECT_DIR$/src/main/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="chip8_emulator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,13 +76,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="39" selection-start="539" selection-end="543" vertical-scroll-proportion="0.4473684" vertical-offset="0" max-vertical-offset="570">
+            <state line="14" column="0" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="24" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.030520646" vertical-offset="561" max-vertical-offset="10676">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,9 +121,9 @@
         <option value="$PROJECT_DIR$/src/main/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/main/DoubleBufferedWindow.java" />
         <option value="$PROJECT_DIR$/src/README.md" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/lib/Chip8Emulator.java" />
         <option value="$PROJECT_DIR$/src/main/Main.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -422,7 +430,11 @@
       <created>1392398537474</created>
       <updated>1392398537474</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added stub class Chip8Emulator">
+      <created>1392404324464</created>
+      <updated>1392404324464</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -474,7 +486,8 @@
     <MESSAGE value="created IDEA project&#10;" />
     <MESSAGE value="added double buffered window, main loop&#10;" />
     <MESSAGE value="added README's" />
-    <option name="LAST_COMMIT_MESSAGE" value="added README's" />
+    <MESSAGE value="added stub class Chip8Emulator" />
+    <option name="LAST_COMMIT_MESSAGE" value="added stub class Chip8Emulator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -500,15 +513,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="24" selection-start="1759" selection-end="1759" vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="10676">
-          <folding>
-            <marker date="1392404289328" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/DoubleBufferedWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="53" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
@@ -525,10 +529,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="39" selection-start="539" selection-end="543" vertical-scroll-proportion="0.4473684" vertical-offset="0" max-vertical-offset="570">
+        <state line="14" column="0" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="24" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.030520646" vertical-offset="561" max-vertical-offset="10676">
+          <folding />
         </state>
       </provider>
     </entry>
