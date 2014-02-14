@@ -3,7 +3,7 @@
  * Created on 1/30/14 at 9:14 AM
  */
 
-package main;
+package _main;
 
 import lib.Chip8Emulator;
 

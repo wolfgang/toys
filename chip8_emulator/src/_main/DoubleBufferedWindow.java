@@ -3,7 +3,7 @@
  * Created on 1/30/14 at 9:13 AM
  */
 
-package main;
+package _main;
 
 import javax.swing.*;
 import java.awt.*;
