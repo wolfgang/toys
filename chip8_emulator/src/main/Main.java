@@ -5,15 +5,20 @@
 
 package main;
 
+import lib.Chip8Emulator;
+
 import java.awt.*;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         //noinspection InfiniteLoopStatement
-        while(true)
+        Chip8Emulator emulator = new Chip8Emulator(mainWindow.getDrawGraphics());
+        while(emulator.isRunning())
         {
             mainWindow.clear(Color.blue);
+            emulator.tick();
+            emulator.draw();
             mainWindow.showBuffer();
             Thread.sleep(1);
         }
