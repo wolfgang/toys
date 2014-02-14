@@ -5,11 +5,12 @@
 
 package lib;
 
-import java.awt.*;
-
 public class Chip8Emulator {
-    public Chip8Emulator(Graphics graphics) {
+    private boolean opCodesLoaded;
+    private Screen screen;
 
+    public Chip8Emulator(Screen screen) {
+        this.screen = screen;
     }
 
     public boolean isRunning() {
@@ -17,6 +18,13 @@ public class Chip8Emulator {
     }
 
     public void tick() {
+        if (!opCodesLoaded)
+            throw new RuntimeException("invalid program");
+        else
+            screen.clear();
     }
 
+    public void loadProgram(int[] opCodes) {
+        opCodesLoaded = true;
+    }
 }
