@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d727c84c-174d-4ce3-b008-1ac4feed1729" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Main.java" afterPath="$PROJECT_DIR$/src/main/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="chip8_emulator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,7 +89,7 @@
       <file leaf-file-name="workspace.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="24" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.030520646" vertical-offset="561" max-vertical-offset="10676">
+            <state line="33" column="24" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.030520646" vertical-offset="544" max-vertical-offset="10744">
               <folding />
             </state>
           </provider>
@@ -434,7 +433,11 @@
       <created>1392404324464</created>
       <updated>1392404324464</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="cleaned up">
+      <created>1392404421904</created>
+      <updated>1392404421904</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -487,7 +490,8 @@
     <MESSAGE value="added double buffered window, main loop&#10;" />
     <MESSAGE value="added README's" />
     <MESSAGE value="added stub class Chip8Emulator" />
-    <option name="LAST_COMMIT_MESSAGE" value="added stub class Chip8Emulator" />
+    <MESSAGE value="cleaned up" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -538,7 +542,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="24" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.030520646" vertical-offset="561" max-vertical-offset="10676">
+        <state line="33" column="24" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.030520646" vertical-offset="544" max-vertical-offset="10744">
           <folding />
         </state>
       </provider>
