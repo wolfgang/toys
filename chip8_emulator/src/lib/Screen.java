@@ -20,4 +20,8 @@ public class Screen {
     {
         window.clear(Color.black);
     }
+
+    public void draw() {
+
+    }
 }

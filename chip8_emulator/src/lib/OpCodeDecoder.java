@@ -1,0 +1,12 @@
+/**
+ * (c) 2013 Wolfgang Deutsch
+ * Created on 2/15/14 at 11:01 AM
+ */
+
+package lib;
+
+public class OpCodeDecoder {
+    public Chip8OpCode getNext() {
+        return null;
+    }
+}
