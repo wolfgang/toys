@@ -5,7 +5,7 @@
 
 package unittests;
 
-import lib.Chip8Emulator;
+import lib.OldChip8Emulator;
 import lib.Screen;
 import org.junit.Test;
 
@@ -14,10 +14,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 
-public class Chip8EmulatorTest {
+public class OldChip8EmulatorTest {
     @Test
     public void isRunning_returns_true() throws Exception {
-        Chip8Emulator emulator = new Chip8Emulator(null);
+        OldChip8Emulator emulator = new OldChip8Emulator(null);
         assertTrue(emulator.isRunning());
     }
 
@@ -25,14 +25,14 @@ public class Chip8EmulatorTest {
     @Test(expected = RuntimeException.class)
     public void tick_noProgramLoaded_throwException()
     {
-        Chip8Emulator emulator = new Chip8Emulator(null);
+        OldChip8Emulator emulator = new OldChip8Emulator(null);
         emulator.tick();
     }
 
     @Test
     public void tick_clearScreenOpcodeLoaded_clearScreen() throws Exception {
         Screen mockScreen = mock(Screen.class);
-        Chip8Emulator emulator = new Chip8Emulator(mockScreen);
+        OldChip8Emulator emulator = new OldChip8Emulator(mockScreen);
         emulator.loadProgram(new int[] {0x00E0} );
         emulator.tick();
         verify(mockScreen).clear();

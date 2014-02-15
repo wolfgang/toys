@@ -5,11 +5,11 @@
 
 package lib;
 
-public class Chip8Emulator {
+public class OldChip8Emulator {
     private boolean opCodesLoaded;
     private Screen screen;
 
-    public Chip8Emulator(Screen screen) {
+    public OldChip8Emulator(Screen screen) {
         this.screen = screen;
     }
 
