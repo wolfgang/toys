@@ -35,7 +35,7 @@ public class Chip8EmulatorTest {
 
     @Test
     public void tick_processNextOpcode_AdvancePC_DrawScreen() throws Exception {
-        when(opCodeDecoder.getNext()).thenReturn(opCode);
+        when(opCodeDecoder.getNext(0x200)).thenReturn(opCode);
         emulator.tick();
         order.verify(opCode).execute(machineState);
         order.verify(screen).draw();
@@ -43,8 +43,8 @@ public class Chip8EmulatorTest {
     }
 
     @Test
-    public void tick_dontChangePCIfOpCodeChangedIt() throws Exception {
-        when(opCodeDecoder.getNext()).thenReturn(new PCChangingOpCode());
+    public void tick_dontAdvancePCIfOpCodeChangedIt() throws Exception {
+        when(opCodeDecoder.getNext(0x200)).thenReturn(new PCChangingOpCode());
         emulator.tick();
         order.verify(screen).draw();
         assertThat(machineState.pc, is(0x300));

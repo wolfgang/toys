@@ -8,17 +8,15 @@ package lib;
 public class OpCodeDecoder {
     private final Memory memory;
     private final OpCodeFactory opCodeFactory;
-    private MachineState machineState;
 
-    public OpCodeDecoder(MachineState machineState, Memory memory, OpCodeFactory opCodeFactory) {
-        this.machineState = machineState;
+    public OpCodeDecoder(Memory memory, OpCodeFactory opCodeFactory) {
         this.memory = memory;
         this.opCodeFactory = opCodeFactory;
     }
 
-    public OpCode getNext() throws InvalidOpCode {
-        int hb = memory.get(machineState.pc);
-        int lb = memory.get(machineState.pc+1);
+    public OpCode getNext(int pc) throws InvalidOpCode {
+        int hb = memory.get(pc);
+        int lb = memory.get(pc+1);
         return opCodeFactory.getOpCode(hb << 8 | lb);
     }
 }

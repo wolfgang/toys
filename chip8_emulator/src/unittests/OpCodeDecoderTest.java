@@ -27,7 +27,7 @@ public class OpCodeDecoderTest {
         memory = mock(Memory.class);
         opCodeFactory = mock(OpCodeFactory.class);
         machineState = new MachineState();
-        opCodeDecoder = new OpCodeDecoder(machineState, memory, opCodeFactory);
+        opCodeDecoder = new OpCodeDecoder(memory, opCodeFactory);
         opCode1020 = mock(OpCode.class, "OpCode 1020");
     }
 
@@ -50,6 +50,6 @@ public class OpCodeDecoderTest {
     }
 
     private void verifyGetNext(OpCode opCode) throws InvalidOpCode {
-        assertThat(opCodeDecoder.getNext(), is(opCode));
+        assertThat(opCodeDecoder.getNext(0x200), is(opCode));
     }
 }
