@@ -6,21 +6,22 @@
 package lib;
 
 public class Chip8Emulator {
+    private MachineState machineState;
     private final Screen screen;
     private final OpCodeDecoder opCodeDecoder;
 
-    public Chip8Emulator(
-            Screen screen,
-            OpCodeDecoder opCodeDecoder)
-    {
+    public Chip8Emulator(MachineState machineState, Screen screen, OpCodeDecoder opCodeDecoder) {
+        this.machineState = machineState;
         this.screen = screen;
         this.opCodeDecoder = opCodeDecoder;
     }
 
-    public void tick()
-    {
+    public void tick() {
         OpCode opCode = opCodeDecoder.getNext();
+        int oldPC = machineState.pc;
         opCode.execute();
+        if (machineState.pc == oldPC)
+            machineState.pc += 2;
         screen.draw();
     }
 }
