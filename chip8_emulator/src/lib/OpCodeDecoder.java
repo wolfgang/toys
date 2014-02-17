@@ -6,13 +6,20 @@
 package lib;
 
 public class OpCodeDecoder {
-    private Screen screen;
+    private final Memory memory;
+    private final OpCodeFactory opCodeFactory;
+    private int pc;
 
-    public OpCodeDecoder(Screen screen) {
-        this.screen = screen;
+    public OpCodeDecoder(Memory memory, OpCodeFactory opCodeFactory) {
+        pc = 0x200;
+        this.memory = memory;
+        this.opCodeFactory = opCodeFactory;
     }
 
     public OpCode getNext() {
-        return new OpCode00E0(screen);
+        int hb = memory.get(pc);
+        int lb = memory.get(pc+1);
+        pc += 2;
+        return opCodeFactory.getOpCode(hb << 8 | lb);
     }
 }
