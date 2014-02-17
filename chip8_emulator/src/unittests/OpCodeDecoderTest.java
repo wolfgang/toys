@@ -5,10 +5,7 @@
 
 package unittests;
 
-import lib.Memory;
-import lib.OpCode;
-import lib.OpCodeDecoder;
-import lib.OpCodeFactory;
+import lib.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,34 +21,25 @@ public class OpCodeDecoderTest {
     private OpCodeDecoder opCodeDecoder;
     private OpCode opCode1020;
     private OpCode opCode3040;
+    private MachineState machineState;
 
     @Before
     public void setUp() throws Exception {
         memory = mock(Memory.class);
         opCodeFactory = mock(OpCodeFactory.class);
-        opCodeDecoder = new OpCodeDecoder(memory, opCodeFactory);
+        machineState = new MachineState();
+        opCodeDecoder = new OpCodeDecoder(machineState, memory, opCodeFactory);
         opCode1020 = mock(OpCode.class, "OpCode 1020");
-        opCode3040 = mock(OpCode.class, "OpCode 3040");
     }
 
     @Test
-    public void getNext_startAt0x200() throws Exception {
+    public void getNext_getFromPCInMachineState() throws Exception {
+        machineState.pc = 0x200;
         memoryAt(0x200, 0x10);
         memoryAt(0x201, 0x20);
         opCodeFor(0x1020, opCode1020);
         verifyGetNext(opCode1020);
-    }
-
-    @Test
-    public void getNext_advanceByTwo() throws Exception {
-        memoryAt(0x200, 0x10);
-        memoryAt(0x201, 0x20);
-        memoryAt(0x202, 0x30);
-        memoryAt(0x203, 0x40);
-        opCodeFor(0x1020, opCode1020);
-        opCodeFor(0x3040, opCode3040);
-        verifyGetNext(opCode1020);
-        verifyGetNext(opCode3040);
+        assertThat(machineState.pc, is(0x200));
     }
 
     private void opCodeFor(int code, OpCode opCode) {
