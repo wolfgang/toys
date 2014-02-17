@@ -9,11 +9,14 @@ public class OpCode1NNN implements OpCode {
     private int destination;
 
     public OpCode1NNN(int destination) {
-
         this.destination = destination;
     }
 
     public void execute(MachineState machineState) {
         machineState.pc = destination;
+    }
+
+    public int getDestination() {
+        return destination;
     }
 }

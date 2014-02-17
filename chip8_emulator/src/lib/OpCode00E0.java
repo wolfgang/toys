@@ -17,4 +17,8 @@ public class OpCode00E0 implements OpCode {
         screen.clear();
 
     }
+
+    public Screen getScreen() {
+        return screen;
+    }
 }
