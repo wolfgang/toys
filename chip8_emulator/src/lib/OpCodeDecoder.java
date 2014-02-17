@@ -6,7 +6,13 @@
 package lib;
 
 public class OpCodeDecoder {
+    private Screen screen;
+
+    public OpCodeDecoder(Screen screen) {
+        this.screen = screen;
+    }
+
     public OpCode getNext() {
-        return null;
+        return new OpCode00E0(screen);
     }
 }

@@ -5,8 +5,6 @@
 
 package lib;
 
-public class OpCode {
-    public void process() {
-
-    }
+public interface OpCode {
+    void execute();
 }

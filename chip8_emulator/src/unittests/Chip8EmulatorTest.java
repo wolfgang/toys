@@ -36,7 +36,7 @@ public class Chip8EmulatorTest {
     public void tick_processNextOpcodeAndDrawScreen() throws Exception {
         when(opCodeDecoder.getNext()).thenReturn(opCode);
         emulator.tick();
-        order.verify(opCode).process();
+        order.verify(opCode).execute();
         order.verify(screen).draw();
     }
 }

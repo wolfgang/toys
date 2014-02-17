@@ -20,7 +20,7 @@ public class Chip8Emulator {
     public void tick()
     {
         OpCode opCode = opCodeDecoder.getNext();
-        opCode.process();
+        opCode.execute();
         screen.draw();
     }
 }
