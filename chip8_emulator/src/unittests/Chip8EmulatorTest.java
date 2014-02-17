@@ -6,6 +6,7 @@
 package unittests;
 
 import lib.*;
+import lib.OpCodes.OpCode;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -16,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 public class Chip8EmulatorTest {
 
-    private Screen screen;
+    private Display display;
     private OpCodeDecoder opCodeDecoder;
     private OpCode opCode;
     private Chip8Emulator emulator;
@@ -25,12 +26,12 @@ public class Chip8EmulatorTest {
 
     @Before
     public void setUp() throws Exception {
-        screen = mock(Screen.class);
+        display = mock(Display.class);
         opCodeDecoder = mock(OpCodeDecoder.class);
         opCode = mock(OpCode.class);
         machineState = new MachineState();
-        emulator = new Chip8Emulator(machineState, screen, opCodeDecoder);
-        order = inOrder(opCode, screen);
+        emulator = new Chip8Emulator(machineState, display, opCodeDecoder);
+        order = inOrder(opCode, display);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class Chip8EmulatorTest {
         when(opCodeDecoder.getNext(0x200)).thenReturn(opCode);
         emulator.tick();
         order.verify(opCode).execute(machineState);
-        order.verify(screen).draw();
+        order.verify(display).draw();
         assertThat(machineState.pc, is(0x202));
     }
 
@@ -46,7 +47,7 @@ public class Chip8EmulatorTest {
     public void tick_dontAdvancePCIfOpCodeChangedIt() throws Exception {
         when(opCodeDecoder.getNext(0x200)).thenReturn(new PCChangingOpCode());
         emulator.tick();
-        order.verify(screen).draw();
+        order.verify(display).draw();
         assertThat(machineState.pc, is(0x300));
     }
 

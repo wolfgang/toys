@@ -3,10 +3,10 @@
  * Created on 2/17/14 at 5:55 PM
  */
 
-package unittests;
+package unittests.OpCodes;
 
 import lib.MachineState;
-import lib.OpCode1NNN;
+import lib.OpCodes.OpCode1NNN;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

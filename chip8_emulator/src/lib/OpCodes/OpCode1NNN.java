@@ -3,7 +3,9 @@
  * Created on 2/17/14 at 5:56 PM
  */
 
-package lib;
+package lib.OpCodes;
+
+import lib.MachineState;
 
 public class OpCode1NNN implements OpCode {
     private int destination;

@@ -6,6 +6,9 @@
 package unittests;
 
 import lib.*;
+import lib.OpCodes.OpCode;
+import lib.OpCodes.OpCode00E0;
+import lib.OpCodes.OpCode1NNN;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,12 +20,12 @@ import static org.mockito.Mockito.mock;
 public class OpCodeFactoryTest {
 
     private OpCodeFactory opCodeFactory;
-    private Screen screen;
+    private Display display;
 
     @Before
     public void setUp() throws Exception {
-        screen = mock(Screen.class);
-        opCodeFactory = new OpCodeFactory(screen);
+        display = mock(Display.class);
+        opCodeFactory = new OpCodeFactory(display);
     }
 
     @Test
@@ -55,6 +58,6 @@ public class OpCodeFactoryTest {
 
     private void assertIs00E0(OpCode opCode) {
         assertThat(opCode, instanceOf(OpCode00E0.class));
-        assertThat(((OpCode00E0)opCode).getScreen(), is(screen));
+        assertThat(((OpCode00E0)opCode).getDisplay(), is(display));
     }
 }

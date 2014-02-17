@@ -6,6 +6,7 @@
 package unittests;
 
 import lib.*;
+import lib.OpCodes.OpCode;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -3,10 +3,10 @@
  * Created on 2/17/14 at 5:04 PM
  */
 
-package unittests;
+package unittests.OpCodes;
 
-import lib.OpCode00E0;
-import lib.Screen;
+import lib.OpCodes.OpCode00E0;
+import lib.Display;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -15,9 +15,9 @@ import static org.mockito.Mockito.verify;
 public class OpCode00E0Test {
     @Test
     public void execute_clearsTheScreen() throws Exception {
-        Screen screen = mock(Screen.class);
-        OpCode00E0 opCode = new OpCode00E0(screen);
+        Display display = mock(Display.class);
+        OpCode00E0 opCode = new OpCode00E0(display);
         opCode.execute(null);
-        verify(screen).clear();
+        verify(display).clear();
     }
 }

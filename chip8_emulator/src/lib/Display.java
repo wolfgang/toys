@@ -8,10 +8,10 @@ import java.awt.*;
  * (c) 2013 Wolfgang Deutsch
  * Created on 2/14/14 at 8:27 PM
  */
-public class Screen {
+public class Display {
     private DoubleBufferedWindow window;
 
-    public Screen(DoubleBufferedWindow window)
+    public Display(DoubleBufferedWindow window)
     {
 
         this.window = window;

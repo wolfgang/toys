@@ -5,6 +5,8 @@
 
 package lib;
 
+import lib.OpCodes.OpCode;
+
 public class OpCodeDecoder {
     private final Memory memory;
     private final OpCodeFactory opCodeFactory;
