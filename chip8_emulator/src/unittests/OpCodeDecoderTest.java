@@ -27,8 +27,8 @@ public class OpCodeDecoderTest {
     public void setUp() throws Exception {
         memory = mock(Memory.class);
         opCodeFactory = mock(OpCodeFactory.class);
-        machineState = new MachineState();
-        opCodeDecoder = new OpCodeDecoder(memory, opCodeFactory);
+        machineState = new MachineState(memory);
+        opCodeDecoder = new OpCodeDecoder(machineState, opCodeFactory);
         opCode1020 = mock(OpCode.class, "OpCode 1020");
     }
 

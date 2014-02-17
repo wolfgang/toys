@@ -10,4 +10,14 @@ public class MachineState {
     public int[] V = new int[16];
     public int I = 0;
     public Memory memory;
+
+    public MachineState()
+    {
+        this.memory = new Memory();
+    }
+
+    public MachineState(Memory memory)
+    {
+        this.memory = memory;
+    }
 }

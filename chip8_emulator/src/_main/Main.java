@@ -17,8 +17,9 @@ public class Main {
         memory.set(0x202, 0x12);
         memory.set(0x203, 0x00);
         OpCodeFactory opCodeFactory = new OpCodeFactory(display);
-        OpCodeDecoder opCodeDecoder = new OpCodeDecoder(memory, opCodeFactory);
-        Chip8Emulator emulator = new Chip8Emulator(new MachineState(), display, opCodeDecoder);
+        MachineState machineState = new MachineState(memory);
+        OpCodeDecoder opCodeDecoder = new OpCodeDecoder(machineState, opCodeFactory);
+        Chip8Emulator emulator = new Chip8Emulator(machineState, display, opCodeDecoder);
         //noinspection InfiniteLoopStatement
         while(true)
         {
