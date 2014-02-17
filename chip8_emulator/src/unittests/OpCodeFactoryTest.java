@@ -43,9 +43,14 @@ public class OpCodeFactoryTest {
         assertIs00E0(opCode);
     }
 
+    @Test(expected = InvalidOpCode.class)
+    public void getOpCode_invalidCode_throwInvalidOpCode() throws Exception {
+        opCodeFactory.getOpCode(0x0000);
+    }
+
     private void assertIs1NNN(OpCode opCode, int destination) {
         assertThat(opCode, instanceOf(OpCode1NNN.class));
-        assertThat(((OpCode1NNN)opCode).getDestination(), is(destination));
+        assertThat(((OpCode1NNN) opCode).getDestination(), is(destination));
     }
 
     private void assertIs00E0(OpCode opCode) {

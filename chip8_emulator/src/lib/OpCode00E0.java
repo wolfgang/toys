@@ -7,15 +7,14 @@ package lib;
 
 public class OpCode00E0 implements OpCode {
     private Screen screen;
-    public OpCode00E0(Screen screen) {
 
+    public OpCode00E0(Screen screen) {
         this.screen = screen;
     }
 
     @Override
     public void execute(MachineState machineState) {
         screen.clear();
-
     }
 
     public Screen getScreen() {

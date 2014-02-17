@@ -16,7 +16,7 @@ public class Chip8Emulator {
         this.opCodeDecoder = opCodeDecoder;
     }
 
-    public void tick() {
+    public void tick() throws InvalidOpCode {
         OpCode opCode = opCodeDecoder.getNext();
         int oldPC = machineState.pc;
         opCode.execute(machineState);

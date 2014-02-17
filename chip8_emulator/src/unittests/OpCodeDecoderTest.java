@@ -20,7 +20,6 @@ public class OpCodeDecoderTest {
     private OpCodeFactory opCodeFactory;
     private OpCodeDecoder opCodeDecoder;
     private OpCode opCode1020;
-    private OpCode opCode3040;
     private MachineState machineState;
 
     @Before
@@ -42,7 +41,7 @@ public class OpCodeDecoderTest {
         assertThat(machineState.pc, is(0x200));
     }
 
-    private void opCodeFor(int code, OpCode opCode) {
+    private void opCodeFor(int code, OpCode opCode) throws InvalidOpCode {
         when(opCodeFactory.getOpCode(code)).thenReturn(opCode);
     }
 
@@ -50,7 +49,7 @@ public class OpCodeDecoderTest {
         when(memory.get(address)).thenReturn(value);
     }
 
-    private void verifyGetNext(OpCode opCode) {
+    private void verifyGetNext(OpCode opCode) throws InvalidOpCode {
         assertThat(opCodeDecoder.getNext(), is(opCode));
     }
 }

@@ -9,17 +9,16 @@ public class OpCodeFactory {
     private Screen screen;
 
     public OpCodeFactory(Screen screen) {
-
         this.screen = screen;
     }
 
-    public OpCode getOpCode(int code) {
+    public OpCode getOpCode(int code) throws InvalidOpCode {
         if ((code & 0x1000) == 0x1000)
-        {
-            int destination = 0x0FFF & code;
-            return new OpCode1NNN(destination);
-        }
+            return new OpCode1NNN(0x0FFF & code);
 
-        return new OpCode00E0(screen);
+        if (code == 0x00E0)
+            return new OpCode00E0(screen);
+
+        throw new InvalidOpCode(code);
     }
 }

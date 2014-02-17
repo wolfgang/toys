@@ -16,7 +16,7 @@ public class OpCodeDecoder {
         this.opCodeFactory = opCodeFactory;
     }
 
-    public OpCode getNext() {
+    public OpCode getNext() throws InvalidOpCode {
         int hb = memory.get(machineState.pc);
         int lb = memory.get(machineState.pc+1);
         return opCodeFactory.getOpCode(hb << 8 | lb);

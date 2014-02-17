@@ -8,7 +8,7 @@ package _main;
 import lib.*;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Screen screen = new Screen(mainWindow);
         Memory memory = new Memory();
