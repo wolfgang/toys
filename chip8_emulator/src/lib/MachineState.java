@@ -7,4 +7,7 @@ package lib;
 
 public class MachineState {
     public int pc = 0x200;
+    public int[] V = new int[16];
+    public int I = 0;
+    public Memory memory;
 }

@@ -24,4 +24,8 @@ public class Display {
     public void draw() {
 
     }
+
+    public void setPixel(int x, int y) {
+
+    }
 }
