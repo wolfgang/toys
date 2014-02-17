@@ -1,0 +1,6 @@
+
+set VF correctly -> only if a pixel actually changes
+draw only if VF is set
+
+Put display in machine state?
+
