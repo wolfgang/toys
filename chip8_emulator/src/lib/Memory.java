@@ -6,7 +6,13 @@
 package lib;
 
 public class Memory {
+    int values[] = new int[4096];
     public int get(int address) {
-        return 0;
+        return values[address];
+    }
+
+    public void set(int address, int value) {
+        values[address] = value;
+
     }
 }
