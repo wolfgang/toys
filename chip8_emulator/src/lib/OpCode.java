@@ -6,5 +6,5 @@
 package lib;
 
 public interface OpCode {
-    void execute();
+    void execute(MachineState machineState);
 }

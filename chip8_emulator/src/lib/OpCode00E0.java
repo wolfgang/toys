@@ -13,7 +13,7 @@ public class OpCode00E0 implements OpCode {
     }
 
     @Override
-    public void execute() {
+    public void execute(MachineState machineState) {
         screen.clear();
 
     }

@@ -19,7 +19,7 @@ public class Chip8Emulator {
     public void tick() {
         OpCode opCode = opCodeDecoder.getNext();
         int oldPC = machineState.pc;
-        opCode.execute();
+        opCode.execute(machineState);
         if (machineState.pc == oldPC)
             machineState.pc += 2;
         screen.draw();

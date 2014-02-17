@@ -17,7 +17,7 @@ public class OpCode00E0Test {
     public void execute_clearsTheScreen() throws Exception {
         Screen screen = mock(Screen.class);
         OpCode00E0 opCode = new OpCode00E0(screen);
-        opCode.execute();
+        opCode.execute(null);
         verify(screen).clear();
     }
 }

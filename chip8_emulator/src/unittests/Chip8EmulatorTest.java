@@ -37,7 +37,7 @@ public class Chip8EmulatorTest {
     public void tick_processNextOpcode_AdvancePC_DrawScreen() throws Exception {
         when(opCodeDecoder.getNext()).thenReturn(opCode);
         emulator.tick();
-        order.verify(opCode).execute();
+        order.verify(opCode).execute(machineState);
         order.verify(screen).draw();
         assertThat(machineState.pc, is(0x202));
     }
@@ -52,8 +52,8 @@ public class Chip8EmulatorTest {
 
     private class PCChangingOpCode implements OpCode {
         @Override
-        public void execute() {
-            machineState.pc = 0x300;
+        public void execute(MachineState incomingMachineState) {
+            incomingMachineState.pc = 0x300;
         }
     }
 }
