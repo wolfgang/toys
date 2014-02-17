@@ -6,7 +6,7 @@
 package unittests;
 
 import lib.Chip8Emulator;
-import lib.Chip8OpCode;
+import lib.OpCode;
 import lib.OpCodeDecoder;
 import lib.Screen;
 import org.junit.Before;
@@ -19,7 +19,7 @@ public class Chip8EmulatorTest {
 
     private Screen screen;
     private OpCodeDecoder opCodeDecoder;
-    private Chip8OpCode opCode;
+    private OpCode opCode;
     private Chip8Emulator emulator;
     private InOrder order;
 
@@ -27,7 +27,7 @@ public class Chip8EmulatorTest {
     public void setUp() throws Exception {
         screen = mock(Screen.class);
         opCodeDecoder = mock(OpCodeDecoder.class);
-        opCode = mock(Chip8OpCode.class);
+        opCode = mock(OpCode.class);
         emulator = new Chip8Emulator(screen, opCodeDecoder);
         order = inOrder(opCode, screen);
     }

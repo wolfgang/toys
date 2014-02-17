@@ -5,17 +5,12 @@
 
 package _main;
 
-import lib.OldChip8Emulator;
-import lib.Screen;
-
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
-        OldChip8Emulator emulator = new OldChip8Emulator(new Screen(mainWindow));
-        emulator.loadProgram(new int[] {123});
-        while(emulator.isRunning())
+        //noinspection InfiniteLoopStatement
+        while(true)
         {
-            emulator.tick();
             mainWindow.showBuffer();
             Thread.sleep(1);
         }

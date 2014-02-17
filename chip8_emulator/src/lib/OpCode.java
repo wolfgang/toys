@@ -5,7 +5,7 @@
 
 package lib;
 
-public class Chip8OpCode {
+public class OpCode {
     public void process() {
 
     }

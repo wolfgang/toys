@@ -19,7 +19,7 @@ public class Chip8Emulator {
 
     public void tick()
     {
-        Chip8OpCode opCode = opCodeDecoder.getNext();
+        OpCode opCode = opCodeDecoder.getNext();
         opCode.process();
         screen.draw();
     }

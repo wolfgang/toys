@@ -6,7 +6,7 @@
 package lib;
 
 public class OpCodeDecoder {
-    public Chip8OpCode getNext() {
+    public OpCode getNext() {
         return null;
     }
 }
