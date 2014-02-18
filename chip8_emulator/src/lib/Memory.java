@@ -6,13 +6,12 @@
 package lib;
 
 public class Memory {
-    int values[] = new int[4096];
+    byte values[] = new byte[4096];
     public int get(int address) {
         return values[address];
     }
 
     public void set(int address, int value) {
-        values[address] = value;
-
+        values[address] = (byte)value;
     }
 }

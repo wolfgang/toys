@@ -68,6 +68,5 @@ public class OpCodeFactoryTest {
     {
         assertThat(opCode, instanceOf(expectedClass));
         assertThat(opCode.toString(), is(expectedStringValue));
-
     }
 }

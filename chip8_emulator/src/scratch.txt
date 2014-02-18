@@ -2,7 +2,7 @@
     [X] OpCodeFactory
     [] Display
 
-[] Put display in machine state
+[X] Put display in machine state
 
 
 set VF correctly -> only if a pixel actually changes
@@ -16,3 +16,5 @@ Clean up OpCodeDXYNTest
 Clean up MachineState
 
 Cache already created op codes in factory?
+
+Convenience method Memory.setOpCode(0x200, 0xD123)
