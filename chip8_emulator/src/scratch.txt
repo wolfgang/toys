@@ -12,3 +12,7 @@ draw only if VF is set
 Pixel size depends on display width/height
 
 Clean up OpCodeDXYNTest
+
+Clean up MachineState
+
+Cache already created op codes in factory?

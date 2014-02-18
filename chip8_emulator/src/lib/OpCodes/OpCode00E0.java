@@ -6,21 +6,10 @@
 package lib.OpCodes;
 
 import lib.MachineState;
-import lib.Display;
 
 public class OpCode00E0 implements OpCode {
-    private Display display;
-
-    public OpCode00E0(Display display) {
-        this.display = display;
-    }
-
     @Override
     public void execute(MachineState machineState) {
-        display.clear();
-    }
-
-    public Display getDisplay() {
-        return display;
+        machineState.display.clear();
     }
 }

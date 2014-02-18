@@ -5,7 +5,8 @@
 
 package unittests;
 
-import lib.*;
+import lib.InvalidOpCode;
+import lib.OpCodeFactory;
 import lib.OpCodes.OpCode;
 import lib.OpCodes.OpCode00E0;
 import lib.OpCodes.OpCode1NNN;
@@ -16,17 +17,14 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 
 public class OpCodeFactoryTest {
 
     private OpCodeFactory opCodeFactory;
-    private Display display;
 
     @Before
     public void setUp() throws Exception {
-        display = mock(Display.class);
-        opCodeFactory = new OpCodeFactory(display);
+        opCodeFactory = new OpCodeFactory();
     }
 
     @Test
@@ -64,7 +62,6 @@ public class OpCodeFactoryTest {
 
     private void assertIs00E0(OpCode opCode) {
         assertThat(opCode, instanceOf(OpCode00E0.class));
-        assertThat(((OpCode00E0)opCode).getDisplay(), is(display));
     }
 
     private void assertOpCode(OpCode opCode, Class expectedClass, String expectedStringValue)

@@ -33,6 +33,7 @@ public class OpCodeDXYNTest {
         display = mock(Display.class);
         machineState = new MachineState();
         machineState.memory = new Memory();
+        machineState.display = display;
     }
 
     @Test
@@ -40,7 +41,7 @@ public class OpCodeDXYNTest {
         machineState.V[0] = 10;
         machineState.V[1] = 20;
         machineState.I = 0;
-        OpCodeDXYN opCode = new OpCodeDXYN(0xD011, display);
+        OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         opCode.execute(machineState);
         assertThat(machineState.V[15], is(0));
     }
@@ -51,7 +52,7 @@ public class OpCodeDXYNTest {
         machineState.V[1] = 20;
         machineState.I = 0;
         machineState.memory.set(0, 0b10101001);
-        OpCodeDXYN opCode = new OpCodeDXYN(0xD011, display);
+        OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         opCode.execute(machineState);
         verify(display).setPixel(10, 20);
         verify(display).setPixel(12, 20);
@@ -67,7 +68,7 @@ public class OpCodeDXYNTest {
         machineState.I = 0;
         machineState.memory.set(0, 0b10101001);
         machineState.memory.set(1, 0b11110000);
-        OpCodeDXYN opCode = new OpCodeDXYN(0xD012, display);
+        OpCodeDXYN opCode = new OpCodeDXYN(0xD012);
         opCode.execute(machineState);
         verify(display).setPixel(10, 20);
         verify(display).setPixel(12, 20);

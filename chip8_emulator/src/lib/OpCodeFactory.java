@@ -11,21 +11,19 @@ import lib.OpCodes.OpCode1NNN;
 import lib.OpCodes.OpCodeDXYN;
 
 public class OpCodeFactory {
-    private Display display;
 
-    public OpCodeFactory(Display display) {
-        this.display = display;
+    public OpCodeFactory() {
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
         if ((code & 0xD000) == 0xD000)
-            return new OpCodeDXYN(code, display);
+            return new OpCodeDXYN(code);
 
         if ((code & 0x1000) == 0x1000)
             return new OpCode1NNN(code);
 
         if (code == 0x00E0)
-            return new OpCode00E0(display);
+            return new OpCode00E0();
 
 
         throw new InvalidOpCode(code);

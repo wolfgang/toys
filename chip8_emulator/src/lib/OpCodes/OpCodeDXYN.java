@@ -5,18 +5,15 @@
 
 package lib.OpCodes;
 
-import lib.Display;
 import lib.MachineState;
 
 public class OpCodeDXYN implements OpCode {
-    private final Display display;
     private final int x;
     private final int y;
     private final int height;
 
-    public OpCodeDXYN(int code, Display display) {
+    public OpCodeDXYN(int code) {
 
-        this.display = display;
         this.x = (code & 0x0F00) >> 8;
         this.y = (code & 0x00F0) >> 4;
         this.height = (code & 0x000F);
@@ -39,7 +36,7 @@ public class OpCodeDXYN implements OpCode {
         int lineY = machineState.V[y] + verticalIndex;
         for (int i = 7; i >= 0; --i) {
             if (isBitSet(i, rowValue)) {
-                display.setPixel(lineX + (7 - i), lineY);
+                machineState.display.setPixel(lineX + (7 - i), lineY);
                 machineState.V[15] = 1;
             }
         }
