@@ -1,6 +1,6 @@
 [] Put sprite drawing additions under test:
     [X] OpCodeFactory
-    [] Display
+    [X] Display
 
 [X] Put display in machine state
 

@@ -36,19 +36,15 @@ public class OpCodeDXYNTest {
 
     @Test
     public void execute_x0y1N1I0_0() throws Exception {
-        machineState.V[0] = 10;
-        machineState.V[1] = 20;
-        machineState.I = 0;
+        setupRegisters();
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         opCode.execute(machineState);
-        assertThat(machineState.V[15], is(0));
+        assertVF(0);
     }
 
     @Test
     public void execute_x0y1N1I0_bitsArePixels() throws Exception {
-        machineState.V[0] = 10;
-        machineState.V[1] = 20;
-        machineState.I = 0;
+        setupRegisters();
         machineState.memory.set(0, 0b10101001);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         opCode.execute(machineState);
@@ -56,14 +52,12 @@ public class OpCodeDXYNTest {
         verify(display).setPixel(12, 20);
         verify(display).setPixel(14, 20);
         verify(display).setPixel(17, 20);
-        assertThat(machineState.V[15], is(1));
+        assertVF(1);
     }
 
     @Test
     public void execute_x0y1N2I0_bitsArePixels() throws Exception {
-        machineState.V[0] = 10;
-        machineState.V[1] = 20;
-        machineState.I = 0;
+        setupRegisters();
         machineState.memory.set(0, 0b10101001);
         machineState.memory.set(1, 0b11110000);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD012);
@@ -76,6 +70,16 @@ public class OpCodeDXYNTest {
         verify(display).setPixel(11, 21);
         verify(display).setPixel(12, 21);
         verify(display).setPixel(13, 21);
-        assertThat(machineState.V[15], is(1));
+        assertVF(1);
+    }
+
+    private void setupRegisters() {
+        machineState.V[0] = 10;
+        machineState.V[1] = 20;
+        machineState.I = 0;
+    }
+
+    private void assertVF(int value) {
+        assertThat(machineState.V[15], is(value));
     }
 }
