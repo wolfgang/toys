@@ -1,6 +1,10 @@
+Put sprite drawing additions under test:
+    OpCodeFactory
+    Display
 
 set VF correctly -> only if a pixel actually changes
 draw only if VF is set
 
 Put display in machine state?
 
+Pixel size depends on display width/height

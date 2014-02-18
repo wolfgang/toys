@@ -14,12 +14,12 @@ public class OpCodeDXYN implements OpCode {
     private final int y;
     private final int height;
 
-    public OpCodeDXYN(Display display, int x, int y, int height) {
+    public OpCodeDXYN(int code, Display display) {
 
         this.display = display;
-        this.x = x;
-        this.y = y;
-        this.height = height;
+        this.x = (code & 0x0F00) >> 8;
+        this.y = (code & 0x00F0) >> 4;
+        this.height = (code & 0x00F0);
     }
 
     @Override

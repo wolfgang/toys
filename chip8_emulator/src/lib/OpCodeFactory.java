@@ -19,10 +19,10 @@ public class OpCodeFactory {
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
         if ((code & 0xD000) == 0xD000)
-            return new OpCodeDXYN(display, (code & 0x0F00) >> 8, (code & 0x00F0) >> 4, code & 0x000F);
+            return new OpCodeDXYN(code, display);
 
         if ((code & 0x1000) == 0x1000)
-            return new OpCode1NNN(0x0FFF & code);
+            return new OpCode1NNN(code);
 
         if (code == 0x00E0)
             return new OpCode00E0(display);

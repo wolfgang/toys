@@ -10,8 +10,8 @@ import lib.MachineState;
 public class OpCode1NNN implements OpCode {
     private int destination;
 
-    public OpCode1NNN(int destination) {
-        this.destination = destination;
+    public OpCode1NNN(int code) {
+        this.destination = 0x0FFF & code;
     }
 
     public void execute(MachineState machineState) {
