@@ -26,11 +26,11 @@ public class Chip8EmulatorTest {
 
     @Before
     public void setUp() throws Exception {
-        display = mock(Display.class);
         opCodeDecoder = mock(OpCodeDecoder.class);
         opCode = mock(OpCode.class);
-        machineState = new MachineState();
-        emulator = new Chip8Emulator(machineState, display, opCodeDecoder);
+        display = mock(Display.class);
+        machineState = new MachineState(null, display);
+        emulator = new Chip8Emulator(machineState, opCodeDecoder);
         order = inOrder(opCode, display);
     }
 

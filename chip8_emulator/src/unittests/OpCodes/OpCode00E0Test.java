@@ -24,7 +24,6 @@ public class OpCode00E0Test {
         display = mock(Display.class);
         machineState = new MachineState();
         machineState.display = display;
-
     }
 
     @Test

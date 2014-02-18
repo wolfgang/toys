@@ -18,7 +18,7 @@ public class Main {
         Display display = new Display(mainWindow);
         MachineState machineState = new MachineState(memory, display);
         OpCodeDecoder opCodeDecoder = new OpCodeDecoder(machineState, opCodeFactory);
-        Chip8Emulator emulator = new Chip8Emulator(machineState, display, opCodeDecoder);
+        Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeDecoder);
         mainWindow.clear(Color.black);
         //noinspection InfiniteLoopStatement
         while(true)

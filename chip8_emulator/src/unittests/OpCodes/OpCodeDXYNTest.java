@@ -31,9 +31,7 @@ public class OpCodeDXYNTest {
     @Before
     public void setUp() throws Exception {
         display = mock(Display.class);
-        machineState = new MachineState();
-        machineState.memory = new Memory();
-        machineState.display = display;
+        machineState = new MachineState(new Memory(), display);
     }
 
     @Test

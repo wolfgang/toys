@@ -9,12 +9,10 @@ import lib.OpCodes.OpCode;
 
 public class Chip8Emulator {
     private MachineState machineState;
-    private final Display display;
     private final OpCodeDecoder opCodeDecoder;
 
-    public Chip8Emulator(MachineState machineState, Display display, OpCodeDecoder opCodeDecoder) {
+    public Chip8Emulator(MachineState machineState, OpCodeDecoder opCodeDecoder) {
         this.machineState = machineState;
-        this.display = display;
         this.opCodeDecoder = opCodeDecoder;
     }
 
@@ -24,6 +22,6 @@ public class Chip8Emulator {
         opCode.execute(machineState);
         if (machineState.pc == oldPC)
             machineState.pc += 2;
-        display.draw();
+        machineState.display.draw();
     }
 }
