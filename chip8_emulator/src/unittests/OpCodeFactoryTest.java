@@ -9,6 +9,7 @@ import lib.*;
 import lib.OpCodes.OpCode;
 import lib.OpCodes.OpCode00E0;
 import lib.OpCodes.OpCode1NNN;
+import lib.OpCodes.OpCodeDXYN;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,18 +47,30 @@ public class OpCodeFactoryTest {
         assertIs00E0(opCode);
     }
 
+    @Test
+    public void getOpCode_DXYN() throws Exception {
+        OpCode opCode = opCodeFactory.getOpCode(0xD123);
+        assertOpCode(opCode, OpCodeDXYN.class, "1 2 3");
+    }
+
     @Test(expected = InvalidOpCode.class)
     public void getOpCode_invalidCode_throwInvalidOpCode() throws Exception {
         opCodeFactory.getOpCode(0x0000);
     }
 
     private void assertIs1NNN(OpCode opCode, int destination) {
-        assertThat(opCode, instanceOf(OpCode1NNN.class));
-        assertThat(((OpCode1NNN) opCode).getDestination(), is(destination));
+        assertOpCode(opCode, OpCode1NNN.class, String.valueOf(destination));
     }
 
     private void assertIs00E0(OpCode opCode) {
         assertThat(opCode, instanceOf(OpCode00E0.class));
         assertThat(((OpCode00E0)opCode).getDisplay(), is(display));
+    }
+
+    private void assertOpCode(OpCode opCode, Class expectedClass, String expectedStringValue)
+    {
+        assertThat(opCode, instanceOf(expectedClass));
+        assertThat(opCode.toString(), is(expectedStringValue));
+
     }
 }

@@ -19,13 +19,18 @@ public class OpCodeDXYN implements OpCode {
         this.display = display;
         this.x = (code & 0x0F00) >> 8;
         this.y = (code & 0x00F0) >> 4;
-        this.height = (code & 0x00F0);
+        this.height = (code & 0x000F);
     }
 
     @Override
     public void execute(MachineState machineState) {
         for (int i = 0; i < height; ++i)
             drawSpriteRow(machineState, i);
+    }
+
+    public String toString()
+    {
+        return x + " " + y + " " + height;
     }
 
     private void drawSpriteRow(MachineState machineState, int verticalIndex) {

@@ -16,7 +16,6 @@ import lib.MachineState;
 import lib.Memory;
 import lib.OpCodes.OpCodeDXYN;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -62,7 +61,6 @@ public class OpCodeDXYNTest {
     }
 
     @Test
-    @Ignore
     public void execute_x0y1N2I0_bitsArePixels() throws Exception {
         machineState.V[0] = 10;
         machineState.V[1] = 20;

@@ -18,7 +18,8 @@ public class OpCode1NNN implements OpCode {
         machineState.pc = destination;
     }
 
-    public int getDestination() {
-        return destination;
+    public String toString()
+    {
+        return String.valueOf(destination);
     }
 }
