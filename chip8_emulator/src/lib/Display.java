@@ -27,12 +27,16 @@ public class Display {
         graphics.setColor(Color.white);
         for (int y = 0; y < Height; ++y)
             for (int x = 0; x < Width; ++x) {
-                if (pixels[x + y * Width] != 0)
+                if (isPixelSet(x, y))
                     graphics.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
             }
     }
 
     public void setPixel(int x, int y) {
         pixels[x + y * Width] = 1;
+    }
+
+    public boolean isPixelSet(int x, int y) {
+        return pixels[x + y * Width] != 0;
     }
 }

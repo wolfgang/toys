@@ -12,6 +12,8 @@ import org.mockito.InOrder;
 
 import java.awt.*;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class DisplayTest {
@@ -63,6 +65,13 @@ public class DisplayTest {
         display.draw();
         verifySetColor();
         verifyNoFurtherGraphicsCalls();
+    }
+
+    @Test
+    public void isPixelSet() throws Exception {
+        display.setPixel(1, 2);
+        assertThat(display.isPixelSet(1, 2), is(true));
+        assertThat(display.isPixelSet(10, 20), is(false));
     }
 
     private void verifySetColor() {

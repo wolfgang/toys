@@ -20,8 +20,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class OpCodeDXYNTest {
 
@@ -36,7 +35,7 @@ public class OpCodeDXYNTest {
 
     @Test
     public void execute_x0y1N1I0_0() throws Exception {
-        setupRegisters();
+        setupParameterRegisters();
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         opCode.execute(machineState);
         assertVF(0);
@@ -44,9 +43,10 @@ public class OpCodeDXYNTest {
 
     @Test
     public void execute_x0y1N1I0_bitsArePixels() throws Exception {
-        setupRegisters();
+        setupParameterRegisters();
         machineState.memory.set(0, 0b10101001);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
+        when(display.isPixelSet(anyInt(), anyInt())).thenReturn(false);
         opCode.execute(machineState);
         verify(display).setPixel(10, 20);
         verify(display).setPixel(12, 20);
@@ -57,10 +57,12 @@ public class OpCodeDXYNTest {
 
     @Test
     public void execute_x0y1N2I0_bitsArePixels() throws Exception {
-        setupRegisters();
+        setupParameterRegisters();
         machineState.memory.set(0, 0b10101001);
         machineState.memory.set(1, 0b11110000);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD012);
+        when(display.isPixelSet(anyInt(), anyInt())).thenReturn(false);
+
         opCode.execute(machineState);
         verify(display).setPixel(10, 20);
         verify(display).setPixel(12, 20);
@@ -73,7 +75,19 @@ public class OpCodeDXYNTest {
         assertVF(1);
     }
 
-    private void setupRegisters() {
+    @Test
+    public void execute_nothingToDraw() throws Exception {
+        setupParameterRegisters();
+        machineState.V[15] = 1;
+        machineState.memory.set(0, 0b10000000);
+        OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
+        when(display.isPixelSet(10, 20)).thenReturn(true);
+        opCode.execute(machineState);
+        verify(display, never()).setPixel(anyInt(), anyInt());
+        assertVF(0);
+    }
+
+    private void setupParameterRegisters() {
         machineState.V[0] = 10;
         machineState.V[1] = 20;
         machineState.I = 0;

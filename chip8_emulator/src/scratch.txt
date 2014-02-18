@@ -5,8 +5,12 @@
 [X] Put display in machine state
 
 
-set VF correctly -> only if a pixel actually changes
-draw only if VF is set
+[ ] set VF correctly -> only if a pixel actually changes
+    [X] pixel was not set and needs to be set
+    [ ] pixel was set and needs to be cleared
+
+
+Display: draw only if VF is set
 
 
 Pixel size depends on display width/height
@@ -18,3 +22,5 @@ Clean up MachineState
 Cache already created op codes in factory?
 
 Convenience method Memory.setOpCode(0x200, 0xD123)
+
+Display throws error if x/y out of bounds in setPixel

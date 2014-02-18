@@ -5,12 +5,14 @@
 
 package lib.OpCodes;
 
+import lib.Display;
 import lib.MachineState;
 
 public class OpCodeDXYN implements OpCode {
     private final int x;
     private final int y;
     private final int height;
+    private boolean wasAnyPixelSet;
 
     public OpCodeDXYN(int code) {
 
@@ -21,8 +23,14 @@ public class OpCodeDXYN implements OpCode {
 
     @Override
     public void execute(MachineState machineState) {
+        wasAnyPixelSet = false;
         for (int i = 0; i < height; ++i)
             drawSpriteRow(machineState, i);
+        setVF(machineState);
+    }
+
+    private void setVF(MachineState machineState) {
+        machineState.V[15] = wasAnyPixelSet ? 1 : 0;
     }
 
     public String toString()
@@ -34,10 +42,12 @@ public class OpCodeDXYN implements OpCode {
         int rowValue = machineState.memory.get(machineState.I + verticalIndex);
         int lineX = machineState.V[x];
         int lineY = machineState.V[y] + verticalIndex;
+        Display display = machineState.display;
         for (int i = 7; i >= 0; --i) {
-            if (isBitSet(i, rowValue)) {
-                machineState.display.setPixel(lineX + (7 - i), lineY);
-                machineState.V[15] = 1;
+            int pixelX = lineX + (7 - i);
+            if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
+                display.setPixel(pixelX, lineY);
+                wasAnyPixelSet = true;
             }
         }
     }
