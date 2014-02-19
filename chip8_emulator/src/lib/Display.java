@@ -39,4 +39,8 @@ public class Display {
     public boolean isPixelSet(int x, int y) {
         return pixels[x + y * Width] != 0;
     }
+
+    public void clearPixel(int x, int y) {
+        pixels[x + y * Width] = 0;
+    }
 }
