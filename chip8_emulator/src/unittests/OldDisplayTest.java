@@ -5,7 +5,7 @@
 
 package unittests;
 
-import lib.Display;
+import lib.OldDisplay;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -16,31 +16,31 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
-public class DisplayTest {
+public class OldDisplayTest {
 
     private Graphics graphics;
-    private Display display;
+    private OldDisplay oldDisplay;
     private InOrder graphicsOrder;
     private int pixelSize = 64;
 
     @Before
     public void setUp() throws Exception {
         graphics = mock(Graphics.class);
-        display = new Display(graphics, pixelSize);
+        oldDisplay = new OldDisplay(graphics, pixelSize);
         graphicsOrder = inOrder(graphics);
     }
 
     @Test
     public void newlyCreatedDisplayIsBlank() throws Exception {
-        display.draw();
+        oldDisplay.draw();
         verifySetColor();
         verifyNoFurtherGraphicsCalls();
     }
 
     @Test
     public void setPixel_00_drawsWhiteRectAt00() throws Exception {
-        display.setPixel(0, 0);
-        display.draw();
+        oldDisplay.setPixel(0, 0);
+        oldDisplay.draw();
         verifySetColor();
         verifyFillRect(0, 0);
         verifyNoFurtherGraphicsCalls();
@@ -48,9 +48,9 @@ public class DisplayTest {
 
     @Test
     public void setPixel_setSomePixels() throws Exception {
-        display.setPixel(10, 20);
-        display.setPixel(63, 31);
-        display.draw();
+        oldDisplay.setPixel(10, 20);
+        oldDisplay.setPixel(63, 31);
+        oldDisplay.draw();
         verifySetColor();
         verifyFillRect(10 * pixelSize, 20 * pixelSize);
         verifyFillRect(63*pixelSize, 31*pixelSize);
@@ -59,19 +59,19 @@ public class DisplayTest {
 
     @Test
     public void clear_clearsAllPixels() throws Exception {
-        display.setPixel(1, 2);
-        display.setPixel(10, 20);
-        display.clear();
-        display.draw();
+        oldDisplay.setPixel(1, 2);
+        oldDisplay.setPixel(10, 20);
+        oldDisplay.clear();
+        oldDisplay.draw();
         verifySetColor();
         verifyNoFurtherGraphicsCalls();
     }
 
     @Test
     public void isPixelSet() throws Exception {
-        display.setPixel(1, 2);
-        assertThat(display.isPixelSet(1, 2), is(true));
-        assertThat(display.isPixelSet(10, 20), is(false));
+        oldDisplay.setPixel(1, 2);
+        assertThat(oldDisplay.isPixelSet(1, 2), is(true));
+        assertThat(oldDisplay.isPixelSet(10, 20), is(false));
     }
 
     private void verifySetColor() {

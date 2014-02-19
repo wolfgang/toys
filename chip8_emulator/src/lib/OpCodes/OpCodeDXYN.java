@@ -5,7 +5,7 @@
 
 package lib.OpCodes;
 
-import lib.Display;
+import lib.OldDisplay;
 import lib.MachineState;
 
 public class OpCodeDXYN implements OpCode {
@@ -42,16 +42,16 @@ public class OpCodeDXYN implements OpCode {
         int rowValue = machineState.memory.get(machineState.I + verticalIndex);
         int lineX = machineState.V[x];
         int lineY = machineState.V[y] + verticalIndex;
-        Display display = machineState.display;
+        OldDisplay oldDisplay = machineState.oldDisplay;
         for (int i = 7; i >= 0; --i) {
             int pixelX = lineX + (7 - i);
-            if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
-                display.setPixel(pixelX, lineY);
+            if (!oldDisplay.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
+                oldDisplay.setPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
             }
 
-            if (display.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
-                display.clearPixel(pixelX, lineY);
+            if (oldDisplay.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
+                oldDisplay.clearPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
             }
         }

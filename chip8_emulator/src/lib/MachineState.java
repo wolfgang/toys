@@ -10,16 +10,16 @@ public class MachineState {
     public int[] V = new int[16];
     public int I = 0;
     public Memory memory;
-    public Display display;
+    public OldDisplay oldDisplay;
 
     public MachineState()
     {
         this.memory = new Memory();
     }
 
-    public MachineState(Memory memory, Display display)
+    public MachineState(Memory memory, OldDisplay oldDisplay)
     {
         this.memory = memory;
-        this.display = display;
+        this.oldDisplay = oldDisplay;
     }
 }

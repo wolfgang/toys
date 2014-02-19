@@ -2,7 +2,7 @@
     [X] OpCodeFactory
     [X] Display
 
-[X] Put display in machine state
+[X] Put oldDisplay in machine state
 
 
 [ ] set VF correctly -> only if a pixel actually changes
@@ -13,7 +13,7 @@
 Display: draw only if VF is set
 
 
-Pixel size depends on display width/height
+Pixel size depends on oldDisplay width/height
 
 Clean up OpCodeDXYNTest
 

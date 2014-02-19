@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 public class Chip8EmulatorTest {
 
-    private Display display;
+    private OldDisplay oldDisplay;
     private OpCodeDecoder opCodeDecoder;
     private OpCode opCode;
     private Chip8Emulator emulator;
@@ -28,10 +28,10 @@ public class Chip8EmulatorTest {
     public void setUp() throws Exception {
         opCodeDecoder = mock(OpCodeDecoder.class);
         opCode = mock(OpCode.class);
-        display = mock(Display.class);
-        machineState = new MachineState(null, display);
+        oldDisplay = mock(OldDisplay.class);
+        machineState = new MachineState(null, oldDisplay);
         emulator = new Chip8Emulator(machineState, opCodeDecoder);
-        order = inOrder(opCode, display);
+        order = inOrder(opCode, oldDisplay);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class Chip8EmulatorTest {
         when(opCodeDecoder.getNext(0x200)).thenReturn(opCode);
         emulator.tick();
         order.verify(opCode).execute(machineState);
-        order.verify(display).draw();
+        order.verify(oldDisplay).draw();
         assertThat(machineState.pc, is(0x202));
     }
 
@@ -47,7 +47,7 @@ public class Chip8EmulatorTest {
     public void tick_dontAdvancePCIfOpCodeChangedIt() throws Exception {
         when(opCodeDecoder.getNext(0x200)).thenReturn(new PCChangingOpCode());
         emulator.tick();
-        order.verify(display).draw();
+        order.verify(oldDisplay).draw();
         assertThat(machineState.pc, is(0x300));
     }
 

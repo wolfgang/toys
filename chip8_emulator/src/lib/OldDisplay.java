@@ -7,14 +7,14 @@ import java.util.Arrays;
  * (c) 2013 Wolfgang Deutsch
  * Created on 2/14/14 at 8:27 PM
  */
-public class Display {
+public class OldDisplay {
     public static final int Width = 64;
     public static final int Height = 32;
     private Graphics graphics;
     private int pixelSize;
     byte pixels[] = new byte[Width * Height];
 
-    public Display(Graphics graphics, int pixelSize) {
+    public OldDisplay(Graphics graphics, int pixelSize) {
         this.graphics = graphics;
         this.pixelSize = pixelSize;
     }
