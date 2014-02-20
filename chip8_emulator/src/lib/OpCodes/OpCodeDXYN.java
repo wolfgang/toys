@@ -16,9 +16,9 @@ public class OpCodeDXYN implements OpCode {
 
     @Override
     public void execute(MachineState machineState, int myCode) {
-        this.x = (myCode & 0x0F00) >> 8;
-        this.y = (myCode & 0x00F0) >> 4;
-        this.height = (myCode & 0x000F);
+        x = (myCode & 0x0F00) >> 8;
+        y = (myCode & 0x00F0) >> 4;
+        height = (myCode & 0x000F);
         wasAnyPixelChanged = false;
         for (int i = 0; i < height; ++i)
             drawSpriteRow(machineState, i);
@@ -28,11 +28,6 @@ public class OpCodeDXYN implements OpCode {
 
     private void setVF(MachineState machineState) {
         machineState.V[15] = wasAnyPixelChanged ? 1 : 0;
-    }
-
-    public String toString()
-    {
-        return x + " " + y + " " + height;
     }
 
     private void drawSpriteRow(MachineState machineState, int verticalIndex) {
