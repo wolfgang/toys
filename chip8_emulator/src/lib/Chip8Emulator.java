@@ -22,6 +22,8 @@ public class Chip8Emulator {
         opCode.execute(machineState);
         if (machineState.pc == oldPC)
             machineState.pc += 2;
-        machineState.pixelBuffer.draw();
+
+        if (machineState.V[15]==1)
+            machineState.pixelBuffer.draw();
     }
 }

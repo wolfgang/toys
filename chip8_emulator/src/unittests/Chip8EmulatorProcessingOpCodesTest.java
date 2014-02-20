@@ -5,41 +5,38 @@
 
 package unittests;
 
-import lib.*;
+import lib.Chip8Emulator;
+import lib.MachineState;
+import lib.OpCodeDecoder;
 import lib.OpCodes.OpCode;
+import lib.PixelBuffer;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InOrder;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
-public class Chip8EmulatorTest {
+public class Chip8EmulatorProcessingOpCodesTest {
 
-    private PixelBuffer pixelBuffer;
     private OpCodeDecoder opCodeDecoder;
     private OpCode opCode;
     private Chip8Emulator emulator;
-    private InOrder order;
     private MachineState machineState;
 
     @Before
     public void setUp() throws Exception {
         opCodeDecoder = mock(OpCodeDecoder.class);
         opCode = mock(OpCode.class);
-        pixelBuffer = mock(PixelBuffer.class);
-        machineState = new MachineState(null, pixelBuffer);
+        machineState = new MachineState(null, mock(PixelBuffer.class));
         emulator = new Chip8Emulator(machineState, opCodeDecoder);
-        order = inOrder(opCode, pixelBuffer);
     }
 
     @Test
-    public void tick_processNextOpcode_AdvancePC_DrawScreen() throws Exception {
+    public void tick_processNextOpcode_AdvancePC() throws Exception {
         when(opCodeDecoder.getNext(0x200)).thenReturn(opCode);
         emulator.tick();
-        order.verify(opCode).execute(machineState);
-        order.verify(pixelBuffer).draw();
+        verify(opCode).execute(machineState);
         assertThat(machineState.pc, is(0x202));
     }
 
@@ -47,7 +44,6 @@ public class Chip8EmulatorTest {
     public void tick_dontAdvancePCIfOpCodeChangedIt() throws Exception {
         when(opCodeDecoder.getNext(0x200)).thenReturn(new PCChangingOpCode());
         emulator.tick();
-        order.verify(pixelBuffer).draw();
         assertThat(machineState.pc, is(0x300));
     }
 

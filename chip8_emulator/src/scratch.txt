@@ -10,7 +10,7 @@
     [X] pixel was set and needs to be cleared
 
 
-PixelBuffer: draw only if VF is set
+[x] Draw only if VF is set
 
 Redo Factory: Should be a registry, op codes pre-created. Opcode.execute gets code parameter
 
