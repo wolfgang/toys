@@ -10,6 +10,8 @@ import lib.PixelRenderer;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -35,7 +37,7 @@ public class PixelBufferTest {
     public void draw_setPixelCausesPixelToBeDrawn() throws Exception {
         pixelBuffer.setPixel(0, 0);
         pixelBuffer.draw();
-        verify(pixelRenderer).drawWhitePixel(0, 0);
+        verify(pixelRenderer).drawPixel(0, 0, 1);
     }
 
     @Test
@@ -44,9 +46,9 @@ public class PixelBufferTest {
         pixelBuffer.setPixel(20, 20);
         pixelBuffer.setPixel(63, 31);
         pixelBuffer.draw();
-        verify(pixelRenderer).drawWhitePixel(1, 1);
-        verify(pixelRenderer).drawWhitePixel(20, 20);
-        verify(pixelRenderer).drawWhitePixel(63, 31);
+        verify(pixelRenderer).drawPixel(1, 1, 1);
+        verify(pixelRenderer).drawPixel(20, 20, 1);
+        verify(pixelRenderer).drawPixel(63, 31, 1);
         verifyNoMoreInteractions(pixelRenderer);
     }
 
@@ -55,7 +57,7 @@ public class PixelBufferTest {
         pixelBuffer.setPixel(10, 20);
         pixelBuffer.draw();
         pixelBuffer.draw();
-        verify(pixelRenderer).drawWhitePixel(10, 20);
+        verify(pixelRenderer).drawPixel(10, 20, 1);
     }
 
     @Test
@@ -63,7 +65,14 @@ public class PixelBufferTest {
         pixelBuffer.clearPixel(10, 20);
         pixelBuffer.draw();
         pixelBuffer.draw();
-        verify(pixelRenderer).drawBlackPixel(10, 20);
+        verify(pixelRenderer).drawPixel(10, 20, 0);
 
+    }
+
+    @Test
+    public void isPixelSet() throws Exception {
+        pixelBuffer.setPixel(10, 20);
+        assertThat(pixelBuffer.isPixelSet(10, 20), is(true));
+        assertThat(pixelBuffer.isPixelSet(11, 21), is(false));
     }
 }

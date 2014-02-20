@@ -6,7 +6,7 @@
 package lib;
 
 public class PixelRenderer {
-    public void drawWhitePixel(int x, int y) {
+    public void drawPixel(int x, int y, int color) {
 
     }
 

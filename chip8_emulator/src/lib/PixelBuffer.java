@@ -19,24 +19,32 @@ public class PixelBuffer {
     public void draw() {
         for (int y = 0; y < Height; ++y)
             for (int x = 0; x < Width; ++x) {
-                if (pixels[x + y * Width] == 0b11) {
-                    pixelRenderer.drawWhitePixel(x, y);
-                    pixels[x + y * Width] = 0b01;
-                }
-                if (pixels[x + y * Width] == 0b10) {
-                    pixelRenderer.drawBlackPixel(x, y);
-                    pixels[x + y * Width] = 0b00;
+                byte value = getPixelValue(x, y);
+                if ((value & 0b10) == 0b10) {
+                    int color = value & 0b01;
+                    pixelRenderer.drawPixel(x, y, color);
+                    setPixelValue(x, y, color);
                 }
             }
-
     }
 
     public void setPixel(int x, int y) {
-        pixels[x + y * Width] = 0b11;
-
+        setPixelValue(x, y, 0b11);
     }
 
     public void clearPixel(int x, int y) {
-        pixels[x + y * Width] = 0b10;
+        setPixelValue(x, y, 0b10);
+    }
+
+    private void setPixelValue(int x, int y, int value) {
+        pixels[x + y * Width] = (byte) value;
+    }
+
+    private byte getPixelValue(int x, int y) {
+        return pixels[x + y * Width];
+    }
+
+    public boolean isPixelSet(int x, int y) {
+        return (getPixelValue(x, y) & 0b01) == 0b01;
     }
 }
