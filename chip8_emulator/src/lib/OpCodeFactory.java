@@ -22,10 +22,10 @@ public class OpCodeFactory {
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
         if ((code & 0xD000) == 0xD000)
-            return new OpCodeDXYN(code);
+            return new OpCodeDXYN();
 
         if ((code & 0x1000) == 0x1000)
-            return new OpCode1NNN(code);
+            return new OpCode1NNN();
 
         if (code == 0x00E0)
             return new OpCode00E0();

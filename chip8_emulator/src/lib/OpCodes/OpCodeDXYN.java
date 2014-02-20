@@ -14,20 +14,6 @@ public class OpCodeDXYN implements OpCode {
     private int height;
     private boolean wasAnyPixelChanged;
 
-    public OpCodeDXYN(int code) {
-        this.x = (code & 0x0F00) >> 8;
-        this.y = (code & 0x00F0) >> 4;
-        this.height = (code & 0x000F);
-    }
-
-    @Override
-    public void execute(MachineState machineState) {
-        wasAnyPixelChanged = false;
-        for (int i = 0; i < height; ++i)
-            drawSpriteRow(machineState, i);
-        setVF(machineState);
-    }
-
     @Override
     public void execute(MachineState machineState, int myCode) {
         this.x = (myCode & 0x0F00) >> 8;

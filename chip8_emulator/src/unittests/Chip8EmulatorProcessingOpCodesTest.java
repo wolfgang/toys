@@ -18,14 +18,12 @@ import static org.mockito.Mockito.*;
 public class Chip8EmulatorProcessingOpCodesTest {
 
     private OpCodeExecutor opCodeExecutor;
-    private OpCode opCode;
     private Chip8Emulator emulator;
     private MachineState machineState;
 
     @Before
     public void setUp() throws Exception {
         opCodeExecutor = mock(OpCodeExecutor.class);
-        opCode = mock(OpCode.class);
         machineState = new MachineState(null, mock(PixelBuffer.class));
         emulator = new Chip8Emulator(machineState, opCodeExecutor);
     }
@@ -45,14 +43,12 @@ public class Chip8EmulatorProcessingOpCodesTest {
         assertThat(machineState.pc, is(0x300));
     }
 
+
+    @SuppressWarnings("UnusedDeclaration")
     private class PCChangingOpCode implements OpCode {
         @Override
-        public void execute(MachineState incomingMachineState) {
+        public void execute(MachineState incomingMachineState, int myCode) {
             incomingMachineState.pc = 0x300;
-        }
-
-        @Override
-        public void execute(MachineState machineState, int myCode) {
 
         }
     }

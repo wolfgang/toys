@@ -15,7 +15,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class OpCodeFactoryTest {
@@ -30,43 +29,31 @@ public class OpCodeFactoryTest {
     @Test
     public void getOpCode_1NNN_600() throws Exception {
         OpCode opCode = opCodeFactory.getOpCode(0x1600);
-        assertIs1NNN(opCode, 0x600);
+        assertThat(opCode, instanceOf(OpCode1NNN.class));
     }
 
     @Test
     public void getOpCode_1NNN_700() throws Exception {
         OpCode opCode = opCodeFactory.getOpCode(0x1700);
-        assertIs1NNN(opCode, 0x700);
+        assertThat(opCode, instanceOf(OpCode1NNN.class));
     }
 
     @Test
     public void getOpCode_00E0() throws Exception {
         OpCode opCode = opCodeFactory.getOpCode(0x00E0);
-        assertIs00E0(opCode);
+        assertThat(opCode, instanceOf(OpCode00E0.class));
+
     }
 
     @Test
     public void getOpCode_DXYN() throws Exception {
         OpCode opCode = opCodeFactory.getOpCode(0xD123);
-        assertOpCode(opCode, OpCodeDXYN.class, "1 2 3");
+        assertThat(opCode, instanceOf(OpCodeDXYN.class));
+
     }
 
     @Test(expected = InvalidOpCode.class)
     public void getOpCode_invalidCode_throwInvalidOpCode() throws Exception {
         opCodeFactory.getOpCode(0x0000);
-    }
-
-    private void assertIs1NNN(OpCode opCode, int destination) {
-        assertOpCode(opCode, OpCode1NNN.class, String.valueOf(destination));
-    }
-
-    private void assertIs00E0(OpCode opCode) {
-        assertThat(opCode, instanceOf(OpCode00E0.class));
-    }
-
-    private void assertOpCode(OpCode opCode, Class expectedClass, String expectedStringValue)
-    {
-        assertThat(opCode, instanceOf(expectedClass));
-        assertThat(opCode.toString(), is(expectedStringValue));
     }
 }

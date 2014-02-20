@@ -9,11 +9,6 @@ import lib.MachineState;
 
 public class OpCode00E0 implements OpCode {
     @Override
-    public void execute(MachineState machineState) {
-        machineState.pixelBuffer.clear();
-    }
-
-    @Override
     public void execute(MachineState machineState, int myCode) {
         machineState.pixelBuffer.clear();
     }
