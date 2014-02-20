@@ -15,8 +15,9 @@ public class Main {
         Memory memory = new Memory();
         loadProgram(memory);
         OpCodeFactory opCodeFactory = new OpCodeFactory();
-        OldDisplay oldDisplay = new OldDisplay(mainWindow.getDrawGraphics(), 16);
-        MachineState machineState = new MachineState(memory, oldDisplay);
+        PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
+        PixelBuffer pixelBuffer = new PixelBuffer(pixelRenderer);
+        MachineState machineState = new MachineState(memory, pixelBuffer);
         OpCodeDecoder opCodeDecoder = new OpCodeDecoder(machineState, opCodeFactory);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeDecoder);
         mainWindow.clear(Color.black);

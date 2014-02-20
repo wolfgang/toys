@@ -11,10 +11,10 @@
 
 package unittests.OpCodes;
 
-import lib.OldDisplay;
 import lib.MachineState;
 import lib.Memory;
 import lib.OpCodes.OpCodeDXYN;
+import lib.PixelBuffer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,13 +24,13 @@ import static org.mockito.Mockito.*;
 
 public class OpCodeDXYNTest {
 
-    private OldDisplay oldDisplay;
+    private PixelBuffer pixelBuffer;
     private MachineState machineState;
 
     @Before
     public void setUp() throws Exception {
-        oldDisplay = mock(OldDisplay.class);
-        machineState = new MachineState(new Memory(), oldDisplay);
+        pixelBuffer = mock(PixelBuffer.class);
+        machineState = new MachineState(new Memory(), pixelBuffer);
     }
 
     @Test
@@ -46,12 +46,12 @@ public class OpCodeDXYNTest {
         setupParameterRegisters();
         machineState.memory.set(0, 0b10101001);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
-        when(oldDisplay.isPixelSet(anyInt(), anyInt())).thenReturn(false);
+        when(pixelBuffer.isPixelSet(anyInt(), anyInt())).thenReturn(false);
         opCode.execute(machineState);
-        verify(oldDisplay).setPixel(10, 20);
-        verify(oldDisplay).setPixel(12, 20);
-        verify(oldDisplay).setPixel(14, 20);
-        verify(oldDisplay).setPixel(17, 20);
+        verify(pixelBuffer).setPixel(10, 20);
+        verify(pixelBuffer).setPixel(12, 20);
+        verify(pixelBuffer).setPixel(14, 20);
+        verify(pixelBuffer).setPixel(17, 20);
         assertVF(1);
     }
 
@@ -61,17 +61,17 @@ public class OpCodeDXYNTest {
         machineState.memory.set(0, 0b10101001);
         machineState.memory.set(1, 0b11110000);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD012);
-        when(oldDisplay.isPixelSet(anyInt(), anyInt())).thenReturn(false);
+        when(pixelBuffer.isPixelSet(anyInt(), anyInt())).thenReturn(false);
 
         opCode.execute(machineState);
-        verify(oldDisplay).setPixel(10, 20);
-        verify(oldDisplay).setPixel(12, 20);
-        verify(oldDisplay).setPixel(14, 20);
-        verify(oldDisplay).setPixel(17, 20);
-        verify(oldDisplay).setPixel(10, 21);
-        verify(oldDisplay).setPixel(11, 21);
-        verify(oldDisplay).setPixel(12, 21);
-        verify(oldDisplay).setPixel(13, 21);
+        verify(pixelBuffer).setPixel(10, 20);
+        verify(pixelBuffer).setPixel(12, 20);
+        verify(pixelBuffer).setPixel(14, 20);
+        verify(pixelBuffer).setPixel(17, 20);
+        verify(pixelBuffer).setPixel(10, 21);
+        verify(pixelBuffer).setPixel(11, 21);
+        verify(pixelBuffer).setPixel(12, 21);
+        verify(pixelBuffer).setPixel(13, 21);
         assertVF(1);
     }
 
@@ -81,9 +81,9 @@ public class OpCodeDXYNTest {
         machineState.V[15] = 1;
         machineState.memory.set(0, 0b10000000);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
-        when(oldDisplay.isPixelSet(10, 20)).thenReturn(true);
+        when(pixelBuffer.isPixelSet(10, 20)).thenReturn(true);
         opCode.execute(machineState);
-        verify(oldDisplay, never()).setPixel(anyInt(), anyInt());
+        verify(pixelBuffer, never()).setPixel(anyInt(), anyInt());
         assertVF(0);
     }
 

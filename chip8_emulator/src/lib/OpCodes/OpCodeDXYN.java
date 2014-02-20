@@ -5,8 +5,8 @@
 
 package lib.OpCodes;
 
-import lib.OldDisplay;
 import lib.MachineState;
+import lib.PixelBuffer;
 
 public class OpCodeDXYN implements OpCode {
     private final int x;
@@ -42,16 +42,16 @@ public class OpCodeDXYN implements OpCode {
         int rowValue = machineState.memory.get(machineState.I + verticalIndex);
         int lineX = machineState.V[x];
         int lineY = machineState.V[y] + verticalIndex;
-        OldDisplay oldDisplay = machineState.oldDisplay;
+        PixelBuffer pixelBuffer = machineState.pixelBuffer;
         for (int i = 7; i >= 0; --i) {
             int pixelX = lineX + (7 - i);
-            if (!oldDisplay.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
-                oldDisplay.setPixel(pixelX, lineY);
+            if (!pixelBuffer.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
+                pixelBuffer.setPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
             }
 
-            if (oldDisplay.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
-                oldDisplay.clearPixel(pixelX, lineY);
+            if (pixelBuffer.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
+                pixelBuffer.clearPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
             }
         }

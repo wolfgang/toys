@@ -5,6 +5,8 @@
 
 package lib;
 
+import java.util.Arrays;
+
 public class PixelBuffer {
     public static final int Width = 64;
     public static final int Height = 32;
@@ -34,6 +36,11 @@ public class PixelBuffer {
 
     public void clearPixel(int x, int y) {
         setPixelValue(x, y, 0b10);
+    }
+
+    public void clear()
+    {
+        Arrays.fill(pixels, (byte)0b10);
     }
 
     private void setPixelValue(int x, int y, int value) {
