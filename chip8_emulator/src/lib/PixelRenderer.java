@@ -5,12 +5,19 @@
 
 package lib;
 
-public class PixelRenderer {
-    public void drawPixel(int x, int y, int color) {
+import java.awt.*;
 
+public class PixelRenderer {
+    private final Graphics graphics;
+    private final int pixelSize;
+
+    public PixelRenderer(Graphics graphics, int pixelSize) {
+        this.graphics = graphics;
+        this.pixelSize = pixelSize;
     }
 
-    public void drawBlackPixel(int x, int y) {
-
+    public void drawPixel(int x, int y, int color) {
+        graphics.setColor(color == 1 ? Color.white : Color.black);
+        graphics.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
     }
 }
