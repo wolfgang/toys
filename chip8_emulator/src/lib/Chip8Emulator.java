@@ -5,21 +5,18 @@
 
 package lib;
 
-import lib.OpCodes.OpCode;
-
 public class Chip8Emulator {
     private MachineState machineState;
-    private final OpCodeDecoder opCodeDecoder;
+    private final OpCodeExecutor opCodeExecutor;
 
-    public Chip8Emulator(MachineState machineState, OpCodeDecoder opCodeDecoder) {
+    public Chip8Emulator(MachineState machineState, OpCodeExecutor opCodeExecutor) {
         this.machineState = machineState;
-        this.opCodeDecoder = opCodeDecoder;
+        this.opCodeExecutor = opCodeExecutor;
     }
 
     public void tick() throws InvalidOpCode {
-        OpCode opCode = opCodeDecoder.getNext(machineState.pc);
         int oldPC = machineState.pc;
-        opCode.execute(machineState);
+        opCodeExecutor.executeNext();
         if (machineState.pc == oldPC)
             machineState.pc += 2;
 

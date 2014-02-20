@@ -7,13 +7,11 @@ package unittests;
 
 import lib.Chip8Emulator;
 import lib.MachineState;
-import lib.OpCodeDecoder;
-import lib.OpCodes.OpCode;
+import lib.OpCodeExecutor;
 import lib.PixelBuffer;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.*;
 
 public class Chip8EmulatorDrawingTest {
@@ -24,9 +22,8 @@ public class Chip8EmulatorDrawingTest {
     @Before
     public void setUp() throws Exception {
         machineState = new MachineState(null, mock(PixelBuffer.class));
-        OpCodeDecoder opCodeDecoder = mock(OpCodeDecoder.class);
-        emulator = new Chip8Emulator(machineState, opCodeDecoder);
-        when(opCodeDecoder.getNext(anyInt())).thenReturn(mock(OpCode.class));
+        OpCodeExecutor opCodeExecutor = mock(OpCodeExecutor.class);
+        emulator = new Chip8Emulator(machineState, opCodeExecutor);
     }
 
     @Test

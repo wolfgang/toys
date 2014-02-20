@@ -14,6 +14,8 @@
 
 Redo Factory: Should be a registry, op codes pre-created. Opcode.execute gets code parameter
 
+Test Chip8Emulator.tick with pc-changing opcode
+
 
 Pixel size depends on Display width/height
 

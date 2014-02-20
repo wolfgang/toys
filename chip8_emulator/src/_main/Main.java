@@ -18,8 +18,8 @@ public class Main {
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
         PixelBuffer pixelBuffer = new PixelBuffer(pixelRenderer);
         MachineState machineState = new MachineState(memory, pixelBuffer);
-        OpCodeDecoder opCodeDecoder = new OpCodeDecoder(machineState, opCodeFactory);
-        Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeDecoder);
+        OpCodeExecutor opCodeExecutor = new OpCodeExecutor(machineState, opCodeFactory);
+        Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor);
         mainWindow.clear(Color.black);
         //noinspection InfiniteLoopStatement
         while(true)
