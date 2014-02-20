@@ -9,13 +9,12 @@ import lib.MachineState;
 import lib.PixelBuffer;
 
 public class OpCodeDXYN implements OpCode {
-    private final int x;
-    private final int y;
-    private final int height;
+    private int x;
+    private int y;
+    private int height;
     private boolean wasAnyPixelChanged;
 
     public OpCodeDXYN(int code) {
-
         this.x = (code & 0x0F00) >> 8;
         this.y = (code & 0x00F0) >> 4;
         this.height = (code & 0x000F);
@@ -27,6 +26,18 @@ public class OpCodeDXYN implements OpCode {
         for (int i = 0; i < height; ++i)
             drawSpriteRow(machineState, i);
         setVF(machineState);
+    }
+
+    @Override
+    public void execute(MachineState machineState, int myCode) {
+        this.x = (myCode & 0x0F00) >> 8;
+        this.y = (myCode & 0x00F0) >> 4;
+        this.height = (myCode & 0x000F);
+        wasAnyPixelChanged = false;
+        for (int i = 0; i < height; ++i)
+            drawSpriteRow(machineState, i);
+        setVF(machineState);
+
     }
 
     private void setVF(MachineState machineState) {

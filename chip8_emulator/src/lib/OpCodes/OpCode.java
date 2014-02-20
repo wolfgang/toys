@@ -9,4 +9,5 @@ import lib.MachineState;
 
 public interface OpCode {
     void execute(MachineState machineState);
+    void execute(MachineState machineState, int myCode);
 }

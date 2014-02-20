@@ -29,7 +29,7 @@ public class OpCode00E0Test {
     @Test
     public void execute_clearsTheScreen() throws Exception {
         OpCode00E0 opCode = new OpCode00E0();
-        opCode.execute(machineState);
+        opCode.execute(machineState, 0);
         verify(pixelBuffer).clear();
     }
 }

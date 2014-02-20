@@ -17,7 +17,7 @@ public class OpCode1NNNTest {
     public void execute_changePCToNNN() throws Exception {
         MachineState machineState = new MachineState();
         OpCode1NNN opCode = new OpCode1NNN(0x1400);
-        opCode.execute(machineState);
+        opCode.execute(machineState, 0x1400);
         assertThat(machineState.pc, is(0x400));
     }
 }

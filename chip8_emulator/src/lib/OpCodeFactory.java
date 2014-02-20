@@ -10,9 +10,14 @@ import lib.OpCodes.OpCode00E0;
 import lib.OpCodes.OpCode1NNN;
 import lib.OpCodes.OpCodeDXYN;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class OpCodeFactory {
 
+    ConcurrentHashMap<String, OpCode> opCodesById = new ConcurrentHashMap<>();
     public OpCodeFactory() {
+        opCodesById.put("00E0", new OpCode00E0());
+
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {

@@ -18,6 +18,11 @@ public class OpCode1NNN implements OpCode {
         machineState.pc = destination;
     }
 
+    @Override
+    public void execute(MachineState machineState, int myCode) {
+        machineState.pc = 0x0FFF & myCode;
+    }
+
     public String toString()
     {
         return String.valueOf(destination);

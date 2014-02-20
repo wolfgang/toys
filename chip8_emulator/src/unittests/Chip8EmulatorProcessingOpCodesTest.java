@@ -52,5 +52,10 @@ public class Chip8EmulatorProcessingOpCodesTest {
         public void execute(MachineState incomingMachineState) {
             incomingMachineState.pc = 0x300;
         }
+
+        @Override
+        public void execute(MachineState machineState, int myCode) {
+
+        }
     }
 }

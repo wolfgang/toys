@@ -37,7 +37,7 @@ public class OpCodeDXYNTest {
     public void execute_x0y1N1I0_0() throws Exception {
         setupParameterRegisters();
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
-        opCode.execute(machineState);
+        opCode.execute(machineState, 0xD011);
         assertVF(0);
     }
 
@@ -47,7 +47,7 @@ public class OpCodeDXYNTest {
         machineState.memory.set(0, 0b10101001);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         when(pixelBuffer.isPixelSet(anyInt(), anyInt())).thenReturn(false);
-        opCode.execute(machineState);
+        opCode.execute(machineState, 0xD011);
         verify(pixelBuffer).setPixel(10, 20);
         verify(pixelBuffer).setPixel(12, 20);
         verify(pixelBuffer).setPixel(14, 20);
@@ -63,7 +63,7 @@ public class OpCodeDXYNTest {
         OpCodeDXYN opCode = new OpCodeDXYN(0xD012);
         when(pixelBuffer.isPixelSet(anyInt(), anyInt())).thenReturn(false);
 
-        opCode.execute(machineState);
+        opCode.execute(machineState, 0xD012);
         verify(pixelBuffer).setPixel(10, 20);
         verify(pixelBuffer).setPixel(12, 20);
         verify(pixelBuffer).setPixel(14, 20);
@@ -82,7 +82,7 @@ public class OpCodeDXYNTest {
         machineState.memory.set(0, 0b10000000);
         OpCodeDXYN opCode = new OpCodeDXYN(0xD011);
         when(pixelBuffer.isPixelSet(10, 20)).thenReturn(true);
-        opCode.execute(machineState);
+        opCode.execute(machineState, 0xD011);
         verify(pixelBuffer, never()).setPixel(anyInt(), anyInt());
         assertVF(0);
     }
