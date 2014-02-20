@@ -5,15 +5,17 @@
 [X] Put oldDisplay in machine state
 
 
-[ ] set VF correctly -> only if a pixel actually changes
+[X] set VF correctly -> only if a pixel actually changes
     [X] pixel was not set and needs to be set
-    [ ] pixel was set and needs to be cleared
+    [X] pixel was set and needs to be cleared
 
 
-Display: draw only if VF is set
+PixelBuffer: draw only if VF is set
+
+Redo Factory: Should be a registry, op codes pre-created. Opcode.execute gets code parameter
 
 
-Pixel size depends on oldDisplay width/height
+Pixel size depends on Display width/height
 
 Clean up OpCodeDXYNTest
 
