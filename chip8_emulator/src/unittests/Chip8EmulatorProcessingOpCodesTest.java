@@ -5,15 +5,17 @@
 
 package unittests;
 
-import lib.*;
-import lib.OpCodes.OpCode;
+import lib.Chip8Emulator;
+import lib.MachineState;
+import lib.OpCodeExecutor;
+import lib.PixelBuffer;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class Chip8EmulatorProcessingOpCodesTest {
 
@@ -33,23 +35,5 @@ public class Chip8EmulatorProcessingOpCodesTest {
         emulator.tick();
         verify(opCodeExecutor).executeNext();
         assertThat(machineState.pc, is(0x202));
-    }
-
-    @Test
-    @Ignore
-    public void tick_dontAdvancePCIfOpCodeChangedIt() throws Exception {
-        verify(opCodeExecutor).executeNext();
-        emulator.tick();
-        assertThat(machineState.pc, is(0x300));
-    }
-
-
-    @SuppressWarnings("UnusedDeclaration")
-    private class PCChangingOpCode implements OpCode {
-        @Override
-        public void execute(MachineState incomingMachineState, int myCode) {
-            incomingMachineState.pc = 0x300;
-
-        }
     }
 }
