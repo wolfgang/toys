@@ -1,4 +1,6 @@
+Turn OpCodeIds into an enum
 
+OpCodeRegistryInitializer picks up codes from enum
 
 
 Pixel size depends on Display width/height
@@ -11,6 +13,5 @@ Convenience method Memory.setOpCode(0x200, 0xD123)
 
 Display throws error if x/y out of bounds in setPixel
 
-Turn OpCodeIds into an enum
 
 Write OpCodeFactory test that uses a mock resolver

@@ -13,22 +13,8 @@ public class OpCodeRegistry {
     private OpCodeResolver opCodeResolver;
     ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
 
-    public OpCodeRegistry() {
-        this(new OpCodeFactory());
-    }
-
     public OpCodeRegistry(OpCodeResolver opCodeResolver) {
-
         this.opCodeResolver = opCodeResolver;
-    }
-
-    public OpCodeRegistry(OpCodeFactory opCodeFactory)
-    {
-        opCodeResolver = new OpCodeResolver();
-        opCodesById.put(OpCodeIds.OP_00E0, opCodeFactory.create(OpCodeIds.OP_00E0));
-        opCodesById.put(OpCodeIds.OP_DXYN, opCodeFactory.create(OpCodeIds.OP_DXYN));
-        opCodesById.put(OpCodeIds.OP_1NNN, opCodeFactory.create(OpCodeIds.OP_1NNN));
-        opCodesById.put(OpCodeIds.OP_00EE, opCodeFactory.create(OpCodeIds.OP_00EE));
     }
 
     public void registerOpCode(int id, OpCode opCode) {

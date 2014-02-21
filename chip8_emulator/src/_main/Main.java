@@ -17,11 +17,15 @@ public class Main {
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();
+        OpCodeResolver opCodeResolver = new OpCodeResolver();
+        OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeResolver);
         OpCodeFactory opCodeFactory = new OpCodeFactory(display, memory);
-        OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeFactory);
+        OpCodeRegistryInitializer opCodeRegistryInitializer = new OpCodeRegistryInitializer(opCodeRegistry, opCodeFactory);
+        opCodeRegistryInitializer.registerKnownOpCodes();
         OpCodeExecutor opCodeExecutor = new OpCodeExecutor(opCodeRegistry, memory);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor, display);
         mainWindow.clear(Color.black);
+
         //noinspection InfiniteLoopStatement
         while(true)
         {
