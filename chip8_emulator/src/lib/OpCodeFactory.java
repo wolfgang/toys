@@ -44,6 +44,8 @@ public class OpCodeFactory {
                 return new OpCode7XNN();
             case OP_8XY0:
                 return new OpCode8XY0();
+            case OP_8XY1:
+                return new OpCode8XY1();
             default:
                 throw new InvalidOpCodeId();
         }

@@ -10,7 +10,7 @@
 [X] 5XY0	Skips the next instruction if VX equals VY.
 [X] 6XNN	Sets VX to NN.
 [X] 7XNN	Adds NN to VX.
-    8XY0	Sets VX to the value of VY.
+[X] 8XY0	Sets VX to the value of VY.
     8XY1	Sets VX to VX or VY.
     8XY2	Sets VX to VX and VY.
     8XY3	Sets VX to VX xor VY.

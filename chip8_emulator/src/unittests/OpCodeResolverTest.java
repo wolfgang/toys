@@ -81,9 +81,15 @@ public class OpCodeResolverTest {
     }
 
     @Test
-    public void resolve_8XNN() throws Exception {
+    public void resolve_8XY0() throws Exception {
         verifyResolution(0x8520, OpCodeId.OP_8XY0);
         verifyResolution(0x8630, OpCodeId.OP_8XY0);
+    }
+
+    @Test
+    public void resolve_8XY1() throws Exception {
+        verifyResolution(0x8521, OpCodeId.OP_8XY1);
+        verifyResolution(0x8631, OpCodeId.OP_8XY1);
     }
 
 
