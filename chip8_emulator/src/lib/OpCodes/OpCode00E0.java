@@ -6,10 +6,25 @@
 package lib.OpCodes;
 
 import lib.MachineState;
+import lib.PixelBuffer;
 
 public class OpCode00E0 implements OpCode {
+    private PixelBuffer pixelBuffer;
+
+    public OpCode00E0(PixelBuffer pixelBuffer) {
+        this.pixelBuffer = pixelBuffer;
+    }
+
+    public OpCode00E0() {
+        this(null);
+    }
+
     @Override
     public void execute(MachineState machineState, int myCode) {
         machineState.pixelBuffer.clear();
+    }
+
+    public PixelBuffer getPixelBuffer() {
+        return pixelBuffer;
     }
 }

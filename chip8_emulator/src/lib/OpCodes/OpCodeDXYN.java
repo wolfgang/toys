@@ -6,12 +6,26 @@
 package lib.OpCodes;
 
 import lib.MachineState;
+import lib.Memory;
 import lib.PixelBuffer;
 
 public class OpCodeDXYN implements OpCode {
     private int x;
     private int y;
     private boolean wasAnyPixelChanged;
+    private PixelBuffer pixelBuffer;
+    private Memory memory;
+
+    public OpCodeDXYN()
+    {
+        this(null, null);
+    }
+
+    public OpCodeDXYN(PixelBuffer pixelBuffer, Memory memory) {
+
+        this.pixelBuffer = pixelBuffer;
+        this.memory = memory;
+    }
 
     @Override
     public void execute(MachineState machineState, int myCode) {
@@ -51,5 +65,13 @@ public class OpCodeDXYN implements OpCode {
     private boolean isBitSet(int bitIndex, int value) {
         int mask = 1 << bitIndex;
         return ((mask & value) == mask);
+    }
+
+    public PixelBuffer getPixelBuffer() {
+        return pixelBuffer;
+    }
+
+    public Memory getMemory() {
+        return memory;
     }
 }
