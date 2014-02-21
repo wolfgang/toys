@@ -12,13 +12,13 @@ import lib.OpCodes.OpCodeDXYN;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class OpCodeFactory {
+public class OpCodeRegistry {
 
     private final OpCodeResolver opCodeResolver;
 
     ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
 
-    public OpCodeFactory() {
+    public OpCodeRegistry() {
         opCodesById.put(OpCodeIds.OP_00E0, new OpCode00E0());
         opCodesById.put(OpCodeIds.OP_DXYN, new OpCodeDXYN());
         opCodesById.put(OpCodeIds.OP_1NNN, new OpCode1NNN());

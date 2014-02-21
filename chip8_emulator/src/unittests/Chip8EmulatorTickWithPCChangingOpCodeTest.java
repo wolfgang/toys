@@ -18,19 +18,19 @@ import static org.mockito.Mockito.when;
 
 public class Chip8EmulatorTickWithPCChangingOpCodeTest {
     private MachineState machineState;
-    private OpCodeFactory opCodeFactory;
+    private OpCodeRegistry opCodeRegistry;
     private Chip8Emulator emulator;
 
     @Before
     public void setUp() throws Exception {
         machineState = new MachineState(new Memory(), mock(PixelBuffer.class));
-        opCodeFactory = mock(OpCodeFactory.class);
-        emulator = new Chip8Emulator(machineState, new OpCodeExecutor(machineState, opCodeFactory));
+        opCodeRegistry = mock(OpCodeRegistry.class);
+        emulator = new Chip8Emulator(machineState, new OpCodeExecutor(machineState, opCodeRegistry));
     }
 
     @Test
     public void dontAdvancePCIfOpCodeChangedIt() throws Exception {
-        when(opCodeFactory.getOpCode(anyInt())).thenReturn(new PCChangingOpCode());
+        when(opCodeRegistry.getOpCode(anyInt())).thenReturn(new PCChangingOpCode());
         emulator.tick();
         assertThat(machineState.pc, is(0x300));
     }

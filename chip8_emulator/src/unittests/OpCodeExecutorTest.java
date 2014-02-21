@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 
 public class OpCodeExecutorTest {
     private Memory memory;
-    private OpCodeFactory opCodeFactory;
+    private OpCodeRegistry opCodeRegistry;
     private OpCodeExecutor opCodeExecutor;
     private OpCode opCode1020;
     private MachineState machineState;
@@ -27,8 +27,8 @@ public class OpCodeExecutorTest {
     public void setUp() throws Exception {
         memory = mock(Memory.class);
         machineState = new MachineState(memory, null);
-        opCodeFactory = mock(OpCodeFactory.class);
-        opCodeExecutor = new OpCodeExecutor(machineState, opCodeFactory);
+        opCodeRegistry = mock(OpCodeRegistry.class);
+        opCodeExecutor = new OpCodeExecutor(machineState, opCodeRegistry);
         opCode1020 = mock(OpCode.class, "OpCode 1020");
     }
 
@@ -44,7 +44,7 @@ public class OpCodeExecutorTest {
     }
 
     private void opCodeFor(int code, OpCode opCode) throws InvalidOpCode {
-        when(opCodeFactory.getOpCode(code)).thenReturn(opCode);
+        when(opCodeRegistry.getOpCode(code)).thenReturn(opCode);
     }
 
     private void memoryAt(int address, int value) {

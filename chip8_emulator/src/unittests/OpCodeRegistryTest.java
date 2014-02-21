@@ -6,7 +6,7 @@
 package unittests;
 
 import lib.InvalidOpCode;
-import lib.OpCodeFactory;
+import lib.OpCodeRegistry;
 import lib.OpCodes.OpCode;
 import lib.OpCodes.OpCode00E0;
 import lib.OpCodes.OpCode1NNN;
@@ -17,43 +17,43 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
-public class OpCodeFactoryTest {
+public class OpCodeRegistryTest {
 
-    private OpCodeFactory opCodeFactory;
+    private OpCodeRegistry opCodeRegistry;
 
     @Before
     public void setUp() throws Exception {
-        opCodeFactory = new OpCodeFactory();
+        opCodeRegistry = new OpCodeRegistry();
     }
 
     @Test
     public void getOpCode_1NNN_600() throws Exception {
-        OpCode opCode = opCodeFactory.getOpCode(0x1600);
+        OpCode opCode = opCodeRegistry.getOpCode(0x1600);
         assertThat(opCode, instanceOf(OpCode1NNN.class));
     }
 
     @Test
     public void getOpCode_1NNN_700() throws Exception {
-        OpCode opCode = opCodeFactory.getOpCode(0x1700);
+        OpCode opCode = opCodeRegistry.getOpCode(0x1700);
         assertThat(opCode, instanceOf(OpCode1NNN.class));
     }
 
     @Test
     public void getOpCode_00E0() throws Exception {
-        OpCode opCode = opCodeFactory.getOpCode(0x00E0);
+        OpCode opCode = opCodeRegistry.getOpCode(0x00E0);
         assertThat(opCode, instanceOf(OpCode00E0.class));
 
     }
 
     @Test
     public void getOpCode_DXYN() throws Exception {
-        OpCode opCode = opCodeFactory.getOpCode(0xD123);
+        OpCode opCode = opCodeRegistry.getOpCode(0xD123);
         assertThat(opCode, instanceOf(OpCodeDXYN.class));
 
     }
 
     @Test(expected = InvalidOpCode.class)
     public void getOpCode_invalidCode_throwInvalidOpCode() throws Exception {
-        opCodeFactory.getOpCode(0x0000);
+        opCodeRegistry.getOpCode(0x0000);
     }
 }

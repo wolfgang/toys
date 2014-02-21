@@ -14,11 +14,11 @@ public class Main {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Memory memory = new Memory();
         loadProgram(memory);
-        OpCodeFactory opCodeFactory = new OpCodeFactory();
+        OpCodeRegistry opCodeRegistry = new OpCodeRegistry();
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
         PixelBuffer pixelBuffer = new PixelBuffer(pixelRenderer);
         MachineState machineState = new MachineState(memory, pixelBuffer);
-        OpCodeExecutor opCodeExecutor = new OpCodeExecutor(machineState, opCodeFactory);
+        OpCodeExecutor opCodeExecutor = new OpCodeExecutor(machineState, opCodeRegistry);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor);
         mainWindow.clear(Color.black);
         //noinspection InfiniteLoopStatement

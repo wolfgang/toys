@@ -9,18 +9,18 @@ import lib.OpCodes.OpCode;
 
 public class OpCodeExecutor {
     private final MachineState machineState;
-    private final OpCodeFactory opCodeFactory;
+    private final OpCodeRegistry opCodeRegistry;
 
-    public OpCodeExecutor(MachineState machineState, OpCodeFactory opCodeFactory) {
+    public OpCodeExecutor(MachineState machineState, OpCodeRegistry opCodeRegistry) {
         this.machineState = machineState;
-        this.opCodeFactory = opCodeFactory;
+        this.opCodeRegistry = opCodeRegistry;
     }
 
     public void executeNext() throws InvalidOpCode {
         int hb = machineState.memory.get(machineState.pc);
         int lb = machineState.memory.get(machineState.pc + 1);
         int code = hb << 8 | lb;
-        OpCode opCode = opCodeFactory.getOpCode(code);
+        OpCode opCode = opCodeRegistry.getOpCode(code);
         opCode.execute(machineState, code);
     }
 }
