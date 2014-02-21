@@ -51,6 +51,13 @@ public class OpCodeResolverTest {
     }
 
     @Test
+    public void resolve_3XNN() throws Exception {
+        verifyResolution(0x3520, OpCodeId.OP_3XNN);
+        verifyResolution(0x3630, OpCodeId.OP_3XNN);
+    }
+
+
+    @Test
     public void invalidCodeResultsInInvalidId() throws Exception {
         verifyResolution(0x0000, OpCodeId.OP_INVALID);
     }

@@ -65,4 +65,11 @@ public class OpCodeFactoryTest {
         OpCode opCode = opCodeFactory.create(OpCodeId.OP_2NNN);
         assertThat(opCode, instanceOf(OpCode2NNN.class));
     }
+
+    @Test
+    public void create_3XNN() throws Exception {
+        OpCode opCode = opCodeFactory.create(OpCodeId.OP_3XNN);
+        assertThat(opCode, instanceOf(OpCode3XNN.class));
+    }
+
 }
