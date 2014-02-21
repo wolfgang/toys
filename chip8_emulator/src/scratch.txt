@@ -1,20 +1,5 @@
-[] Put sprite drawing additions under test:
-    [X] OpCodeFactory
-    [X] Display
-
-[X] Put oldDisplay in machine state
 
 
-[X] set VF correctly -> only if a pixel actually changes
-    [X] pixel was not set and needs to be set
-    [X] pixel was set and needs to be cleared
-
-
-[x] Draw only if VF is set
-
-Redo Factory: Should be a registry, op codes pre-created. Opcode.execute gets code parameter
-
-Test Chip8Emulator.tick with pc-changing opcode
 
 
 Pixel size depends on Display width/height
@@ -22,8 +7,6 @@ Pixel size depends on Display width/height
 Clean up OpCodeDXYNTest
 
 Clean up MachineState
-
-Cache already created op codes in factory?
 
 Convenience method Memory.setOpCode(0x200, 0xD123)
 
