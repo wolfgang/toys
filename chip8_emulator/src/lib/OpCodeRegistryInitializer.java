@@ -16,10 +16,8 @@ public class OpCodeRegistryInitializer {
     }
 
     public void registerKnownOpCodes() {
-        registerNewOpCode(OpCodeIds.OP_00E0);
-        registerNewOpCode(OpCodeIds.OP_00EE);
-        registerNewOpCode(OpCodeIds.OP_DXYN);
-        registerNewOpCode(OpCodeIds.OP_1NNN);
+        for (int id = 1; id < OpCodeIds.__END__; ++id)
+            registerNewOpCode(id);
     }
 
     private void registerNewOpCode(int id) {
