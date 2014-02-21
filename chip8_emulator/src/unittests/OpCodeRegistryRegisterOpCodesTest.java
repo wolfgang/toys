@@ -5,6 +5,7 @@
 
 package unittests;
 
+import lib.InvalidOpCode;
 import lib.OpCodeId;
 import lib.OpCodeRegistry;
 import lib.OpCodeResolver;
@@ -43,4 +44,11 @@ public class OpCodeRegistryRegisterOpCodesTest {
         assertThat(opCodeRegistry.getOpCode(1111), is(opCode1));
         assertThat(opCodeRegistry.getOpCode(2222), is(opCode2));
     }
+
+    @Test(expected = InvalidOpCode.class)
+    public void invalidOpCodeFromResolverThrowsException() throws Exception {
+        when(opCodeResolver.getOpCodeId(1111)).thenReturn(OpCodeId.OP_INVALID);
+        opCodeRegistry.getOpCode(1111);
+    }
+
 }
