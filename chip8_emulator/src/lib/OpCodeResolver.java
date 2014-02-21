@@ -7,40 +7,40 @@ package lib;
 
 public class OpCodeResolver {
     public OpCodeId getOpCodeId(int code) {
-        if ((code & 0xD000) == 0xD000)
+        if (isMask(code, 0xD000))
             return OpCodeId.OP_DXYN;
 
-        if ((code & 0x8003) == 0x8003)
+        if (isMask(code, 0x8003))
             return OpCodeId.OP_8XY3;
 
-        if ((code & 0x8002) == 0x8002)
+        if (isMask(code, 0x8002))
             return OpCodeId.OP_8XY2;
 
-        if ((code & 0x8001) == 0x8001)
+        if (isMask(code, 0x8001))
             return OpCodeId.OP_8XY1;
 
-        if ((code & 0x8000) == 0x8000)
+        if (isMask(code, 0x8000))
             return OpCodeId.OP_8XY0;
 
-        if ((code & 0x7000) == 0x7000)
+        if (isMask(code, 0x7000))
             return OpCodeId.OP_7XNN;
 
-        if ((code & 0x6000) == 0x6000)
+        if (isMask(code, 0x6000))
             return OpCodeId.OP_6XNN;
 
-        if ((code & 0x5000) == 0x5000)
+        if (isMask(code, 0x5000))
             return OpCodeId.OP_5XY0;
 
-        if ((code & 0x4000) == 0x4000)
+        if (isMask(code, 0x4000))
             return OpCodeId.OP_4XNN;
 
-        if ((code & 0x3000) == 0x3000)
+        if (isMask(code, 0x3000))
             return OpCodeId.OP_3XNN;
 
-        if ((code & 0x2000) == 0x2000)
+        if (isMask(code, 0x2000))
             return OpCodeId.OP_2NNN;
 
-        if ((code & 0x1000) == 0x1000)
+        if (isMask(code, 0x1000))
             return OpCodeId.OP_1NNN;
 
         if (code == 0x00E0)
@@ -50,5 +50,9 @@ public class OpCodeResolver {
             return OpCodeId.OP_00EE;
 
         return OpCodeId.OP_INVALID;
+    }
+
+    private boolean isMask(int code, int mask) {
+        return (code & mask) == mask;
     }
 }
