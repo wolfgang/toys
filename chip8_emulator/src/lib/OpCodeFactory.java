@@ -38,6 +38,8 @@ public class OpCodeFactory {
                 return new OpCode4XNN();
             case OP_5XY0:
                 return new OpCode5XY0();
+            case OP_6XNN:
+                return new OpCode6XNN();
 
             default:
                 throw new InvalidOpCodeId();

@@ -70,10 +70,14 @@ public class OpCodeFactoryTest {
     }
 
     @Test
-    public void create_5XNN() throws Exception {
+    public void create_5XY0() throws Exception {
         verifyCreation(OpCodeId.OP_5XY0, OpCode5XY0.class);
     }
 
+    @Test
+    public void create_6XNN() throws Exception {
+        verifyCreation(OpCodeId.OP_6XNN, OpCode6XNN.class);
+    }
 
     @SuppressWarnings("unchecked")
     private <T extends OpCode> T verifyCreation(OpCodeId id, Class cls) {

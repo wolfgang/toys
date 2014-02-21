@@ -68,6 +68,12 @@ public class OpCodeResolverTest {
         verifyResolution(0x5630, OpCodeId.OP_5XY0);
     }
 
+    @Test
+    public void resolve_6XNN() throws Exception {
+        verifyResolution(0x6520, OpCodeId.OP_6XNN);
+        verifyResolution(0x6630, OpCodeId.OP_6XNN);
+    }
+
 
     @Test
     public void invalidCodeResultsInInvalidId() throws Exception {
