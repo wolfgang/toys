@@ -7,12 +7,10 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCode3XNN implements OpCode{
+public class OpCode3XNN extends OpCodeVXNN{
     @Override
-    public void execute(MachineState machineState, int myCode) {
-        int vIndex = (0x0F00 & myCode) >> 8;
-        int value = 0x00FF & myCode;
-        if (value == machineState.V[vIndex])
-            machineState.pc += 4;
+    public void execute(MachineState mc, int myCode, int vX, int NN) {
+        if (NN == mc.V[vX])
+            mc.pc += 4;
     }
 }

@@ -9,8 +9,8 @@ import lib.MachineState;
 
 public class OpCode2NNN implements OpCode {
     @Override
-    public void execute(MachineState machineState, int myCode) {
-        machineState.pushOntoStack(machineState.pc + 2);
-        machineState.pc = (0x0FFF & myCode);
+    public void execute(MachineState mc, int myCode) {
+        mc.pushOntoStack(mc.pc + 2);
+        mc.pc = (0x0FFF & myCode);
     }
 }

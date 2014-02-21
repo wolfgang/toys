@@ -9,7 +9,7 @@ import lib.MachineState;
 
 public class OpCode1NNN implements OpCode {
     @Override
-    public void execute(MachineState machineState, int myCode) {
-        machineState.pc = 0x0FFF & myCode;
+    public void execute(MachineState mc, int myCode) {
+        mc.pc = 0x0FFF & myCode;
     }
 }

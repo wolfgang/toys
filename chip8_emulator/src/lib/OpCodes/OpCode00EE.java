@@ -9,8 +9,8 @@ import lib.MachineState;
 
 public class OpCode00EE implements OpCode{
     @Override
-    public void execute(MachineState machineState, int myCode) {
-        machineState.pc = machineState.popFromStack();
+    public void execute(MachineState mc, int myCode) {
+        mc.pc = mc.popFromStack();
 
     }
 }
