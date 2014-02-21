@@ -8,7 +8,7 @@
 [X] 3XNN	Skips the next instruction if VX equals NN.
 [X] 4XNN	Skips the next instruction if VX doesn't equal NN.
 [X] 5XY0	Skips the next instruction if VX equals VY.
-    6XNN	Sets VX to NN.
+[X] 6XNN	Sets VX to NN.
     7XNN	Adds NN to VX.
     8XY0	Sets VX to the value of VY.
     8XY1	Sets VX to VX or VY.

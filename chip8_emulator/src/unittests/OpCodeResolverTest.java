@@ -74,6 +74,11 @@ public class OpCodeResolverTest {
         verifyResolution(0x6630, OpCodeId.OP_6XNN);
     }
 
+    @Test
+    public void resolve_7XNN() throws Exception {
+        verifyResolution(0x7520, OpCodeId.OP_7XNN);
+        verifyResolution(0x7630, OpCodeId.OP_7XNN);
+    }
 
     @Test
     public void invalidCodeResultsInInvalidId() throws Exception {

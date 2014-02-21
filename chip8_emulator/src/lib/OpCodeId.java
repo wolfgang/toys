@@ -11,5 +11,10 @@ public enum OpCodeId {
     OP_DXYN,
     OP_1NNN,
     OP_00EE,
-    OP_3XNN, OP_4XNN, OP_5XY0, OP_6XNN, OP_2NNN
+    OP_3XNN,
+    OP_4XNN,
+    OP_5XY0,
+    OP_6XNN,
+    OP_7XNN,
+    OP_2NNN
 }
