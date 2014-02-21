@@ -14,26 +14,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class OpCodeFactory {
 
-    private static final Integer OP_00E0 = 0;
-    private static final Integer OP_DXYN = 1;
-    private static final Integer OP_1NNN = 2;
+    private final OpCodeResolver opCodeResolver;
 
     ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
+
     public OpCodeFactory() {
-        opCodesById.put(OP_00E0, new OpCode00E0());
-        opCodesById.put(OP_DXYN, new OpCodeDXYN());
-        opCodesById.put(OP_1NNN, new OpCode1NNN());
+        opCodesById.put(OpCodeIds.OP_00E0, new OpCode00E0());
+        opCodesById.put(OpCodeIds.OP_DXYN, new OpCodeDXYN());
+        opCodesById.put(OpCodeIds.OP_1NNN, new OpCode1NNN());
+        opCodeResolver = new OpCodeResolver();
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
-        if ((code & 0xD000) == 0xD000)
-            return opCodesById.get(OP_DXYN);
-
-        if ((code & 0x1000) == 0x1000)
-            return opCodesById.get(OP_1NNN);
-
-        if (code == 0x00E0)
-            return opCodesById.get(OP_00E0);
+        int id = opCodeResolver.getOpCodeId(code);
+        if (id!=OpCodeIds.OP_INVALID)
+            return opCodesById.get(id);
 
         throw new InvalidOpCode(code);
     }

@@ -39,6 +39,11 @@ public class OpCodeResolverTest {
         verifyResolution(0x1700, OpCodeIds.OP_1NNN);
     }
 
+    @Test
+    public void invalidCodeResultsInInvalidId() throws Exception {
+        verifyResolution(0x0000, OpCodeIds.OP_INVALID);
+    }
+
     private void verifyResolution(int code, int id) {
         assertThat(opCodeResolver.getOpCodeId(code), is(id));
     }

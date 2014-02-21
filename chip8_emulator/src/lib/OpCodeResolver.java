@@ -13,6 +13,9 @@ public class OpCodeResolver {
         if ((code & 0x1000) == 0x1000)
             return OpCodeIds.OP_1NNN;
 
-        return OpCodeIds.OP_00E0;
+        if (code == 0x00E0)
+            return OpCodeIds.OP_00E0;
+
+        return OpCodeIds.OP_INVALID;
     }
 }
