@@ -6,9 +6,9 @@
 package unittests;
 
 import lib.Chip8Emulator;
+import lib.Display;
 import lib.MachineState;
 import lib.OpCodeExecutor;
-import lib.PixelBuffer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,8 +25,8 @@ public class Chip8EmulatorProcessingOpCodesTest {
     @Before
     public void setUp() throws Exception {
         opCodeExecutor = mock(OpCodeExecutor.class);
-        machineState = new MachineState(null, mock(PixelBuffer.class));
-        emulator = new Chip8Emulator(machineState, opCodeExecutor);
+        machineState = new MachineState(null, mock(Display.class));
+        emulator = new Chip8Emulator(machineState, opCodeExecutor, mock(Display.class));
     }
 
     @Test

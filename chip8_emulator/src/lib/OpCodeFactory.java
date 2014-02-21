@@ -11,11 +11,11 @@ import lib.OpCodes.OpCode1NNN;
 import lib.OpCodes.OpCodeDXYN;
 
 public class OpCodeFactory {
-    private PixelBuffer pixelBuffer;
+    private Display display;
     private final Memory memory;
 
-    public OpCodeFactory(PixelBuffer pixelBuffer, Memory memory) {
-        this.pixelBuffer = pixelBuffer;
+    public OpCodeFactory(Display display, Memory memory) {
+        this.display = display;
         this.memory = memory;
     }
 
@@ -27,9 +27,9 @@ public class OpCodeFactory {
     public OpCode create(int opCodeId) {
         switch (opCodeId) {
             case OpCodeIds.OP_00E0:
-                return new OpCode00E0(pixelBuffer);
+                return new OpCode00E0(display);
             case OpCodeIds.OP_DXYN:
-                return new OpCodeDXYN(pixelBuffer, memory);
+                return new OpCodeDXYN(display, memory);
             case OpCodeIds.OP_1NNN:
                 return new OpCode1NNN();
             default:

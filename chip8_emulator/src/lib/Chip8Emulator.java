@@ -8,10 +8,12 @@ package lib;
 public class Chip8Emulator {
     private MachineState machineState;
     private final OpCodeExecutor opCodeExecutor;
+    private Display display;
 
-    public Chip8Emulator(MachineState machineState, OpCodeExecutor opCodeExecutor) {
+    public Chip8Emulator(MachineState machineState, OpCodeExecutor opCodeExecutor, Display display) {
         this.machineState = machineState;
         this.opCodeExecutor = opCodeExecutor;
+        this.display = display;
     }
 
     public void tick() throws InvalidOpCode {
@@ -21,6 +23,6 @@ public class Chip8Emulator {
             machineState.pc += 2;
 
         if (machineState.V[15]==1)
-            machineState.pixelBuffer.draw();
+            display.draw();
     }
 }

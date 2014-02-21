@@ -15,12 +15,12 @@ public class Main {
         Memory memory = new Memory();
         loadProgram(memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
-        PixelBuffer pixelBuffer = new PixelBuffer(pixelRenderer);
-        MachineState machineState = new MachineState(memory, pixelBuffer);
-        OpCodeFactory opCodeFactory = new OpCodeFactory(pixelBuffer, memory);
+        Display display = new Display(pixelRenderer);
+        MachineState machineState = new MachineState(memory, display);
+        OpCodeFactory opCodeFactory = new OpCodeFactory(display, memory);
         OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeFactory);
         OpCodeExecutor opCodeExecutor = new OpCodeExecutor(opCodeRegistry, memory);
-        Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor);
+        Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor, display);
         mainWindow.clear(Color.black);
         //noinspection InfiniteLoopStatement
         while(true)

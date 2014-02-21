@@ -5,19 +5,19 @@
 
 package lib.OpCodes;
 
+import lib.Display;
 import lib.MachineState;
 import lib.Memory;
-import lib.PixelBuffer;
 
 public class OpCodeDXYN implements OpCode {
     private int x;
     private int y;
     private boolean wasAnyPixelChanged;
-    private PixelBuffer pixelBuffer;
+    private Display display;
     private Memory memory;
 
-    public OpCodeDXYN(PixelBuffer pixelBuffer, Memory memory) {
-        this.pixelBuffer = pixelBuffer;
+    public OpCodeDXYN(Display display, Memory memory) {
+        this.display = display;
         this.memory = memory;
     }
 
@@ -43,13 +43,13 @@ public class OpCodeDXYN implements OpCode {
         int lineY = machineState.V[y] + verticalIndex;
         for (int i = 7; i >= 0; --i) {
             int pixelX = lineX + (7 - i);
-            if (!pixelBuffer.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
-                pixelBuffer.setPixel(pixelX, lineY);
+            if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
+                display.setPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
             }
 
-            if (pixelBuffer.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
-                pixelBuffer.clearPixel(pixelX, lineY);
+            if (display.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
+                display.clearPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
             }
         }
@@ -60,8 +60,8 @@ public class OpCodeDXYN implements OpCode {
         return ((mask & value) == mask);
     }
 
-    public PixelBuffer getPixelBuffer() {
-        return pixelBuffer;
+    public Display getDisplay() {
+        return display;
     }
 
     public Memory getMemory() {

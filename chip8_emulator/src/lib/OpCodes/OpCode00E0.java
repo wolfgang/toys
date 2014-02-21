@@ -5,22 +5,22 @@
 
 package lib.OpCodes;
 
+import lib.Display;
 import lib.MachineState;
-import lib.PixelBuffer;
 
 public class OpCode00E0 implements OpCode {
-    private PixelBuffer pixelBuffer;
+    private Display display;
 
-    public OpCode00E0(PixelBuffer pixelBuffer) {
-        this.pixelBuffer = pixelBuffer;
+    public OpCode00E0(Display display) {
+        this.display = display;
     }
 
     @Override
     public void execute(MachineState machineState, int myCode) {
-        pixelBuffer.clear();
+        display.clear();
     }
 
-    public PixelBuffer getPixelBuffer() {
-        return pixelBuffer;
+    public Display getDisplay() {
+        return display;
     }
 }

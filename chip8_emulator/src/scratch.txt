@@ -1,6 +1,6 @@
 
 
-MachineState.memory/pixelBuffer cleanup:
+MachineState.memory/display cleanup:
     OpCodeExecutor
 
 

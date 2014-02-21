@@ -23,9 +23,9 @@ public class Chip8EmulatorTickWithPCChangingOpCodeTest {
 
     @Before
     public void setUp() throws Exception {
-        machineState = new MachineState(new Memory(), mock(PixelBuffer.class));
+        machineState = new MachineState(new Memory(), mock(Display.class));
         opCodeRegistry = mock(OpCodeRegistry.class);
-        emulator = new Chip8Emulator(machineState, new OpCodeExecutor(opCodeRegistry, new Memory()));
+        emulator = new Chip8Emulator(machineState, new OpCodeExecutor(opCodeRegistry, new Memory()), mock(Display.class));
     }
 
     @Test

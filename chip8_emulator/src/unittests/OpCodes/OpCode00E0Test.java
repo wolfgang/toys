@@ -5,8 +5,8 @@
 
 package unittests.OpCodes;
 
+import lib.Display;
 import lib.OpCodes.OpCode00E0;
-import lib.PixelBuffer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,17 +15,17 @@ import static org.mockito.Mockito.verify;
 
 public class OpCode00E0Test {
 
-    private PixelBuffer pixelBuffer;
+    private Display display;
 
     @Before
     public void setUp() throws Exception {
-        pixelBuffer = mock(PixelBuffer.class);
+        display = mock(Display.class);
     }
 
     @Test
     public void execute_clearsTheScreen() throws Exception {
-        OpCode00E0 opCode = new OpCode00E0(pixelBuffer);
+        OpCode00E0 opCode = new OpCode00E0(display);
         opCode.execute(null, 0);
-        verify(pixelBuffer).clear();
+        verify(display).clear();
     }
 }

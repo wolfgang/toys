@@ -8,7 +8,7 @@ package unittests;
 import lib.Chip8Emulator;
 import lib.MachineState;
 import lib.OpCodeExecutor;
-import lib.PixelBuffer;
+import lib.Display;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,26 +18,28 @@ public class Chip8EmulatorDrawingTest {
 
     private MachineState machineState;
     private Chip8Emulator emulator;
+    private Display display;
 
     @Before
     public void setUp() throws Exception {
-        machineState = new MachineState(null, mock(PixelBuffer.class));
+        display = mock(Display.class);
+        machineState = new MachineState(null, display);
         OpCodeExecutor opCodeExecutor = mock(OpCodeExecutor.class);
-        emulator = new Chip8Emulator(machineState, opCodeExecutor);
+        emulator = new Chip8Emulator(machineState, opCodeExecutor, display);
     }
 
     @Test
     public void drawIfVFIsSet() throws Exception {
         machineState.V[15] = 1;
         emulator.tick();
-        verify(machineState.pixelBuffer).draw();
+        verify(display).draw();
     }
 
     @Test
     public void dontDrawIfVFIsNotSet() throws Exception {
         machineState.V[15] = 0;
         emulator.tick();
-        verify(machineState.pixelBuffer, never()).draw();
+        verify(display, never()).draw();
     }
 
 }

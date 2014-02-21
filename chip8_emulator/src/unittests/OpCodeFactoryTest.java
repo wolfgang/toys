@@ -21,14 +21,14 @@ import static org.mockito.Mockito.mock;
 public class OpCodeFactoryTest {
 
     private OpCodeFactory opCodeFactory;
-    private PixelBuffer pixelBuffer;
+    private Display display;
     private Memory memory;
 
     @Before
     public void setUp() throws Exception {
-        pixelBuffer = mock(PixelBuffer.class);
+        display = mock(Display.class);
         memory = mock(Memory.class);
-        opCodeFactory = new OpCodeFactory(pixelBuffer, memory);
+        opCodeFactory = new OpCodeFactory(display, memory);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class OpCodeFactoryTest {
         OpCode opCode = opCodeFactory.create(OpCodeIds.OP_00E0);
         assertThat(opCode, instanceOf(OpCode00E0.class));
         OpCode00E0 opCode00E0 = (OpCode00E0)opCode;
-        assertThat(opCode00E0.getPixelBuffer(), is(pixelBuffer));
+        assertThat(opCode00E0.getDisplay(), is(display));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class OpCodeFactoryTest {
         OpCode opCode = opCodeFactory.create(OpCodeIds.OP_DXYN);
         assertThat(opCode, instanceOf(OpCodeDXYN.class));
         OpCodeDXYN opCodeDXYN = (OpCodeDXYN)opCode;
-        assertThat(opCodeDXYN.getPixelBuffer(), is(pixelBuffer));
+        assertThat(opCodeDXYN.getDisplay(), is(display));
         assertThat(opCodeDXYN.getMemory(), is(memory));
     }
 

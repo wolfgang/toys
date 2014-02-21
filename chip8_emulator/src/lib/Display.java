@@ -7,13 +7,13 @@ package lib;
 
 import java.util.Arrays;
 
-public class PixelBuffer {
+public class Display {
     public static final int Width = 64;
     public static final int Height = 32;
     byte pixels[] = new byte[Width * Height];
     private PixelRenderer pixelRenderer;
 
-    public PixelBuffer(PixelRenderer pixelRenderer) {
+    public Display(PixelRenderer pixelRenderer) {
 
         this.pixelRenderer = pixelRenderer;
     }
