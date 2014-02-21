@@ -20,14 +20,14 @@ public class OpCode4XNNNTest extends OpCodeTest{
     @Test
     public void execute_skipNextInstruction() throws Exception {
         machineState.V[5] = 0x25;
-        opCode.execute(machineState, 0x3520);
+        executeOpCode(0x3520);
         assertPC(0x204);
     }
 
     @Test
     public void execute_dontSkipNextInstruction() throws Exception {
         machineState.V[5] = 0x20;
-        opCode.execute(machineState, 0x3520);
+        executeOpCode(0x3520);
         assertPC(0x200);
     }
 }

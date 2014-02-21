@@ -14,7 +14,7 @@ public class OpCode00EETest extends OpCodeTest {
     public void execute() throws Exception {
         opCode = new OpCode00EE();
         machineState.pushOntoStack(0x300);
-        opCode.execute(machineState, 0);
+        executeOpCode(0);
         assertPC(0x300);
     }
 }

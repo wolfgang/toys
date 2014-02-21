@@ -25,7 +25,7 @@ public class OpCode00E0Test extends OpCodeTest{
 
     @Test
     public void execute_clearsTheScreen() throws Exception {
-        opCode.execute(machineState, 0);
+        executeOpCode(0);
         verify(display).clear();
     }
 }

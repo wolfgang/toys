@@ -18,8 +18,6 @@ import lib.OpCodes.OpCodeDXYN;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class OpCodeDXYNTest extends OpCodeTest{
@@ -38,7 +36,7 @@ public class OpCodeDXYNTest extends OpCodeTest{
     @Test
     public void execute_x0y1N1I0_0() throws Exception {
         setupParameterRegisters();
-        opCode.execute(machineState, 0xD011);
+        executeOpCode(0xD011);
         assertVF(0);
     }
 
@@ -47,7 +45,7 @@ public class OpCodeDXYNTest extends OpCodeTest{
         setupParameterRegisters();
         memory.set(0, 0b10101001);
         when(display.isPixelSet(anyInt(), anyInt())).thenReturn(false);
-        opCode.execute(machineState, 0xD011);
+        executeOpCode(0xD011);
         verify(display).setPixel(10, 20);
         verify(display).setPixel(12, 20);
         verify(display).setPixel(14, 20);
@@ -62,7 +60,7 @@ public class OpCodeDXYNTest extends OpCodeTest{
         memory.set(1, 0b11110000);
         when(display.isPixelSet(anyInt(), anyInt())).thenReturn(false);
 
-        opCode.execute(machineState, 0xD012);
+        executeOpCode(0xD012);
         verify(display).setPixel(10, 20);
         verify(display).setPixel(12, 20);
         verify(display).setPixel(14, 20);
@@ -80,7 +78,7 @@ public class OpCodeDXYNTest extends OpCodeTest{
         machineState.V[15] = 1;
         memory.set(0, 0b10000000);
         when(display.isPixelSet(10, 20)).thenReturn(true);
-        opCode.execute(machineState, 0xD011);
+        executeOpCode(0xD011);
         verify(display, never()).setPixel(anyInt(), anyInt());
         assertVF(0);
     }
@@ -92,6 +90,6 @@ public class OpCodeDXYNTest extends OpCodeTest{
     }
 
     private void assertVF(int value) {
-        assertThat(machineState.V[15], is(value));
+        assertVX(15, value);
     }
 }

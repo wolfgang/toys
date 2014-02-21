@@ -8,16 +8,12 @@ package unittests.OpCodes;
 import lib.OpCodes.OpCode7XNN;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class OpCode7XNNTest extends OpCodeTest {
     @Test
     public void execute_add_NN_to_VX() throws Exception {
         opCode = new OpCode7XNN();
         machineState.V[5] = 0x40;
-        opCode.execute(machineState, 0x7520);
-        assertThat(machineState.V[5], is(0x60));
-
+        executeOpCode(0x7520);
+        assertVX(5, 0x60);
     }
 }

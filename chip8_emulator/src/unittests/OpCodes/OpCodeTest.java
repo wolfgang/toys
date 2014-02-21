@@ -18,4 +18,12 @@ public class OpCodeTest {
     protected void assertPC(int pc) {
         assertThat(machineState.pc, is(pc));
     }
+
+    protected void assertVX(int index, int value) {
+        assertThat(machineState.V[index], is(value));
+    }
+
+    protected void executeOpCode(int code) {
+        opCode.execute(machineState, code);
+    }
 }
