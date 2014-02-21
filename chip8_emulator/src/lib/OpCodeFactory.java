@@ -21,17 +21,17 @@ public class OpCodeFactory {
     }
 
 
-    public OpCode create(int opCodeId) {
+    public OpCode create(OpCodeId opCodeId) {
         switch (opCodeId) {
-            case OpCodeIds.OP_00E0:
+            case OP_00E0:
                 return new OpCode00E0(display);
-            case OpCodeIds.OP_DXYN:
+            case OP_DXYN:
                 return new OpCodeDXYN(display, memory);
-            case OpCodeIds.OP_1NNN:
+            case OP_1NNN:
                 return new OpCode1NNN();
-            case OpCodeIds.OP_00EE:
+            case OP_00EE:
                 return new OpCode00EE();
-            case OpCodeIds.OP_2NNN:
+            case OP_2NNN:
                 return new OpCode2NNN();
             default:
                 throw new InvalidOpCodeId();

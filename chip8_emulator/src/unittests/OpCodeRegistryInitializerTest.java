@@ -6,7 +6,7 @@
 package unittests;
 
 import lib.OpCodeFactory;
-import lib.OpCodeIds;
+import lib.OpCodeId;
 import lib.OpCodeRegistry;
 import lib.OpCodeRegistryInitializer;
 import lib.OpCodes.OpCode;
@@ -38,24 +38,24 @@ public class OpCodeRegistryInitializerTest {
 
     @Test
     public void registerKnownOPpCodes() throws Exception {
-        factoryCreates(OpCodeIds.OP_00E0, opCode00E0);
-        factoryCreates(OpCodeIds.OP_00EE, opCode00EE);
-        factoryCreates(OpCodeIds.OP_DXYN, opCodeDXYN);
-        factoryCreates(OpCodeIds.OP_1NNN, opCode1NNN);
+        factoryCreates(OpCodeId.OP_00E0, opCode00E0);
+        factoryCreates(OpCodeId.OP_00EE, opCode00EE);
+        factoryCreates(OpCodeId.OP_DXYN, opCodeDXYN);
+        factoryCreates(OpCodeId.OP_1NNN, opCode1NNN);
 
         initializer.registerKnownOpCodes();
 
-        registryRegisters(OpCodeIds.OP_00E0, opCode00E0);
-        registryRegisters(OpCodeIds.OP_00EE, opCode00EE);
-        registryRegisters(OpCodeIds.OP_DXYN, opCodeDXYN);
-        registryRegisters(OpCodeIds.OP_1NNN, opCode1NNN);
+        registryRegisters(OpCodeId.OP_00E0, opCode00E0);
+        registryRegisters(OpCodeId.OP_00EE, opCode00EE);
+        registryRegisters(OpCodeId.OP_DXYN, opCodeDXYN);
+        registryRegisters(OpCodeId.OP_1NNN, opCode1NNN);
     }
 
-    private void registryRegisters(int id, OpCode opCode) {
+    private void registryRegisters(OpCodeId id, OpCode opCode) {
         verify(opCodeRegistry).registerOpCode(id, opCode);
     }
 
-    private void factoryCreates(int id, OpCode opCode) {
+    private void factoryCreates(OpCodeId id, OpCode opCode) {
         when(opCodeFactory.create(id)).thenReturn(opCode);
     }
 }

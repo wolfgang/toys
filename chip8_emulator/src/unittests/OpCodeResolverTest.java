@@ -5,7 +5,7 @@
 
 package unittests;
 
-import lib.OpCodeIds;
+import lib.OpCodeId;
 import lib.OpCodeResolver;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,38 +24,38 @@ public class OpCodeResolverTest {
 
     @Test
     public void resolve_0x00E0() throws Exception {
-        verifyResolution(0x00E0, OpCodeIds.OP_00E0);
+        verifyResolution(0x00E0, OpCodeId.OP_00E0);
     }
 
     @Test
     public void resolve_DXYN() throws Exception {
-        verifyResolution(0xD123, OpCodeIds.OP_DXYN);
-        verifyResolution(0xD456, OpCodeIds.OP_DXYN);
+        verifyResolution(0xD123, OpCodeId.OP_DXYN);
+        verifyResolution(0xD456, OpCodeId.OP_DXYN);
     }
 
     @Test
     public void resolve_1NNN() throws Exception {
-        verifyResolution(0x1600, OpCodeIds.OP_1NNN);
-        verifyResolution(0x1700, OpCodeIds.OP_1NNN);
-    }
-
-    @Test
-    public void invalidCodeResultsInInvalidId() throws Exception {
-        verifyResolution(0x0000, OpCodeIds.OP_INVALID);
+        verifyResolution(0x1600, OpCodeId.OP_1NNN);
+        verifyResolution(0x1700, OpCodeId.OP_1NNN);
     }
 
     @Test
     public void resolve_0x00EE() throws Exception {
-        verifyResolution(0x00EE, OpCodeIds.OP_00EE);
+        verifyResolution(0x00EE, OpCodeId.OP_00EE);
     }
 
     @Test
     public void resolve_2NNN() throws Exception {
-        verifyResolution(0x2600, OpCodeIds.OP_2NNN);
-        verifyResolution(0x2700, OpCodeIds.OP_2NNN);
+        verifyResolution(0x2600, OpCodeId.OP_2NNN);
+        verifyResolution(0x2700, OpCodeId.OP_2NNN);
     }
 
-    private void verifyResolution(int code, int id) {
+    @Test
+    public void invalidCodeResultsInInvalidId() throws Exception {
+        verifyResolution(0x0000, OpCodeId.OP_INVALID);
+    }
+
+    private void verifyResolution(int code, OpCodeId id) {
         assertThat(opCodeResolver.getOpCodeId(code), is(id));
     }
 }

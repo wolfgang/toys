@@ -5,7 +5,10 @@
 
 package unittests;
 
-import lib.*;
+import lib.Display;
+import lib.Memory;
+import lib.OpCodeFactory;
+import lib.OpCodeId;
 import lib.OpCodes.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +33,7 @@ public class OpCodeFactoryTest {
 
     @Test
     public void create_00E0() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeIds.OP_00E0);
+        OpCode opCode = opCodeFactory.create(OpCodeId.OP_00E0);
         assertThat(opCode, instanceOf(OpCode00E0.class));
         OpCode00E0 opCode00E0 = (OpCode00E0)opCode;
         assertThat(opCode00E0.getDisplay(), is(display));
@@ -38,7 +41,7 @@ public class OpCodeFactoryTest {
 
     @Test
     public void create_DXYN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeIds.OP_DXYN);
+        OpCode opCode = opCodeFactory.create(OpCodeId.OP_DXYN);
         assertThat(opCode, instanceOf(OpCodeDXYN.class));
         OpCodeDXYN opCodeDXYN = (OpCodeDXYN)opCode;
         assertThat(opCodeDXYN.getDisplay(), is(display));
@@ -47,25 +50,19 @@ public class OpCodeFactoryTest {
 
     @Test
     public void create_1NNN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeIds.OP_1NNN);
+        OpCode opCode = opCodeFactory.create(OpCodeId.OP_1NNN);
         assertThat(opCode, instanceOf(OpCode1NNN.class));
     }
 
     @Test
     public void create_00EE() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeIds.OP_00EE);
+        OpCode opCode = opCodeFactory.create(OpCodeId.OP_00EE);
         assertThat(opCode, instanceOf(OpCode00EE.class));
     }
 
     @Test
     public void create_2NNN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeIds.OP_2NNN);
+        OpCode opCode = opCodeFactory.create(OpCodeId.OP_2NNN);
         assertThat(opCode, instanceOf(OpCode2NNN.class));
-    }
-
-
-    @Test(expected = InvalidOpCodeId.class)
-    public void invalidOpCodeIdThrowsException() throws Exception {
-        opCodeFactory.create(12345678);
     }
 }

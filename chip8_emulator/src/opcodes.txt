@@ -4,7 +4,7 @@
 [X] 00E0	Clears the screen.
 [X] 00EE	Returns from a subroutine.
 [X] 1NNN	Jumps to address NNN.
-    2NNN	Calls subroutine at NNN.
+[X] 2NNN	Calls subroutine at NNN.
     3XNN	Skips the next instruction if VX equals NN.
     4XNN	Skips the next instruction if VX doesn't equal NN.
     5XY0	Skips the next instruction if VX equals VY.

@@ -6,22 +6,22 @@
 package lib;
 
 public class OpCodeResolver {
-    public int getOpCodeId(int code) {
+    public OpCodeId getOpCodeId(int code) {
         if ((code & 0xD000) == 0xD000)
-            return OpCodeIds.OP_DXYN;
+            return OpCodeId.OP_DXYN;
 
         if ((code & 0x1000) == 0x1000)
-            return OpCodeIds.OP_1NNN;
+            return OpCodeId.OP_1NNN;
 
         if ((code & 0x2000) == 0x2000)
-            return OpCodeIds.OP_2NNN;
+            return OpCodeId.OP_2NNN;
 
         if (code == 0x00E0)
-            return OpCodeIds.OP_00E0;
+            return OpCodeId.OP_00E0;
 
         if (code == 0x00EE)
-            return OpCodeIds.OP_00EE;
+            return OpCodeId.OP_00EE;
 
-        return OpCodeIds.OP_INVALID;
+        return OpCodeId.OP_INVALID;
     }
 }

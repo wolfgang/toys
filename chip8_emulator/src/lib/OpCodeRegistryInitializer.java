@@ -16,11 +16,14 @@ public class OpCodeRegistryInitializer {
     }
 
     public void registerKnownOpCodes() {
-        for (int id = 1; id < OpCodeIds.__END__; ++id)
-            registerNewOpCode(id);
+        for (OpCodeId id : OpCodeId.values())
+        {
+            if (id != OpCodeId.OP_INVALID)
+                registerNewOpCode(id);
+        }
     }
 
-    private void registerNewOpCode(int id) {
+    private void registerNewOpCode(OpCodeId id) {
         opCodeRegistry.registerOpCode(id, opCodeFactory.create(id));
     }
 }

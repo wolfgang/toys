@@ -11,19 +11,19 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class OpCodeRegistry {
     private OpCodeResolver opCodeResolver;
-    ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
+    ConcurrentHashMap<OpCodeId, OpCode> opCodesById = new ConcurrentHashMap<>();
 
     public OpCodeRegistry(OpCodeResolver opCodeResolver) {
         this.opCodeResolver = opCodeResolver;
     }
 
-    public void registerOpCode(int id, OpCode opCode) {
+    public void registerOpCode(OpCodeId id, OpCode opCode) {
         opCodesById.put(id, opCode);
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
-        int id = opCodeResolver.getOpCodeId(code);
-        if (id!=OpCodeIds.OP_INVALID)
+        OpCodeId id = opCodeResolver.getOpCodeId(code);
+        if (id!= OpCodeId.OP_INVALID)
             return opCodesById.get(id);
 
         throw new InvalidOpCode(code);

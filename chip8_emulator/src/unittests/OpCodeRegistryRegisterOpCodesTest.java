@@ -5,7 +5,7 @@
 
 package unittests;
 
-import lib.OpCodeIds;
+import lib.OpCodeId;
 import lib.OpCodeRegistry;
 import lib.OpCodeResolver;
 import lib.OpCodes.OpCode;
@@ -34,11 +34,11 @@ public class OpCodeRegistryRegisterOpCodesTest {
         OpCode opCode1 = mock(OpCode.class, "OpCode 1");
         OpCode opCode2 = mock(OpCode.class, "OpCode 2");
 
-        opCodeRegistry.registerOpCode(OpCodeIds.OP_00E0, opCode1);
-        opCodeRegistry.registerOpCode(OpCodeIds.OP_00EE, opCode2);
+        opCodeRegistry.registerOpCode(OpCodeId.OP_00E0, opCode1);
+        opCodeRegistry.registerOpCode(OpCodeId.OP_00EE, opCode2);
 
-        when(opCodeResolver.getOpCodeId(1111)).thenReturn(OpCodeIds.OP_00E0);
-        when(opCodeResolver.getOpCodeId(2222)).thenReturn(OpCodeIds.OP_00EE);
+        when(opCodeResolver.getOpCodeId(1111)).thenReturn(OpCodeId.OP_00E0);
+        when(opCodeResolver.getOpCodeId(2222)).thenReturn(OpCodeId.OP_00EE);
 
         assertThat(opCodeRegistry.getOpCode(1111), is(opCode1));
         assertThat(opCodeRegistry.getOpCode(2222), is(opCode2));
