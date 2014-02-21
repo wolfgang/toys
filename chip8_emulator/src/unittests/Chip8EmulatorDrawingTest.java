@@ -23,7 +23,7 @@ public class Chip8EmulatorDrawingTest {
     @Before
     public void setUp() throws Exception {
         display = mock(Display.class);
-        machineState = new MachineState(null, display);
+        machineState = new MachineState();
         OpCodeExecutor opCodeExecutor = mock(OpCodeExecutor.class);
         emulator = new Chip8Emulator(machineState, opCodeExecutor, display);
     }

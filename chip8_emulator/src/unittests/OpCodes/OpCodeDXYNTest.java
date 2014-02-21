@@ -33,7 +33,7 @@ public class OpCodeDXYNTest {
     public void setUp() throws Exception {
         display = mock(Display.class);
         memory = new Memory();
-        machineState = new MachineState(new Memory(), display);
+        machineState = new MachineState();
         opCode = new OpCodeDXYN(display, memory);
     }
 

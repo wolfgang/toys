@@ -16,7 +16,7 @@ public class Main {
         loadProgram(memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
         Display display = new Display(pixelRenderer);
-        MachineState machineState = new MachineState(memory, display);
+        MachineState machineState = new MachineState();
         OpCodeFactory opCodeFactory = new OpCodeFactory(display, memory);
         OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeFactory);
         OpCodeExecutor opCodeExecutor = new OpCodeExecutor(opCodeRegistry, memory);

@@ -11,15 +11,4 @@ public class MachineState {
     public int I = 0;
     public Memory memory;
     public Display display;
-
-    public MachineState()
-    {
-        this.memory = new Memory();
-    }
-
-    public MachineState(Memory memory, Display display)
-    {
-        this.memory = memory;
-        this.display = display;
-    }
 }

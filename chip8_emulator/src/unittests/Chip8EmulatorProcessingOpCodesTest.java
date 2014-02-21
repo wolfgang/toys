@@ -25,7 +25,7 @@ public class Chip8EmulatorProcessingOpCodesTest {
     @Before
     public void setUp() throws Exception {
         opCodeExecutor = mock(OpCodeExecutor.class);
-        machineState = new MachineState(null, mock(Display.class));
+        machineState = new MachineState();
         emulator = new Chip8Emulator(machineState, opCodeExecutor, mock(Display.class));
     }
 
