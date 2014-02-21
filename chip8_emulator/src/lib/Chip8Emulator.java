@@ -16,7 +16,7 @@ public class Chip8Emulator {
 
     public void tick() throws InvalidOpCode {
         int oldPC = machineState.pc;
-        opCodeExecutor.executeNext();
+        opCodeExecutor.executeNext(machineState);
         if (machineState.pc == oldPC)
             machineState.pc += 2;
 

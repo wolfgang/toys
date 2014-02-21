@@ -28,7 +28,7 @@ public class OpCodeExecutorTest {
         memory = mock(Memory.class);
         machineState = new MachineState(memory, null);
         opCodeRegistry = mock(OpCodeRegistry.class);
-        opCodeExecutor = new OpCodeExecutor(machineState, opCodeRegistry);
+        opCodeExecutor = new OpCodeExecutor(opCodeRegistry);
         opCode1020 = mock(OpCode.class, "OpCode 1020");
     }
 
@@ -38,7 +38,7 @@ public class OpCodeExecutorTest {
         memoryAt(0x200, 0x10);
         memoryAt(0x201, 0x20);
         opCodeFor(0x1020, opCode1020);
-        opCodeExecutor.executeNext();
+        opCodeExecutor.executeNext(machineState);
         verify(opCode1020).execute(machineState, 0x1020);
         assertThat(machineState.pc, is(0x200));
     }

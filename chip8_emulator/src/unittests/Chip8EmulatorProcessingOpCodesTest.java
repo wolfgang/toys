@@ -32,7 +32,7 @@ public class Chip8EmulatorProcessingOpCodesTest {
     @Test
     public void tick_processNextOpcode_AdvancePC() throws Exception {
         emulator.tick();
-        verify(opCodeExecutor).executeNext();
+        verify(opCodeExecutor).executeNext(machineState);
         assertThat(machineState.pc, is(0x202));
     }
 }

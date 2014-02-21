@@ -19,7 +19,7 @@ public class Main {
         MachineState machineState = new MachineState(memory, pixelBuffer);
         OpCodeFactory opCodeFactory = new OpCodeFactory(pixelBuffer, memory);
         OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeFactory);
-        OpCodeExecutor opCodeExecutor = new OpCodeExecutor(machineState, opCodeRegistry);
+        OpCodeExecutor opCodeExecutor = new OpCodeExecutor(opCodeRegistry);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor);
         mainWindow.clear(Color.black);
         //noinspection InfiniteLoopStatement
