@@ -63,6 +63,13 @@ public class OpCodeResolverTest {
     }
 
     @Test
+    public void resolve_5XY0() throws Exception {
+        verifyResolution(0x5520, OpCodeId.OP_5XY0);
+        verifyResolution(0x5630, OpCodeId.OP_5XY0);
+    }
+
+
+    @Test
     public void invalidCodeResultsInInvalidId() throws Exception {
         verifyResolution(0x0000, OpCodeId.OP_INVALID);
     }

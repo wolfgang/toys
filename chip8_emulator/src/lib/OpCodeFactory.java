@@ -20,7 +20,6 @@ public class OpCodeFactory {
         this(null, null);
     }
 
-
     public OpCode create(OpCodeId opCodeId) {
         switch (opCodeId) {
             case OP_00E0:
@@ -37,6 +36,8 @@ public class OpCodeFactory {
                 return new OpCode3XNN();
             case OP_4XNN:
                 return new OpCode4XNN();
+            case OP_5XY0:
+                return new OpCode5XY0();
 
             default:
                 throw new InvalidOpCodeId();
