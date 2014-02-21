@@ -9,7 +9,7 @@ import lib.Display;
 import lib.MachineState;
 import lib.Memory;
 
-public class OpCodeDXYN implements OpCode {
+public class OpCodeDXYN extends OpCodeVXVY {
     private int x;
     private int y;
     private boolean wasAnyPixelChanged;
@@ -22,25 +22,25 @@ public class OpCodeDXYN implements OpCode {
     }
 
     @Override
-    public void execute(MachineState machineState, int myCode) {
-        x = (myCode & 0x0F00) >> 8;
-        y = (myCode & 0x00F0) >> 4;
+    public void execute(MachineState mc, int myCode, int vX, int vY) {
+        x = vX;
+        y = vY;
         int height = (myCode & 0x000F);
         wasAnyPixelChanged = false;
         for (int i = 0; i < height; ++i)
-            drawSpriteRow(machineState, i);
-        setVF(machineState);
+            drawSpriteRow(mc, i);
+        setVF(mc);
 
     }
 
-    private void setVF(MachineState machineState) {
-        machineState.V[15] = wasAnyPixelChanged ? 1 : 0;
+    private void setVF(MachineState mc) {
+        mc.V[15] = wasAnyPixelChanged ? 1 : 0;
     }
 
-    private void drawSpriteRow(MachineState machineState, int verticalIndex) {
-        int rowValue = memory.get(machineState.I + verticalIndex);
-        int lineX = machineState.V[x];
-        int lineY = machineState.V[y] + verticalIndex;
+    private void drawSpriteRow(MachineState mc, int verticalIndex) {
+        int rowValue = memory.get(mc.I + verticalIndex);
+        int lineX = mc.V[x];
+        int lineY = mc.V[y] + verticalIndex;
         for (int i = 7; i >= 0; --i) {
             int pixelX = lineX + (7 - i);
             if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {

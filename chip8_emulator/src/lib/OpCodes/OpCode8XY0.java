@@ -7,12 +7,9 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCode8XY0 implements OpCode {
+public class OpCode8XY0 extends OpCodeVXVY {
     @Override
-    public void execute(MachineState machineState, int myCode) {
-        int vIndex1 = (0x0F00 & myCode) >> 8;
-        int vIndex2 = (0x00F0 & myCode) >> 4;
-        machineState.V[vIndex1] = machineState.V[vIndex2];
-
+    public void execute(MachineState mc, int myCode, int vx, int vy) {
+        mc.V[vx] = mc.V[vy];
     }
 }
