@@ -9,12 +9,12 @@ import lib.MachineState;
 
 public abstract class OpCodeXY implements OpCode {
     @Override
-    public void execute(MachineState machineState, int myCode) {
+    public void execute(MachineState mc, int myCode) {
         int vX = (0x0F00 & myCode) >> 8;
         int vY = (0x00F0 & myCode) >> 4;
-        execute(machineState, myCode, vX, vY);
+        execute(mc, myCode, vX, vY);
 
     }
 
-    abstract protected void execute(MachineState machineState, int myCode, int vX, int vY);
+    abstract protected void execute(MachineState mc, int myCode, int vX, int vY);
 }

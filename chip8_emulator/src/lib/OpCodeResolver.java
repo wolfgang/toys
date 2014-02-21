@@ -10,6 +10,12 @@ public class OpCodeResolver {
         if ((code & 0xD000) == 0xD000)
             return OpCodeId.OP_DXYN;
 
+        if ((code & 0x8003) == 0x8003)
+            return OpCodeId.OP_8XY3;
+
+        if ((code & 0x8002) == 0x8002)
+            return OpCodeId.OP_8XY2;
+
         if ((code & 0x8001) == 0x8001)
             return OpCodeId.OP_8XY1;
 

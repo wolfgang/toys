@@ -92,6 +92,18 @@ public class OpCodeResolverTest {
         verifyResolution(0x8631, OpCodeId.OP_8XY1);
     }
 
+    @Test
+    public void resolve_8XY2() throws Exception {
+        verifyResolution(0x8522, OpCodeId.OP_8XY2);
+        verifyResolution(0x8632, OpCodeId.OP_8XY2);
+    }
+
+    @Test
+    public void resolve_8XY3() throws Exception {
+        verifyResolution(0x8523, OpCodeId.OP_8XY3);
+        verifyResolution(0x8633, OpCodeId.OP_8XY3);
+    }
+
 
     @Test
     public void invalidCodeResultsInInvalidId() throws Exception {
