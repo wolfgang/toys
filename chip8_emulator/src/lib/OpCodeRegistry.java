@@ -6,9 +6,6 @@
 package lib;
 
 import lib.OpCodes.OpCode;
-import lib.OpCodes.OpCode00E0;
-import lib.OpCodes.OpCode1NNN;
-import lib.OpCodes.OpCodeDXYN;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,10 +16,11 @@ public class OpCodeRegistry {
     ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
 
     public OpCodeRegistry() {
-        opCodesById.put(OpCodeIds.OP_00E0, new OpCode00E0());
-        opCodesById.put(OpCodeIds.OP_DXYN, new OpCodeDXYN());
-        opCodesById.put(OpCodeIds.OP_1NNN, new OpCode1NNN());
         opCodeResolver = new OpCodeResolver();
+        OpCodeFactory opCodeFactory = new OpCodeFactory();
+        opCodesById.put(OpCodeIds.OP_00E0, opCodeFactory.create(OpCodeIds.OP_00E0));
+        opCodesById.put(OpCodeIds.OP_DXYN, opCodeFactory.create(OpCodeIds.OP_DXYN));
+        opCodesById.put(OpCodeIds.OP_1NNN, opCodeFactory.create(OpCodeIds.OP_1NNN));
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
