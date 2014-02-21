@@ -10,9 +10,6 @@ import lib.OpCodes.OpCode3XNN;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class OpCode3XNNTest extends OpCodeTest {
 
     @Before
@@ -25,13 +22,13 @@ public class OpCode3XNNTest extends OpCodeTest {
     public void execute_skipNextInstruction() throws Exception {
         machineState.V[5] = 0x20;
         opCode.execute(machineState, 0x3520);
-        assertThat(machineState.pc, is(0x204));
+        assertPC(0x204);
     }
 
     @Test
     public void execute_dontSkipNextInstruction() throws Exception {
         machineState.V[5] = 0x20;
         opCode.execute(machineState, 0x3525);
-        assertThat(machineState.pc, is(0x200));
+        assertPC(0x200);
     }
 }

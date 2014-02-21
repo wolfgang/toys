@@ -24,7 +24,7 @@ public class OpCode2NNNTest extends OpCodeTest {
     public void execute() throws Exception {
         machineState.pc = 0x400;
         opCode.execute(machineState, 0x2600);
-        assertThat(machineState.pc, is(0x600));
+        assertPC(0x600);
         assertThat(machineState.popFromStack(), is(0x402));
     }
 }
