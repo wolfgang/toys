@@ -26,17 +26,20 @@ public class OpCodeDXYNTest {
 
     private PixelBuffer pixelBuffer;
     private MachineState machineState;
+    private Memory memory;
+    private OpCodeDXYN opCode;
 
     @Before
     public void setUp() throws Exception {
         pixelBuffer = mock(PixelBuffer.class);
+        memory = new Memory();
         machineState = new MachineState(new Memory(), pixelBuffer);
+        opCode = new OpCodeDXYN(pixelBuffer, memory);
     }
 
     @Test
     public void execute_x0y1N1I0_0() throws Exception {
         setupParameterRegisters();
-        OpCodeDXYN opCode = new OpCodeDXYN();
         opCode.execute(machineState, 0xD011);
         assertVF(0);
     }
@@ -44,8 +47,7 @@ public class OpCodeDXYNTest {
     @Test
     public void execute_x0y1N1I0_bitsArePixels() throws Exception {
         setupParameterRegisters();
-        machineState.memory.set(0, 0b10101001);
-        OpCodeDXYN opCode = new OpCodeDXYN();
+        memory.set(0, 0b10101001);
         when(pixelBuffer.isPixelSet(anyInt(), anyInt())).thenReturn(false);
         opCode.execute(machineState, 0xD011);
         verify(pixelBuffer).setPixel(10, 20);
@@ -58,9 +60,8 @@ public class OpCodeDXYNTest {
     @Test
     public void execute_x0y1N2I0_bitsArePixels() throws Exception {
         setupParameterRegisters();
-        machineState.memory.set(0, 0b10101001);
-        machineState.memory.set(1, 0b11110000);
-        OpCodeDXYN opCode = new OpCodeDXYN();
+        memory.set(0, 0b10101001);
+        memory.set(1, 0b11110000);
         when(pixelBuffer.isPixelSet(anyInt(), anyInt())).thenReturn(false);
 
         opCode.execute(machineState, 0xD012);
@@ -79,8 +80,7 @@ public class OpCodeDXYNTest {
     public void execute_nothingToDraw() throws Exception {
         setupParameterRegisters();
         machineState.V[15] = 1;
-        machineState.memory.set(0, 0b10000000);
-        OpCodeDXYN opCode = new OpCodeDXYN();
+        memory.set(0, 0b10000000);
         when(pixelBuffer.isPixelSet(10, 20)).thenReturn(true);
         opCode.execute(machineState, 0xD011);
         verify(pixelBuffer, never()).setPixel(anyInt(), anyInt());

@@ -22,7 +22,6 @@ public class OpCodeDXYN implements OpCode {
     }
 
     public OpCodeDXYN(PixelBuffer pixelBuffer, Memory memory) {
-
         this.pixelBuffer = pixelBuffer;
         this.memory = memory;
     }
@@ -44,10 +43,9 @@ public class OpCodeDXYN implements OpCode {
     }
 
     private void drawSpriteRow(MachineState machineState, int verticalIndex) {
-        int rowValue = machineState.memory.get(machineState.I + verticalIndex);
+        int rowValue = memory.get(machineState.I + verticalIndex);
         int lineX = machineState.V[x];
         int lineY = machineState.V[y] + verticalIndex;
-        PixelBuffer pixelBuffer = machineState.pixelBuffer;
         for (int i = 7; i >= 0; --i) {
             int pixelX = lineX + (7 - i);
             if (!pixelBuffer.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
