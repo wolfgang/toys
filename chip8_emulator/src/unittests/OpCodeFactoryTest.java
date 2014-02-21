@@ -64,6 +64,12 @@ public class OpCodeFactoryTest {
         verifyCreation(OpCodeId.OP_3XNN, OpCode3XNN.class);
     }
 
+    @Test
+    public void create_4XNN() throws Exception {
+        verifyCreation(OpCodeId.OP_4XNN, OpCode4XNN.class);
+    }
+
+
     @SuppressWarnings("unchecked")
     private <T extends OpCode> T verifyCreation(OpCodeId id, Class cls) {
         OpCode opCode = opCodeFactory.create(id);
