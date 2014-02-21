@@ -13,6 +13,9 @@ public class OpCodeResolver {
         if ((code & 0x1000) == 0x1000)
             return OpCodeIds.OP_1NNN;
 
+        if ((code & 0x2000) == 0x2000)
+            return OpCodeIds.OP_2NNN;
+
         if (code == 0x00E0)
             return OpCodeIds.OP_00E0;
 

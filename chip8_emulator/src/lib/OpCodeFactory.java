@@ -31,6 +31,8 @@ public class OpCodeFactory {
                 return new OpCode1NNN();
             case OpCodeIds.OP_00EE:
                 return new OpCode00EE();
+            case OpCodeIds.OP_2NNN:
+                return new OpCode2NNN();
             default:
                 throw new InvalidOpCodeId();
         }

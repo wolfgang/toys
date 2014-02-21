@@ -49,6 +49,12 @@ public class OpCodeResolverTest {
         verifyResolution(0x00EE, OpCodeIds.OP_00EE);
     }
 
+    @Test
+    public void resolve_2NNN() throws Exception {
+        verifyResolution(0x2600, OpCodeIds.OP_2NNN);
+        verifyResolution(0x2700, OpCodeIds.OP_2NNN);
+    }
+
     private void verifyResolution(int code, int id) {
         assertThat(opCodeResolver.getOpCodeId(code), is(id));
     }
