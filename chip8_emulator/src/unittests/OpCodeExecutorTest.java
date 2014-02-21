@@ -26,9 +26,9 @@ public class OpCodeExecutorTest {
     @Before
     public void setUp() throws Exception {
         memory = mock(Memory.class);
-        machineState = new MachineState(memory, null);
+        machineState = new MachineState();
         opCodeRegistry = mock(OpCodeRegistry.class);
-        opCodeExecutor = new OpCodeExecutor(opCodeRegistry);
+        opCodeExecutor = new OpCodeExecutor(opCodeRegistry, memory);
         opCode1020 = mock(OpCode.class, "OpCode 1020");
     }
 
