@@ -33,43 +33,42 @@ public class OpCodeFactoryTest {
 
     @Test
     public void create_00E0() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeId.OP_00E0);
-        assertThat(opCode, instanceOf(OpCode00E0.class));
-        OpCode00E0 opCode00E0 = (OpCode00E0)opCode;
-        assertThat(opCode00E0.getDisplay(), is(display));
+        OpCode00E0 opCode = verifyCreation(OpCodeId.OP_00E0, OpCode00E0.class);
+        assertThat(opCode.getDisplay(), is(display));
     }
 
     @Test
     public void create_DXYN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeId.OP_DXYN);
-        assertThat(opCode, instanceOf(OpCodeDXYN.class));
-        OpCodeDXYN opCodeDXYN = (OpCodeDXYN)opCode;
-        assertThat(opCodeDXYN.getDisplay(), is(display));
-        assertThat(opCodeDXYN.getMemory(), is(memory));
+        OpCodeDXYN opCode = verifyCreation(OpCodeId.OP_DXYN, OpCodeDXYN.class);
+        assertThat(opCode.getDisplay(), is(display));
+        assertThat(opCode.getMemory(), is(memory));
     }
 
     @Test
     public void create_1NNN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeId.OP_1NNN);
-        assertThat(opCode, instanceOf(OpCode1NNN.class));
+        verifyCreation(OpCodeId.OP_1NNN, OpCode1NNN.class);
     }
 
     @Test
     public void create_00EE() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeId.OP_00EE);
-        assertThat(opCode, instanceOf(OpCode00EE.class));
+        verifyCreation(OpCodeId.OP_00EE, OpCode00EE.class);
     }
 
     @Test
     public void create_2NNN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeId.OP_2NNN);
-        assertThat(opCode, instanceOf(OpCode2NNN.class));
+        verifyCreation(OpCodeId.OP_2NNN, OpCode2NNN.class);
     }
 
     @Test
     public void create_3XNN() throws Exception {
-        OpCode opCode = opCodeFactory.create(OpCodeId.OP_3XNN);
-        assertThat(opCode, instanceOf(OpCode3XNN.class));
+        verifyCreation(OpCodeId.OP_3XNN, OpCode3XNN.class);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T extends OpCode> T verifyCreation(OpCodeId id, Class cls) {
+        OpCode opCode = opCodeFactory.create(id);
+        assertThat(opCode, instanceOf(cls));
+        return (T)opCode;
     }
 
 }
