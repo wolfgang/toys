@@ -6,10 +6,7 @@
 package unittests;
 
 import lib.*;
-import lib.OpCodes.OpCode;
-import lib.OpCodes.OpCode00E0;
-import lib.OpCodes.OpCode1NNN;
-import lib.OpCodes.OpCodeDXYN;
+import lib.OpCodes.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,6 +50,13 @@ public class OpCodeFactoryTest {
         OpCode opCode = opCodeFactory.create(OpCodeIds.OP_1NNN);
         assertThat(opCode, instanceOf(OpCode1NNN.class));
     }
+
+    @Test
+    public void create_00EE() throws Exception {
+        OpCode opCode = opCodeFactory.create(OpCodeIds.OP_00EE);
+        assertThat(opCode, instanceOf(OpCode00EE.class));
+    }
+
 
     @Test(expected = InvalidOpCodeId.class)
     public void invalidOpCodeIdThrowsException() throws Exception {

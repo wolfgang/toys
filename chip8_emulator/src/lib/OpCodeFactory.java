@@ -5,10 +5,7 @@
 
 package lib;
 
-import lib.OpCodes.OpCode;
-import lib.OpCodes.OpCode00E0;
-import lib.OpCodes.OpCode1NNN;
-import lib.OpCodes.OpCodeDXYN;
+import lib.OpCodes.*;
 
 public class OpCodeFactory {
     private Display display;
@@ -32,6 +29,8 @@ public class OpCodeFactory {
                 return new OpCodeDXYN(display, memory);
             case OpCodeIds.OP_1NNN:
                 return new OpCode1NNN();
+            case OpCodeIds.OP_00EE:
+                return new OpCode00EE();
             default:
                 throw new InvalidOpCodeId();
         }

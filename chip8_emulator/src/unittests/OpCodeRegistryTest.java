@@ -7,10 +7,7 @@ package unittests;
 
 import lib.InvalidOpCode;
 import lib.OpCodeRegistry;
-import lib.OpCodes.OpCode;
-import lib.OpCodes.OpCode00E0;
-import lib.OpCodes.OpCode1NNN;
-import lib.OpCodes.OpCodeDXYN;
+import lib.OpCodes.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,6 +47,12 @@ public class OpCodeRegistryTest {
         OpCode opCode = opCodeRegistry.getOpCode(0xD123);
         assertThat(opCode, instanceOf(OpCodeDXYN.class));
 
+    }
+
+    @Test
+    public void getOpCode_00EE() throws Exception {
+        OpCode opCode = opCodeRegistry.getOpCode(0x00EE);
+        assertThat(opCode, instanceOf(OpCode00EE.class));
     }
 
     @Test(expected = InvalidOpCode.class)

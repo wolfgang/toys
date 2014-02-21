@@ -23,6 +23,7 @@ public class OpCodeRegistry {
         opCodesById.put(OpCodeIds.OP_00E0, opCodeFactory.create(OpCodeIds.OP_00E0));
         opCodesById.put(OpCodeIds.OP_DXYN, opCodeFactory.create(OpCodeIds.OP_DXYN));
         opCodesById.put(OpCodeIds.OP_1NNN, opCodeFactory.create(OpCodeIds.OP_1NNN));
+        opCodesById.put(OpCodeIds.OP_00EE, opCodeFactory.create(OpCodeIds.OP_00EE));
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
