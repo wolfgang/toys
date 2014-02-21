@@ -48,6 +48,6 @@ public class OpCodeExecutorTest {
     }
 
     private void memoryAt(int address, int value) {
-        when(memory.get(address)).thenReturn(value);
+        when(memory.get(address)).thenReturn((byte)value);
     }
 }

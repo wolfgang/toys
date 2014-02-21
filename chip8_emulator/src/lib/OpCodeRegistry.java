@@ -15,12 +15,17 @@ public class OpCodeRegistry {
 
     ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
 
-    public OpCodeRegistry() {
+    public OpCodeRegistry(OpCodeFactory opCodeFactory)
+    {
         opCodeResolver = new OpCodeResolver();
-        OpCodeFactory opCodeFactory = new OpCodeFactory();
         opCodesById.put(OpCodeIds.OP_00E0, opCodeFactory.create(OpCodeIds.OP_00E0));
         opCodesById.put(OpCodeIds.OP_DXYN, opCodeFactory.create(OpCodeIds.OP_DXYN));
         opCodesById.put(OpCodeIds.OP_1NNN, opCodeFactory.create(OpCodeIds.OP_1NNN));
+
+    }
+
+    public OpCodeRegistry() {
+        this(new OpCodeFactory());
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {

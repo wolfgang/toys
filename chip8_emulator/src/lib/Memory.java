@@ -7,7 +7,7 @@ package lib;
 
 public class Memory {
     byte values[] = new byte[4096];
-    public int get(int address) {
+    public byte get(int address) {
         return values[address];
     }
 

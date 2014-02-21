@@ -14,10 +14,11 @@ public class Main {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Memory memory = new Memory();
         loadProgram(memory);
-        OpCodeRegistry opCodeRegistry = new OpCodeRegistry();
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
         PixelBuffer pixelBuffer = new PixelBuffer(pixelRenderer);
         MachineState machineState = new MachineState(memory, pixelBuffer);
+        OpCodeFactory opCodeFactory = new OpCodeFactory(pixelBuffer, memory);
+        OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeFactory);
         OpCodeExecutor opCodeExecutor = new OpCodeExecutor(machineState, opCodeRegistry);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor);
         mainWindow.clear(Color.black);
@@ -33,11 +34,11 @@ public class Main {
     private static void loadProgram(Memory memory) {
         memory.set(0x0000, 0b10101011);
         memory.set(0x0001, 0b10101110);
-        memory.set(0x200, 0x00);
-        memory.set(0x201, 0xE0);
-        memory.set(0x202, 0xD1);
-        memory.set(0x203, 0x22);
-        memory.set(0x204, 0x12);
-        memory.set(0x205, 0x00);
+        //memory.set(0x200, 0x00);
+        //memory.set(0x201, 0xE0);
+        memory.set(0x200, 0xD1);
+        memory.set(0x201, 0x22);
+        memory.set(0x202, 0x12);
+        memory.set(0x203, 0x00);
     }
 }

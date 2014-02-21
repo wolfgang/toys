@@ -15,13 +15,9 @@ public class OpCode00E0 implements OpCode {
         this.pixelBuffer = pixelBuffer;
     }
 
-    public OpCode00E0() {
-        this(null);
-    }
-
     @Override
     public void execute(MachineState machineState, int myCode) {
-        machineState.pixelBuffer.clear();
+        pixelBuffer.clear();
     }
 
     public PixelBuffer getPixelBuffer() {

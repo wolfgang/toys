@@ -17,9 +17,9 @@ public class OpCodeExecutor {
     }
 
     public void executeNext() throws InvalidOpCode {
-        int hb = machineState.memory.get(machineState.pc);
-        int lb = machineState.memory.get(machineState.pc + 1);
-        int code = hb << 8 | lb;
+        byte hb = machineState.memory.get(machineState.pc);
+        byte lb = machineState.memory.get(machineState.pc + 1);
+        int code = (0xFF00 & (hb << 8)) | (0x00FF & lb);
         OpCode opCode = opCodeRegistry.getOpCode(code);
         opCode.execute(machineState, code);
     }
