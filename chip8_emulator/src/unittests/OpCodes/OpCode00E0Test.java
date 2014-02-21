@@ -13,19 +13,19 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class OpCode00E0Test {
+public class OpCode00E0Test extends OpCodeTest{
 
     private Display display;
 
     @Before
     public void setUp() throws Exception {
         display = mock(Display.class);
+        opCode = new OpCode00E0(display);
     }
 
     @Test
     public void execute_clearsTheScreen() throws Exception {
-        OpCode00E0 opCode = new OpCode00E0(display);
-        opCode.execute(null, 0);
+        opCode.execute(machineState, 0);
         verify(display).clear();
     }
 }

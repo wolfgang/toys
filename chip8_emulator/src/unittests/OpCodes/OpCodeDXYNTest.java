@@ -22,12 +22,10 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
-public class OpCodeDXYNTest {
+public class OpCodeDXYNTest extends OpCodeTest{
 
     private Display display;
-    private MachineState machineState;
     private Memory memory;
-    private OpCodeDXYN opCode;
 
     @Before
     public void setUp() throws Exception {

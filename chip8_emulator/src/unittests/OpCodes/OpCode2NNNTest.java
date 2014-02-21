@@ -13,10 +13,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class OpCode2NNNTest {
-    private MachineState machineState;
-    private OpCode2NNN opCode;
-
+public class OpCode2NNNTest extends OpCodeTest {
     @Before
     public void setUp() throws Exception {
         machineState = new MachineState();
