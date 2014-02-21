@@ -16,11 +16,6 @@ public class OpCodeDXYN implements OpCode {
     private PixelBuffer pixelBuffer;
     private Memory memory;
 
-    public OpCodeDXYN()
-    {
-        this(null, null);
-    }
-
     public OpCodeDXYN(PixelBuffer pixelBuffer, Memory memory) {
         this.pixelBuffer = pixelBuffer;
         this.memory = memory;

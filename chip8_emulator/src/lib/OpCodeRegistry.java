@@ -10,10 +10,12 @@ import lib.OpCodes.OpCode;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class OpCodeRegistry {
-
     private final OpCodeResolver opCodeResolver;
-
     ConcurrentHashMap<Integer, OpCode> opCodesById = new ConcurrentHashMap<>();
+
+    public OpCodeRegistry() {
+        this(new OpCodeFactory());
+    }
 
     public OpCodeRegistry(OpCodeFactory opCodeFactory)
     {
@@ -21,11 +23,6 @@ public class OpCodeRegistry {
         opCodesById.put(OpCodeIds.OP_00E0, opCodeFactory.create(OpCodeIds.OP_00E0));
         opCodesById.put(OpCodeIds.OP_DXYN, opCodeFactory.create(OpCodeIds.OP_DXYN));
         opCodesById.put(OpCodeIds.OP_1NNN, opCodeFactory.create(OpCodeIds.OP_1NNN));
-
-    }
-
-    public OpCodeRegistry() {
-        this(new OpCodeFactory());
     }
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
