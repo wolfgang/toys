@@ -57,7 +57,6 @@ public class OpCodeFactoryTest {
         assertThat(opCode, instanceOf(OpCode00EE.class));
     }
 
-
     @Test(expected = InvalidOpCodeId.class)
     public void invalidOpCodeIdThrowsException() throws Exception {
         opCodeFactory.create(12345678);
