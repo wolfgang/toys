@@ -1,9 +1,5 @@
 
 
-MachineState.memory/display cleanup:
-    OpCodeExecutor
-
-
 
 Pixel size depends on Display width/height
 
