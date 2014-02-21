@@ -1,10 +1,9 @@
 
 
 
-Turn OpCodeIds into an enum
-
 ------
 
+OpCodeRegistry -> OpCodeResolver -> OpCodeFactory :: can it be simplified?
 
 Pixel size depends on Display width/height
 
