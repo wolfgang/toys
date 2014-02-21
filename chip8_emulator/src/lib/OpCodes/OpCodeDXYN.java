@@ -11,14 +11,13 @@ import lib.PixelBuffer;
 public class OpCodeDXYN implements OpCode {
     private int x;
     private int y;
-    private int height;
     private boolean wasAnyPixelChanged;
 
     @Override
     public void execute(MachineState machineState, int myCode) {
         x = (myCode & 0x0F00) >> 8;
         y = (myCode & 0x00F0) >> 4;
-        height = (myCode & 0x000F);
+        int height = (myCode & 0x000F);
         wasAnyPixelChanged = false;
         for (int i = 0; i < height; ++i)
             drawSpriteRow(machineState, i);
