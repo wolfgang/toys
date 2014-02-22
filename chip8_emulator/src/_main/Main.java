@@ -17,6 +17,8 @@ public class Main {
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();
+        KeyboardHandler keyboardHandler = new KeyboardHandler(machineState);
+        mainWindow.addKeyListener(keyboardHandler);
         OpCodeResolver opCodeResolver = new OpCodeResolver();
         OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeResolver);
         OpCodeRegistryLoader opCodeRegistryLoader = new OpCodeRegistryLoader(opCodeRegistry, memory, display);

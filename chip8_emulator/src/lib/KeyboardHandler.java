@@ -7,121 +7,54 @@ package lib;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class KeyboardHandler extends KeyAdapter {
     private MachineState machineState;
 
+    private ConcurrentHashMap<Integer, Integer> keyCodeBitIndex = new ConcurrentHashMap<>();
+
     public KeyboardHandler(MachineState machineState) {
         this.machineState = machineState;
+        configureKeyCodes();
+    }
+
+    private void configureKeyCodes() {
+        keyCodeBitIndex.put(KeyEvent.VK_0, 16);
+        keyCodeBitIndex.put(KeyEvent.VK_1, 15);
+        keyCodeBitIndex.put(KeyEvent.VK_2, 14);
+        keyCodeBitIndex.put(KeyEvent.VK_3, 13);
+        keyCodeBitIndex.put(KeyEvent.VK_4, 12);
+        keyCodeBitIndex.put(KeyEvent.VK_5, 11);
+        keyCodeBitIndex.put(KeyEvent.VK_6, 10);
+        keyCodeBitIndex.put(KeyEvent.VK_7, 9);
+        keyCodeBitIndex.put(KeyEvent.VK_8, 8);
+        keyCodeBitIndex.put(KeyEvent.VK_9, 7);
+        keyCodeBitIndex.put(KeyEvent.VK_Q, 6);
+        keyCodeBitIndex.put(KeyEvent.VK_W, 5);
+        keyCodeBitIndex.put(KeyEvent.VK_E, 4);
+        keyCodeBitIndex.put(KeyEvent.VK_R, 3);
+        keyCodeBitIndex.put(KeyEvent.VK_T, 2);
+        keyCodeBitIndex.put(KeyEvent.VK_Y, 1);
     }
 
     @Override
-    public void keyPressed(KeyEvent event)
-    {
-        switch (event.getKeyCode())
-        {
-            case KeyEvent.VK_0:
-                machineState.keyboard |= 0x8000;
-                break;
-            case KeyEvent.VK_1:
-                machineState.keyboard |= 0x4000;
-                break;
-            case KeyEvent.VK_2:
-                machineState.keyboard |= 0x2000;
-                break;
-            case KeyEvent.VK_3:
-                machineState.keyboard |= 0x1000;
-                break;
-            case KeyEvent.VK_4:
-                machineState.keyboard |= 0x800;
-                break;
-            case KeyEvent.VK_5:
-                machineState.keyboard |= 0x400;
-                break;
-            case KeyEvent.VK_6:
-                machineState.keyboard |= 0x200;
-                break;
-            case KeyEvent.VK_7:
-                machineState.keyboard |= 0x100;
-                break;
-            case KeyEvent.VK_8:
-                machineState.keyboard |= 0x80;
-                break;
-            case KeyEvent.VK_9:
-                machineState.keyboard |= 0x40;
-                break;
-            case KeyEvent.VK_Q:
-                machineState.keyboard |= 0x20;
-                break;
-            case KeyEvent.VK_W:
-                machineState.keyboard |= 0x10;
-                break;
-            case KeyEvent.VK_E:
-                machineState.keyboard |= 0x8;
-                break;
-            case KeyEvent.VK_R:
-                machineState.keyboard |= 0x4;
-                break;
-            case KeyEvent.VK_T:
-                machineState.keyboard |= 0x2;
-                break;
-            case KeyEvent.VK_Y:
-                machineState.keyboard |= 0x1;
-        }
+    public void keyPressed(KeyEvent event) {
+        int index = getBitIndex(event);
+        if ((index != -1))
+            machineState.keyboard |= (1 << (index - 1));
     }
 
     @Override
-    public void keyReleased(KeyEvent event)
-    {
-        switch (event.getKeyCode())
-        {
-            case KeyEvent.VK_0:
-                machineState.keyboard &= 0b0111111111111111;
-                break;
-            case KeyEvent.VK_1:
-                machineState.keyboard &= 0b1011111111111111;
-                break;
-            case KeyEvent.VK_2:
-                machineState.keyboard &= 0b1101111111111111;
-                break;
-            case KeyEvent.VK_3:
-                machineState.keyboard &= 0b1110111111111111;
-                break;
-            case KeyEvent.VK_4:
-                machineState.keyboard &= 0b1111011111111111;
-                break;
-            case KeyEvent.VK_5:
-                machineState.keyboard &= 0b1111101111111111;
-                break;
-            case KeyEvent.VK_6:
-                machineState.keyboard &= 0b1111110111111111;
-                break;
-            case KeyEvent.VK_7:
-                machineState.keyboard &= 0b1111111011111111;
-                break;
-            case KeyEvent.VK_8:
-                machineState.keyboard &= 0b1111111101111111;
-                break;
-            case KeyEvent.VK_9:
-                machineState.keyboard &= 0b1111111110111111;
-                break;
-            case KeyEvent.VK_Q:
-                machineState.keyboard &= 0b1111111111011111;
-                break;
-            case KeyEvent.VK_W:
-                machineState.keyboard &= 0b1111111111101111;
-                break;
-            case KeyEvent.VK_E:
-                machineState.keyboard &= 0b1111111111110111;
-                break;
-            case KeyEvent.VK_R:
-                machineState.keyboard &= 0b1111111111111011;
-                break;
-            case KeyEvent.VK_T:
-                machineState.keyboard &= 0b1111111111111101;
-                break;
-            case KeyEvent.VK_Y:
-                machineState.keyboard &= 0b1111111111111110;
-        }
+    public void keyReleased(KeyEvent event) {
+        int index = getBitIndex(event);
+        if ((index != -1))
+            machineState.keyboard &= 0xFFFF & ~(1 << (index - 1));
+    }
+
+    private int getBitIndex(KeyEvent event) {
+        if (keyCodeBitIndex.containsKey(event.getKeyCode()))
+            return keyCodeBitIndex.get(event.getKeyCode());
+        return -1;
     }
 }
