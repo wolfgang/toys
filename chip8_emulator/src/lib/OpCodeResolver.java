@@ -11,6 +11,9 @@ public class OpCodeResolver {
         if (isMask(code, 0xD000))
             return 0xD000;
 
+        if (isMask(code, 0x8006))
+            return 0x8006;
+
         if (isMask(code, 0x8005))
             return 0x8005;
 
