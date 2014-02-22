@@ -6,7 +6,6 @@
 package unittests;
 
 import lib.InvalidOpCode;
-import lib.OpCodeId;
 import lib.OpCodeRegistry;
 import lib.OpCodeResolver;
 import lib.OpCodes.OpCode;
@@ -35,20 +34,20 @@ public class OpCodeRegistryRegisterOpCodesTest {
         OpCode opCode1 = mock(OpCode.class, "OpCode 1");
         OpCode opCode2 = mock(OpCode.class, "OpCode 2");
 
-        opCodeRegistry.registerOpCode(OpCodeId.OP_00E0, opCode1);
-        opCodeRegistry.registerOpCode(OpCodeId.OP_00EE, opCode2);
+        opCodeRegistry.registerOpCode2(0x1000, opCode1);
+        opCodeRegistry.registerOpCode2(0x2000, opCode2);
 
-        when(opCodeResolver.getOpCodeId(1111)).thenReturn(OpCodeId.OP_00E0);
-        when(opCodeResolver.getOpCodeId(2222)).thenReturn(OpCodeId.OP_00EE);
+        when(opCodeResolver.getOpCodeId2(0x1111)).thenReturn(0x1000);
+        when(opCodeResolver.getOpCodeId2(0x2222)).thenReturn(0x2000);
 
-        assertThat(opCodeRegistry.getOpCode(1111), is(opCode1));
-        assertThat(opCodeRegistry.getOpCode(2222), is(opCode2));
+        assertThat(opCodeRegistry.getOpCode2(0x1111), is(opCode1));
+        assertThat(opCodeRegistry.getOpCode2(0x2222), is(opCode2));
     }
 
     @Test(expected = InvalidOpCode.class)
     public void invalidOpCodeFromResolverThrowsException() throws Exception {
-        when(opCodeResolver.getOpCodeId(1111)).thenReturn(OpCodeId.OP_INVALID);
-        opCodeRegistry.getOpCode(1111);
+        when(opCodeResolver.getOpCodeId2(1111)).thenReturn(-1);
+        opCodeRegistry.getOpCode2(1111);
     }
 
 }
