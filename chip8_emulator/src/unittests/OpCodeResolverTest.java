@@ -133,6 +133,12 @@ public class OpCodeResolverTest {
         verifyResolution(0x863E, 0x800E);
     }
 
+    @Test
+    public void resolve_9XY0() throws Exception {
+        verifyResolution(0x9520, 0x9000);
+        verifyResolution(0x9630, 0x9000);
+    }
+
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {

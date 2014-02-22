@@ -1,9 +1,6 @@
 
 
-Write a test for OpCodeRegistryLoader
 ------
-
-OpCodeRegistry -> OpCodeResolver -> OpCodeFactory :: can it be simplified?
 
 Pixel size depends on Display width/height
 
@@ -12,5 +9,3 @@ Clean up OpCodeDXYNTest
 Convenience method Memory.setOpCode(0x200, 0xD123)
 
 Display throws error if x/y out of bounds in setPixel
-
-Write OpCodeFactory test that uses a mock resolver

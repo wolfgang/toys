@@ -15,12 +15,15 @@ public class OpCodeTest {
     protected MachineState machineState = new MachineState();
     protected OpCode opCode;
 
-    protected void givenVF(int value)
-    {
+    protected void givenPC(int value) {
+        machineState.pc = value;
+    }
+
+    protected void givenVF(int value) {
         givenVX(15, value);
     }
-    protected void givenVX(int index, int value)
-    {
+
+    protected void givenVX(int index, int value) {
         machineState.V[index] = value;
     }
 
