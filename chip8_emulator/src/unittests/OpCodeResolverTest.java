@@ -157,6 +157,12 @@ public class OpCodeResolverTest {
         verifyResolution(0xC632, 0xC000);
     }
 
+    @Test
+    public void resolve_EX9E() throws Exception {
+        verifyResolution(0xE29E, 0xE09E);
+        verifyResolution(0xE49E, 0xE09E);
+    }
+
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
