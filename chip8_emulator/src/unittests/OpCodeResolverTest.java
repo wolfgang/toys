@@ -110,6 +110,12 @@ public class OpCodeResolverTest {
     }
 
     @Test
+    public void resolve_8XY5() throws Exception {
+        verifyResolution(0x8525, 0x8005);
+        verifyResolution(0x8635, 0x8005);
+    }
+
+    @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
         verifyResolution(0x0000, -1);
     }
