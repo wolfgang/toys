@@ -13,7 +13,6 @@ public class OpCodeRegistryLoader {
     private final Display display;
 
     public OpCodeRegistryLoader(OpCodeRegistry opCodeRegistry, Memory memory, Display display) {
-
         this.opCodeRegistry = opCodeRegistry;
         this.memory = memory;
         this.display = display;
@@ -37,6 +36,7 @@ public class OpCodeRegistryLoader {
         opCodeRegistry.registerOpCode(0x8005, new OpCode8XY5());
         opCodeRegistry.registerOpCode(0x8006, new OpCode8XY6());
         opCodeRegistry.registerOpCode(0x8007, new OpCode8XY7());
+        opCodeRegistry.registerOpCode(0x800E, new OpCode8XYE());
         opCodeRegistry.registerOpCode(0xD000, new OpCodeDXYN(memory, display));
     }
 }

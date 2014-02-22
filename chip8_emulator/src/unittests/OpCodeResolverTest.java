@@ -128,6 +128,13 @@ public class OpCodeResolverTest {
     }
 
     @Test
+    public void resolve_8XYE() throws Exception {
+        verifyResolution(0x852E, 0x800E);
+        verifyResolution(0x863E, 0x800E);
+    }
+
+
+    @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
         verifyResolution(0x0000, -1);
     }
