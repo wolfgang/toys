@@ -151,6 +151,12 @@ public class OpCodeResolverTest {
         verifyResolution(0xB630, 0xB000);
     }
 
+    @Test
+    public void resolve_CNNN() throws Exception {
+        verifyResolution(0xC521, 0xC000);
+        verifyResolution(0xC632, 0xC000);
+    }
+
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
