@@ -79,9 +79,47 @@ public class KeyboardHandlerTest {
         assertEquals(0b0000000000111111, machineState.keyboard);
     }
 
+    @Test
+    public void keyReleased_VK_0_clears_bit_16() throws Exception {
+        machineState.keyboard = 0xFFFF;
+        keyReleased(KeyEvent.VK_0);
+        assertEquals(0b0111111111111111, machineState.keyboard);
+    }
+
+    @Test
+    public void allKeysReleased() throws Exception {
+        machineState.keyboard = 0xFFFF;
+        keyReleased(KeyEvent.VK_0);
+        keyReleased(KeyEvent.VK_1);
+        keyReleased(KeyEvent.VK_2);
+        keyReleased(KeyEvent.VK_3);
+        keyReleased(KeyEvent.VK_4);
+        keyReleased(KeyEvent.VK_5);
+        keyReleased(KeyEvent.VK_6);
+        keyReleased(KeyEvent.VK_7);
+        keyReleased(KeyEvent.VK_8);
+        keyReleased(KeyEvent.VK_9);
+        keyReleased(KeyEvent.VK_Q);
+        keyReleased(KeyEvent.VK_W);
+        keyReleased(KeyEvent.VK_E);
+        keyReleased(KeyEvent.VK_R);
+        keyReleased(KeyEvent.VK_T);
+        keyReleased(KeyEvent.VK_Y);
+
+        assertEquals(0, machineState.keyboard);
+    }
 
 
     private void keyPressed(int keyCode) {
-        keyboardHandler.keyPressed(new KeyEvent(new Canvas(), 0, 0, 0, keyCode, 'x', 0));
+        keyboardHandler.keyPressed(keyEvent(keyCode));
+    }
+
+    private void keyReleased(int keyCode) {
+        keyboardHandler.keyReleased(keyEvent(keyCode));
+    }
+
+
+    private KeyEvent keyEvent(int keyCode) {
+        return new KeyEvent(new Canvas(), 0, 0, 0, keyCode, 'x', 0);
     }
 }

@@ -69,4 +69,59 @@ public class KeyboardHandler extends KeyAdapter {
                 machineState.keyboard |= 0x1;
         }
     }
+
+    @Override
+    public void keyReleased(KeyEvent event)
+    {
+        switch (event.getKeyCode())
+        {
+            case KeyEvent.VK_0:
+                machineState.keyboard &= 0b0111111111111111;
+                break;
+            case KeyEvent.VK_1:
+                machineState.keyboard &= 0b1011111111111111;
+                break;
+            case KeyEvent.VK_2:
+                machineState.keyboard &= 0b1101111111111111;
+                break;
+            case KeyEvent.VK_3:
+                machineState.keyboard &= 0b1110111111111111;
+                break;
+            case KeyEvent.VK_4:
+                machineState.keyboard &= 0b1111011111111111;
+                break;
+            case KeyEvent.VK_5:
+                machineState.keyboard &= 0b1111101111111111;
+                break;
+            case KeyEvent.VK_6:
+                machineState.keyboard &= 0b1111110111111111;
+                break;
+            case KeyEvent.VK_7:
+                machineState.keyboard &= 0b1111111011111111;
+                break;
+            case KeyEvent.VK_8:
+                machineState.keyboard &= 0b1111111101111111;
+                break;
+            case KeyEvent.VK_9:
+                machineState.keyboard &= 0b1111111110111111;
+                break;
+            case KeyEvent.VK_Q:
+                machineState.keyboard &= 0b1111111111011111;
+                break;
+            case KeyEvent.VK_W:
+                machineState.keyboard &= 0b1111111111101111;
+                break;
+            case KeyEvent.VK_E:
+                machineState.keyboard &= 0b1111111111110111;
+                break;
+            case KeyEvent.VK_R:
+                machineState.keyboard &= 0b1111111111111011;
+                break;
+            case KeyEvent.VK_T:
+                machineState.keyboard &= 0b1111111111111101;
+                break;
+            case KeyEvent.VK_Y:
+                machineState.keyboard &= 0b1111111111111110;
+        }
+    }
 }
