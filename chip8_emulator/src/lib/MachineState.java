@@ -14,6 +14,7 @@ public class MachineState {
     public int[] V = new int[16];
     public int I = 0;
     private Stack<Integer> stack = new Stack<>();
+    public int keyboard = 0;
 
     public void pushOntoStack(int value)
     {
