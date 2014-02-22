@@ -20,7 +20,7 @@ public class OpCodeExecutor {
         byte hb = memory.get(machineState.pc);
         byte lb = memory.get(machineState.pc + 1);
         int code = (0xFF00 & (hb << 8)) | (0x00FF & lb);
-        OpCode opCode = opCodeRegistry.getOpCode2(code);
+        OpCode opCode = opCodeRegistry.getOpCode(code);
         opCode.execute(machineState, code);
     }
 }

@@ -7,7 +7,7 @@ package lib;
 
 public class OpCodeResolver {
 
-    public int getOpCodeId2(int code) {
+    public int getOpCodeId(int code) {
         if (isMask(code, 0xD000))
             return 0xD000;
 
@@ -51,52 +51,6 @@ public class OpCodeResolver {
             return 0x00EE;
 
         return -1;
-    }
-
-    public OpCodeId getOpCodeId(int code) {
-        if (isMask(code, 0xD000))
-            return OpCodeId.OP_DXYN;
-
-        if (isMask(code, 0x8003))
-            return OpCodeId.OP_8XY3;
-
-        if (isMask(code, 0x8002))
-            return OpCodeId.OP_8XY2;
-
-        if (isMask(code, 0x8001))
-            return OpCodeId.OP_8XY1;
-
-        if (isMask(code, 0x8000))
-            return OpCodeId.OP_8XY0;
-
-        if (isMask(code, 0x7000))
-            return OpCodeId.OP_7XNN;
-
-        if (isMask(code, 0x6000))
-            return OpCodeId.OP_6XNN;
-
-        if (isMask(code, 0x5000))
-            return OpCodeId.OP_5XY0;
-
-        if (isMask(code, 0x4000))
-            return OpCodeId.OP_4XNN;
-
-        if (isMask(code, 0x3000))
-            return OpCodeId.OP_3XNN;
-
-        if (isMask(code, 0x2000))
-            return OpCodeId.OP_2NNN;
-
-        if (isMask(code, 0x1000))
-            return OpCodeId.OP_1NNN;
-
-        if (code == 0x00E0)
-            return OpCodeId.OP_00E0;
-
-        if (code == 0x00EE)
-            return OpCodeId.OP_00EE;
-
-        return OpCodeId.OP_INVALID;
     }
 
     private boolean isMask(int code, int mask) {

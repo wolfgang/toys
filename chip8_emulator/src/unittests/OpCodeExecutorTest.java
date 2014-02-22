@@ -44,7 +44,7 @@ public class OpCodeExecutorTest {
     }
 
     private void opCodeFor(int code, OpCode opCode) throws InvalidOpCode {
-        when(opCodeRegistry.getOpCode2(code)).thenReturn(opCode);
+        when(opCodeRegistry.getOpCode(code)).thenReturn(opCode);
     }
 
     private void memoryAt(int address, int value) {

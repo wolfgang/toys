@@ -19,8 +19,7 @@ public class Main {
         MachineState machineState = new MachineState();
         OpCodeResolver opCodeResolver = new OpCodeResolver();
         OpCodeRegistry opCodeRegistry = new OpCodeRegistry(opCodeResolver);
-        OpCodeFactory opCodeFactory = new OpCodeFactory(display, memory);
-        OpCodeRegistryLoader opCodeRegistryLoader = new OpCodeRegistryLoader(opCodeRegistry, opCodeFactory, memory, display);
+        OpCodeRegistryLoader opCodeRegistryLoader = new OpCodeRegistryLoader(opCodeRegistry, memory, display);
         opCodeRegistryLoader.registerKnownOpCodes();
         OpCodeExecutor opCodeExecutor = new OpCodeExecutor(opCodeRegistry, memory);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor, display);

@@ -110,7 +110,7 @@ public class OpCodeResolverTest {
     }
 
     private void verifyResolution(int code, int id) {
-        assertThat(opCodeResolver.getOpCodeId2(code), is(id));
+        assertThat(opCodeResolver.getOpCodeId(code), is(id));
     }
 
 }

@@ -1,6 +1,6 @@
 
 
-
+Write a test for OpCodeRegistryLoader
 ------
 
 OpCodeRegistry -> OpCodeResolver -> OpCodeFactory :: can it be simplified?
