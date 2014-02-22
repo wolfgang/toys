@@ -10,9 +10,9 @@ import org.junit.Test;
 
 public class OpCode7XNNTest extends OpCodeTest {
     @Test
-    public void execute_add_NN_to_VX() throws Exception {
+    public void execute_adds_NN_to_VX() throws Exception {
         opCode = new OpCode7XNN();
-        machineState.V[5] = 0x40;
+        givenVX(5, 0x40);
         executeOpCode(0x7520);
         assertVX(5, 0x60);
     }
