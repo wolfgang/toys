@@ -51,9 +51,7 @@ public class OpCodeResolver {
             return 0x00EE;
 
         return -1;
-
     }
-
 
     public OpCodeId getOpCodeId(int code) {
         if (isMask(code, 0xD000))
