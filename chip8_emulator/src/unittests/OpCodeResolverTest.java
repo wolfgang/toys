@@ -145,6 +145,11 @@ public class OpCodeResolverTest {
         verifyResolution(0xA630, 0xA000);
     }
 
+    @Test
+    public void resolve_BNNN() throws Exception {
+        verifyResolution(0xB520, 0xB000);
+        verifyResolution(0xB630, 0xB000);
+    }
 
 
     @Test
