@@ -103,6 +103,11 @@ public class OpCodeResolverTest {
         verifyResolution(0x8633, 0x8003);
     }
 
+    @Test
+    public void resolve_8XY4() throws Exception {
+        verifyResolution(0x8524, 0x8004);
+        verifyResolution(0x8634, 0x8004);
+    }
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {

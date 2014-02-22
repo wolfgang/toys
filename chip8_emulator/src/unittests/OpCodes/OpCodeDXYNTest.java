@@ -88,8 +88,4 @@ public class OpCodeDXYNTest extends OpCodeTest{
         machineState.V[1] = 20;
         machineState.I = 0;
     }
-
-    private void assertVF(int value) {
-        assertVX(15, value);
-    }
 }

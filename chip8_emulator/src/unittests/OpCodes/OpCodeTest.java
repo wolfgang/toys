@@ -15,8 +15,21 @@ public class OpCodeTest {
     protected MachineState machineState = new MachineState();
     protected OpCode opCode;
 
+    protected void givenVF(int value)
+    {
+        givenVX(15, value);
+    }
+    protected void givenVX(int index, int value)
+    {
+        machineState.V[index] = value;
+    }
+
     protected void assertPC(int pc) {
         assertThat(machineState.pc, is(pc));
+    }
+
+    protected void assertVF(int value) {
+        assertVX(15, value);
     }
 
     protected void assertVX(int index, int value) {
