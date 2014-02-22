@@ -9,10 +9,10 @@ import lib.MachineState;
 
 public abstract class OpCodeXNN implements OpCode {
     @Override
-    public void execute(MachineState machineState, int myCode) {
+    public void execute(MachineState mc, int myCode) {
         int vX = (0x0F00 & myCode) >> 8;
         int NN = 0x00FF & myCode;
-        execute(machineState, myCode, vX, NN);
+        execute(mc, myCode, vX, NN);
 
     }
 

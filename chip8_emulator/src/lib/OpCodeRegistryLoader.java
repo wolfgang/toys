@@ -38,6 +38,7 @@ public class OpCodeRegistryLoader {
         opCodeRegistry.registerOpCode(0x8007, new OpCode8XY7());
         opCodeRegistry.registerOpCode(0x800E, new OpCode8XYE());
         opCodeRegistry.registerOpCode(0x9000, new OpCode9XY0());
+        opCodeRegistry.registerOpCode(0xA000, new OpCodeANNN());
         opCodeRegistry.registerOpCode(0xD000, new OpCodeDXYN(memory, display));
     }
 }

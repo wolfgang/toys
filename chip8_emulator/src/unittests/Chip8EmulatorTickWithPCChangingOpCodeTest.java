@@ -38,8 +38,8 @@ public class Chip8EmulatorTickWithPCChangingOpCodeTest {
 
     private class PCChangingOpCode implements OpCode {
         @Override
-        public void execute(MachineState incomingMachineState, int myCode) {
-            incomingMachineState.pc = 0x300;
+        public void execute(MachineState mc, int myCode) {
+            mc.pc = 0x300;
         }
     }
 

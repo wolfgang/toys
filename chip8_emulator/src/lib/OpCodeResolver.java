@@ -8,6 +8,7 @@ package lib;
 public class OpCodeResolver {
     private int[] masks = {
             0xD000,
+            0xA000,
             0x9000,
             0x800E,
             0x8007,

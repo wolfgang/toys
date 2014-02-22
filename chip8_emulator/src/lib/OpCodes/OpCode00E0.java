@@ -16,7 +16,7 @@ public class OpCode00E0 implements OpCode {
     }
 
     @Override
-    public void execute(MachineState machineState, int myCode) {
+    public void execute(MachineState mc, int myCode) {
         display.clear();
     }
 

@@ -8,5 +8,5 @@ package lib.OpCodes;
 import lib.MachineState;
 
 public interface OpCode {
-    void execute(MachineState machineState, int myCode);
+    void execute(MachineState mc, int myCode);
 }

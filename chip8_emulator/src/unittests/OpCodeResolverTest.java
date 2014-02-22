@@ -139,6 +139,13 @@ public class OpCodeResolverTest {
         verifyResolution(0x9630, 0x9000);
     }
 
+    @Test
+    public void resolve_ANNN() throws Exception {
+        verifyResolution(0xA520, 0xA000);
+        verifyResolution(0xA630, 0xA000);
+    }
+
+
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
