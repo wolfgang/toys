@@ -25,7 +25,7 @@ public class OpCodeFactory {
             case OP_00E0:
                 return new OpCode00E0(display);
             case OP_DXYN:
-                return new OpCodeDXYN(display, memory);
+                return new OpCodeDXYN(memory, display);
             case OP_1NNN:
                 return new OpCode1NNN();
             case OP_00EE:

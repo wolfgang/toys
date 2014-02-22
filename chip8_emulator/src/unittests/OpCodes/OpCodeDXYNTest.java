@@ -30,7 +30,7 @@ public class OpCodeDXYNTest extends OpCodeTest{
         display = mock(Display.class);
         memory = new Memory();
         machineState = new MachineState();
-        opCode = new OpCodeDXYN(display, memory);
+        opCode = new OpCodeDXYN(memory, display);
     }
 
     @Test

@@ -16,7 +16,7 @@ public class OpCodeDXYN extends OpCodeXY {
     private Display display;
     private Memory memory;
 
-    public OpCodeDXYN(Display display, Memory memory) {
+    public OpCodeDXYN(Memory memory, Display display) {
         this.display = display;
         this.memory = memory;
     }

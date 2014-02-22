@@ -31,7 +31,7 @@ public class Chip8EmulatorTickWithPCChangingOpCodeTest {
 
     @Test
     public void dontAdvancePCIfOpCodeChangedIt() throws Exception {
-        when(opCodeRegistry.getOpCode(anyInt())).thenReturn(new PCChangingOpCode());
+        when(opCodeRegistry.getOpCode2(anyInt())).thenReturn(new PCChangingOpCode());
         emulator.tick();
         assertThat(machineState.pc, is(0x300));
     }

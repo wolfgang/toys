@@ -8,18 +8,18 @@ package unittests;
 import lib.OpCodeFactory;
 import lib.OpCodeId;
 import lib.OpCodeRegistry;
-import lib.OpCodeRegistryInitializer;
+import lib.OpCodeRegistryLoader;
 import lib.OpCodes.OpCode;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class OpCodeRegistryInitializerTest {
+public class OpCodeRegistryLoaderTest {
 
     private OpCodeRegistry opCodeRegistry;
     private OpCodeFactory opCodeFactory;
-    private OpCodeRegistryInitializer initializer;
+    private OpCodeRegistryLoader initializer;
     private OpCode opCode00E0;
     private OpCode opCode00EE;
     private OpCode opCodeDXYN;
@@ -29,7 +29,7 @@ public class OpCodeRegistryInitializerTest {
     public void setUp() throws Exception {
         opCodeRegistry = mock(OpCodeRegistry.class);
         opCodeFactory = mock(OpCodeFactory.class);
-        initializer = new OpCodeRegistryInitializer(opCodeRegistry, opCodeFactory);
+        initializer = new OpCodeRegistryLoader(opCodeRegistry, opCodeFactory, null, null);
         opCode00E0 = mock(OpCode.class, "OpCode00E0");
         opCode00EE = mock(OpCode.class, "OpCode00EE");
         opCodeDXYN = mock(OpCode.class, "OpCodeDXYN");
