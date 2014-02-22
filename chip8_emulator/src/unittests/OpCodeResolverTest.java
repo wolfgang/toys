@@ -163,6 +163,13 @@ public class OpCodeResolverTest {
         verifyResolution(0xE49E, 0xE09E);
     }
 
+    @Test
+    public void resolve_EXA1() throws Exception {
+        verifyResolution(0xE2A1, 0xE0A1);
+        verifyResolution(0xE4A1, 0xE0A1);
+    }
+
+
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
