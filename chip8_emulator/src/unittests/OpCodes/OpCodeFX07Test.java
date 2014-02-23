@@ -15,6 +15,6 @@ public class OpCodeFX07Test extends OpCodeTest {
         givenV(10, 0x50);
         givenDelayTimer(0x20);
         executeOpCode(0xFA07);
-        assertVX(10, 0x20);
+        assertV(10, 0x20);
     }
 }

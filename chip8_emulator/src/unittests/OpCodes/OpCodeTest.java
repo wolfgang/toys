@@ -34,10 +34,10 @@ public class OpCodeTest {
     }
 
     protected void assertVF(int value) {
-        assertVX(15, value);
+        assertV(15, value);
     }
 
-    protected void assertVX(int index, int value) {
+    protected void assertV(int index, int value) {
         assertThat(machineState.V[index], is(value));
     }
 
@@ -59,5 +59,9 @@ public class OpCodeTest {
 
     protected void assertMemory(int address, int value) {
         assertThat(memory.get(address), is((byte) value));
+    }
+
+    protected void givenMemory(int address, int value) {
+        memory.set(address, value);
     }
 }

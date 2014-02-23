@@ -23,8 +23,8 @@ public class OpCode8XY5Test extends OpCodeTest {
 
         executeOpCode(0x85C5);
 
-        assertVX(5, 0x10 - 0x20);
-        assertVX(12, 0x20);
+        assertV(5, 0x10 - 0x20);
+        assertV(12, 0x20);
         assertVF(1);
     }
 
@@ -36,8 +36,8 @@ public class OpCode8XY5Test extends OpCodeTest {
 
         executeOpCode(0x85C5);
 
-        assertVX(5, 0x30 - 0x10);
-        assertVX(12, 0x10);
+        assertV(5, 0x30 - 0x10);
+        assertV(12, 0x10);
         assertVF(0);
     }
 }

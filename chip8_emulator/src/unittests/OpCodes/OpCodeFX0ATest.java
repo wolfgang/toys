@@ -29,7 +29,7 @@ public class OpCodeFX0ATest extends OpCodeTest {
         machineState.keyboard = 0x8000;
         executeOpCode(0xF50A);
         assertThat(machineState.wait, is(false));
-        assertVX(5, 15);
+        assertV(5, 15);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class OpCodeFX0ATest extends OpCodeTest {
         machineState.keyboard = 0b0000000010000000;
         executeOpCode(0xF50A);
         assertThat(machineState.wait, is(false));
-        assertVX(5, 7);
+        assertV(5, 7);
     }
 
 }

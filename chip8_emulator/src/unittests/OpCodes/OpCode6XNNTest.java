@@ -14,6 +14,6 @@ public class OpCode6XNNTest extends OpCodeTest {
         opCode = new OpCode6XNN();
         givenV(5, 0x10);
         executeOpCode(0x6520);
-        assertVX(5, 0x20);
+        assertV(5, 0x20);
     }
 }

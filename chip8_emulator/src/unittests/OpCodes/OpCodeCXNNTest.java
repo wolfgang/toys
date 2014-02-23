@@ -21,6 +21,6 @@ public class OpCodeCXNNTest extends OpCodeTest {
         when(random.nextInt()).thenReturn(0xFF12CC56);
         givenV(5, 0);
         executeOpCode(0xC512);
-        assertVX(5, 0x00000056 & 0x12);
+        assertV(5, 0x00000056 & 0x12);
     }
 }

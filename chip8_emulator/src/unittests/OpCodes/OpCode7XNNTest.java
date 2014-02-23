@@ -14,6 +14,6 @@ public class OpCode7XNNTest extends OpCodeTest {
         opCode = new OpCode7XNN();
         givenV(5, 0x40);
         executeOpCode(0x7520);
-        assertVX(5, 0x60);
+        assertV(5, 0x60);
     }
 }

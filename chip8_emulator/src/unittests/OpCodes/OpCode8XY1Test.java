@@ -15,7 +15,7 @@ public class OpCode8XY1Test extends OpCodeTest {
         givenV(7, 0x20);
         givenV(1, 0x56);
         executeOpCode(0x8711);
-        assertVX(7, 0x20 | 0x56);
-        assertVX(1, 0x56);
+        assertV(7, 0x20 | 0x56);
+        assertV(1, 0x56);
     }
 }
