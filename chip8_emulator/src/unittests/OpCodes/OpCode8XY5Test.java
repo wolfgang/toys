@@ -17,8 +17,8 @@ public class OpCode8XY5Test extends OpCodeTest {
 
     @Test
     public void subtract_VY_from_VX_set_VF_to_1_becauseThereIsABorrow() throws Exception {
-        givenVX(5, 0x10);
-        givenVX(12, 0x20);
+        givenV(5, 0x10);
+        givenV(12, 0x20);
         givenVF(0);
 
         executeOpCode(0x85C5);
@@ -30,8 +30,8 @@ public class OpCode8XY5Test extends OpCodeTest {
 
     @Test
     public void subtract_VY_from_VX_set_VF_to_0_becauseThereIsNoBorrow() throws Exception {
-        givenVX(5, 0x30);
-        givenVX(12, 0x10);
+        givenV(5, 0x30);
+        givenV(12, 0x10);
         givenVF(1);
 
         executeOpCode(0x85C5);

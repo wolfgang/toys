@@ -19,7 +19,7 @@ public class OpCode8XY6Test extends OpCodeTest {
 
     @Test
     public void execute_lsb_is_1() throws Exception {
-        givenVX(10, 0b1011);
+        givenV(10, 0b1011);
         givenVF(0);
         executeOpCode(0x8A06);
         assertVX(10, 0b0101);
@@ -28,7 +28,7 @@ public class OpCode8XY6Test extends OpCodeTest {
 
     @Test
     public void execute_lsb_is_0() throws Exception {
-        givenVX(10, 0b1110);
+        givenV(10, 0b1110);
         givenVF(1);
         executeOpCode(0x8A06);
         assertVX(10, 0b0111);

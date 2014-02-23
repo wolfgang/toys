@@ -16,7 +16,7 @@ public class OpCodeFX18Test extends OpCodeTest {
     public void sets_sound_timer_to_VX() throws Exception {
         opCode = new OpCodeFX18();
         machineState.sound_timer = 0x30;
-        givenVX(12, 0x81);
+        givenV(12, 0x81);
         executeOpCode(0xFC18);
         assertThat(machineState.sound_timer, is(0x81));
     }

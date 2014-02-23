@@ -13,7 +13,7 @@ public class OpCodeBNNNTest extends OpCodeTest {
     @Test
     public void sets_pc_to_NNN_plus_V0() throws Exception {
         opCode = new OpCodeBNNN();
-        givenVX(0, 0x20);
+        givenV(0, 0x20);
         givenPC(0x400);
         executeOpCode(0xB250);
         assertPC(0x270);

@@ -12,7 +12,7 @@ public class OpCodeFX1ETest extends OpCodeTest {
     @Test
     public void adds_VX_to_I() throws Exception {
         opCode = new OpCodeFX1E();
-        givenVX(1, 0x20);
+        givenV(1, 0x20);
         givenI(0x50);
         executeOpCode(0xF11E);
         assertI(0x70);

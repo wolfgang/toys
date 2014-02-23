@@ -12,7 +12,7 @@ public class OpCodeFX07Test extends OpCodeTest {
     @Test
     public void sets_VX_to_delay_timer_value() throws Exception {
         opCode = new OpCodeFX07();
-        givenVX(10, 0x50);
+        givenV(10, 0x50);
         givenDelayTimer(0x20);
         executeOpCode(0xFA07);
         assertVX(10, 0x20);

@@ -17,16 +17,16 @@ public class OpCode5XY0Test extends OpCodeTest {
 
     @Test
     public void execute_skipInstruction_because_VX_equals_VY() throws Exception {
-        givenVX(2, 10);
-        givenVX(12, 10);
+        givenV(2, 10);
+        givenV(12, 10);
         executeOpCode(0x52C0);
         assertPC(0x204);
     }
 
     @Test
     public void execute_dontSkipInstruction_because_VX_not_equals_VY() throws Exception {
-        givenVX(5, 10);
-        givenVX(1, 20);
+        givenV(5, 10);
+        givenV(1, 20);
         executeOpCode(0x5510);
         assertPC(0x200);
     }

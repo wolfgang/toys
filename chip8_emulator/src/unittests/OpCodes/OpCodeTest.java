@@ -6,6 +6,7 @@
 package unittests.OpCodes;
 
 import lib.MachineState;
+import lib.Memory;
 import lib.OpCodes.OpCode;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,16 +15,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class OpCodeTest {
     protected MachineState machineState = new MachineState();
     protected OpCode opCode;
+    protected Memory memory = new Memory();
 
     protected void givenPC(int value) {
         machineState.pc = value;
     }
 
     protected void givenVF(int value) {
-        givenVX(15, value);
+        givenV(15, value);
     }
 
-    protected void givenVX(int index, int value) {
+    protected void givenV(int index, int value) {
         machineState.V[index] = value;
     }
 
@@ -53,5 +55,9 @@ public class OpCodeTest {
 
     protected void assertI(int value) {
         assertThat(machineState.I, is(value));
+    }
+
+    protected void assertMemory(int address, int value) {
+        assertThat(memory.get(address), is((byte) value));
     }
 }

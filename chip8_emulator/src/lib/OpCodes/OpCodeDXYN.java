@@ -27,7 +27,7 @@ public class OpCodeDXYN extends OpCodeVXVY {
         y = vY;
         int height = (myCode & 0x000F);
         wasAnyPixelChanged = false;
-        for (int i = 0; i < height; ++i)
+        for (int i = 0; i<height; ++i)
             drawSpriteRow(mc, i);
         setVF(mc);
 
@@ -41,7 +41,7 @@ public class OpCodeDXYN extends OpCodeVXVY {
         int rowValue = memory.get(mc.I + verticalIndex);
         int lineX = mc.V[x];
         int lineY = mc.V[y] + verticalIndex;
-        for (int i = 7; i >= 0; --i) {
+        for (int i = 7; i>=0; --i) {
             int pixelX = lineX + (7 - i);
             if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
                 display.setPixel(pixelX, lineY);

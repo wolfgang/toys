@@ -16,7 +16,7 @@ public class OpCodeFX15Test extends OpCodeTest {
     public void sets_delay_timer_to_VX() throws Exception {
         opCode = new OpCodeFX15();
         machineState.delay_timer = 0x20;
-        givenVX(11, 0x40);
+        givenV(11, 0x40);
         executeOpCode(0xFB15);
         assertThat(machineState.delay_timer, is(0x40));
     }

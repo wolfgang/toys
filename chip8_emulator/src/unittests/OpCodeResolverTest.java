@@ -207,7 +207,6 @@ public class OpCodeResolverTest {
     }
 
 
-
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
         verifyResolution(0x0000, -1);

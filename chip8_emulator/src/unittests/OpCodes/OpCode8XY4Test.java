@@ -17,8 +17,8 @@ public class OpCode8XY4Test extends OpCodeTest {
 
     @Test
     public void adds_VY_to_VX_sets_VF_to_1_becauseThereIsACarry() throws Exception {
-        givenVX(5, 0xF000);
-        givenVX(6, 0xF100);
+        givenV(5, 0xF000);
+        givenV(6, 0xF100);
         givenVF(0);
 
         executeOpCode(0x8564);
@@ -30,8 +30,8 @@ public class OpCode8XY4Test extends OpCodeTest {
 
     @Test
     public void adds_VY_to_VX_sets_VF_to_0_becauseThereIsNoCarry() throws Exception {
-        givenVX(5, 0x1000);
-        givenVX(6, 0x1000);
+        givenV(5, 0x1000);
+        givenV(6, 0x1000);
         givenVF(1);
 
         executeOpCode(0x8564);

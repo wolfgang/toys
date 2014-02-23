@@ -18,8 +18,8 @@ public class OpCode8XY7Test extends OpCodeTest {
 
     @Test
     public void execute_with_borrow_set_to_VF_0() throws Exception {
-        givenVX(5, 0x50);
-        givenVX(10, 0x10);
+        givenV(5, 0x50);
+        givenV(10, 0x10);
         givenVF(1);
         executeOpCode(0x85A7);
         assertVX(5, 0x10 - 0x50);
@@ -29,8 +29,8 @@ public class OpCode8XY7Test extends OpCodeTest {
 
     @Test
     public void execute_with_no_borrow_set_to_VF_1() throws Exception {
-        givenVX(5, 0x50);
-        givenVX(10, 0x100);
+        givenV(5, 0x50);
+        givenV(10, 0x100);
         givenVF(0);
         executeOpCode(0x85A7);
         assertVX(5, 0x100 - 0x50);

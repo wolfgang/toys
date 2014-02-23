@@ -20,14 +20,14 @@ public class OpCode3XNNTest extends OpCodeTest {
 
     @Test
     public void execute_skipNextInstruction() throws Exception {
-        givenVX(5, 0x20);
+        givenV(5, 0x20);
         executeOpCode(0x3520);
         assertPC(0x204);
     }
 
     @Test
     public void execute_dontSkipNextInstruction() throws Exception {
-        givenVX(5, 0x20);
+        givenV(5, 0x20);
         executeOpCode(0x3525);
         assertPC(0x200);
     }

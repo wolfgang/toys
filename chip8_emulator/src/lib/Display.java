@@ -19,8 +19,8 @@ public class Display {
     }
 
     public void draw() {
-        for (int y = 0; y < Height; ++y)
-            for (int x = 0; x < Width; ++x) {
+        for (int y = 0; y<Height; ++y)
+            for (int x = 0; x<Width; ++x) {
                 byte value = getPixelValue(x, y);
                 if ((value & 0b10) == 0b10) {
                     int color = value & 0b01;

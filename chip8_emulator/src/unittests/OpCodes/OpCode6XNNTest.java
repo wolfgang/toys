@@ -12,7 +12,7 @@ public class OpCode6XNNTest extends OpCodeTest {
     @Test
     public void execute_sets_VX_to_NN() throws Exception {
         opCode = new OpCode6XNN();
-        givenVX(5, 0x10);
+        givenV(5, 0x10);
         executeOpCode(0x6520);
         assertVX(5, 0x20);
     }

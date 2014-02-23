@@ -18,7 +18,7 @@ public class OpCodeEX9ETest extends OpCodeTest {
 
     @Test
     public void key_0_is_pressed() throws Exception {
-        givenVX(5, 0);
+        givenV(5, 0);
         machineState.keyboard = 0x1;
         executeOpCode(0xE59E);
         assertPC(0x204);
@@ -26,7 +26,7 @@ public class OpCodeEX9ETest extends OpCodeTest {
 
     @Test
     public void key_0_is_not_pressed() throws Exception {
-        givenVX(5, 0);
+        givenV(5, 0);
         machineState.keyboard = 0x1110;
         executeOpCode(0xE59E);
         assertPC(0x200);
@@ -34,7 +34,7 @@ public class OpCodeEX9ETest extends OpCodeTest {
 
     @Test
     public void key_9_is_pressed() throws Exception {
-        givenVX(5, 9);
+        givenV(5, 9);
         machineState.keyboard = 0b0110111011001111;
         executeOpCode(0xE59E);
         assertPC(0x204);
@@ -42,7 +42,7 @@ public class OpCodeEX9ETest extends OpCodeTest {
 
     @Test
     public void key_9_is_not_pressed() throws Exception {
-        givenVX(5, 9);
+        givenV(5, 9);
         machineState.keyboard = 0b0110110010001111;
         executeOpCode(0xE59E);
         assertPC(0x200);
@@ -50,7 +50,7 @@ public class OpCodeEX9ETest extends OpCodeTest {
 
     @Test
     public void key_15_is_pressed() throws Exception {
-        givenVX(5, 15);
+        givenV(5, 15);
         machineState.keyboard = 0b1110110011001111;
         executeOpCode(0xE59E);
         assertPC(0x204);
@@ -58,7 +58,7 @@ public class OpCodeEX9ETest extends OpCodeTest {
 
     @Test
     public void key_15_is_not_pressed() throws Exception {
-        givenVX(5, 15);
+        givenV(5, 15);
         machineState.keyboard = 0b0110110011001110;
         executeOpCode(0xE59E);
         assertPC(0x200);

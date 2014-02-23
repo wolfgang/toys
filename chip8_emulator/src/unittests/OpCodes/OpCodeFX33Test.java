@@ -5,16 +5,11 @@
 
 package unittests.OpCodes;
 
-import lib.Memory;
 import lib.OpCodes.OpCodeFX33;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 public class OpCodeFX33Test extends OpCodeTest {
-    private Memory memory = new Memory();
     // The interpreter takes the decimal value of Vx, and places the hundreds digit in memory at location in I,
     // the tens digit at location I+1,
     // and the ones digit at location I+2.
@@ -27,7 +22,7 @@ public class OpCodeFX33Test extends OpCodeTest {
 
     @Test
     public void execute() throws Exception {
-        givenVX(5, 123);
+        givenV(5, 123);
         executeOpCode(0xF533);
         assertMemory(0x100, 1);
         assertMemory(0x101, 2);
@@ -36,7 +31,7 @@ public class OpCodeFX33Test extends OpCodeTest {
 
     @Test
     public void execute_first_digit_0() throws Exception {
-        givenVX(5, 51);
+        givenV(5, 51);
         executeOpCode(0xF533);
         assertMemory(0x100, 0);
         assertMemory(0x101, 5);
@@ -45,7 +40,7 @@ public class OpCodeFX33Test extends OpCodeTest {
 
     @Test
     public void execute_middle_digit_0() throws Exception {
-        givenVX(5, 207);
+        givenV(5, 207);
         executeOpCode(0xF533);
         assertMemory(0x100, 2);
         assertMemory(0x101, 0);
@@ -54,14 +49,11 @@ public class OpCodeFX33Test extends OpCodeTest {
 
     @Test
     public void execute_last_digit_0() throws Exception {
-        givenVX(5, 210);
+        givenV(5, 210);
         executeOpCode(0xF533);
         assertMemory(0x100, 2);
         assertMemory(0x101, 1);
         assertMemory(0x102, 0);
     }
 
-    private void assertMemory(int address, int value) {
-        assertThat(memory.get(address), is((byte) value));
-    }
 }

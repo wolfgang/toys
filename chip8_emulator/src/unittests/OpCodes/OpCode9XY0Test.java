@@ -13,8 +13,8 @@ public class OpCode9XY0Test extends OpCodeTest {
     @Test
     public void execute_skip_next_instruction() throws Exception {
         opCode = new OpCode9XY0();
-        givenVX(10, 0x20);
-        givenVX(12, 0x21);
+        givenV(10, 0x20);
+        givenV(12, 0x21);
         givenPC(0x300);
         executeOpCode(0x9AC0);
         assertPC(0x304);
@@ -23,8 +23,8 @@ public class OpCode9XY0Test extends OpCodeTest {
     @Test
     public void execute_dont_skip_next_instruction() throws Exception {
         opCode = new OpCode9XY0();
-        givenVX(10, 0x20);
-        givenVX(12, 0x20);
+        givenV(10, 0x20);
+        givenV(12, 0x20);
         givenPC(0x300);
         executeOpCode(0x9AC0);
         assertPC(0x300);

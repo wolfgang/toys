@@ -37,7 +37,7 @@ public class MachineStateStackTest {
 
     @Test
     public void pushingValuesBeyond64ThrowsError() throws Exception {
-        for (int i = 0; i < 64; ++i)
+        for (int i = 0; i<64; ++i)
             machineState.pushOntoStack(i);
 
         try {

@@ -12,8 +12,8 @@ public class OpCode8XY0Test extends OpCodeTest {
     @Test
     public void execute_sets_VX_to_VY() throws Exception {
         opCode = new OpCode8XY0();
-        givenVX(10, 10);
-        givenVX(12, 20);
+        givenV(10, 10);
+        givenV(12, 20);
         executeOpCode(0x8AC0);
         assertVX(10, 20);
         assertVX(12, 20);

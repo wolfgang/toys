@@ -19,7 +19,7 @@ public class OpCodeCXNNTest extends OpCodeTest {
         Random random = mock(Random.class);
         opCode = new OpCodeCXNN(random);
         when(random.nextInt()).thenReturn(0xFF12CC56);
-        givenVX(5, 0);
+        givenV(5, 0);
         executeOpCode(0xC512);
         assertVX(5, 0x00000056 & 0x12);
     }

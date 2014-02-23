@@ -12,8 +12,8 @@ public class OpCode8XY3Test extends OpCodeTest {
     @Test
     public void execute_sets_VX_to_VX_xor_VY() throws Exception {
         opCode = new OpCode8XY3();
-        givenVX(5, 0x64);
-        givenVX(14, 0x76);
+        givenV(5, 0x64);
+        givenV(14, 0x76);
         executeOpCode(0x85E3);
         assertVX(5, 0x64 ^ 0x76);
         assertVX(14, 0x76);
