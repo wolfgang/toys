@@ -18,7 +18,7 @@ public class Main {
         Memory memory = new Memory();
         loadFont(memory);
 
-        loadProgramFromFile("programs/pong.ch8", memory);
+        loadProgramFromFile("programs/space_invaders.ch8", memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 12);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();

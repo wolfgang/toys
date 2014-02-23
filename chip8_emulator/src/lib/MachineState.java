@@ -18,6 +18,7 @@ public class MachineState {
     public int delay_timer = 0;
     public int sound_timer = 0;
     public boolean wait = false;
+    public boolean draw = false;
 
     public void pushOntoStack(int value) {
         if (stack.size() == MaxStackSize)

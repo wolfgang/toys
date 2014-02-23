@@ -12,6 +12,7 @@ import lib.OpCodeExecutor;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
 public class Chip8EmulatorDrawingTest {
@@ -29,15 +30,16 @@ public class Chip8EmulatorDrawingTest {
     }
 
     @Test
-    public void drawIfVFIsSet() throws Exception {
-        machineState.V[15] = 1;
+    public void drawIfMachineStateDrawIsTrue_thenSetItToFalse() throws Exception {
+        machineState.draw = true;
         emulator.tick();
         verify(display).draw();
+        assertFalse(machineState.draw);
     }
 
     @Test
-    public void dontDrawIfVFIsNotSet() throws Exception {
-        machineState.V[15] = 0;
+    public void dontDrawIfMachineStateDrawIsFalse() throws Exception {
+        machineState.draw = false;
         emulator.tick();
         verify(display, never()).draw();
     }
