@@ -175,12 +175,18 @@ public class OpCodeResolverTest {
         verifyResolution(0xF207, 0xF007);
         verifyResolution(0xF307, 0xF007);
     }
+
     @Test
     public void resolve_FX15() throws Exception {
         verifyResolution(0xF215, 0xF015);
         verifyResolution(0xF315, 0xF015);
     }
 
+    @Test
+    public void resolve_FX18() throws Exception {
+        verifyResolution(0xF218, 0xF018);
+        verifyResolution(0xF318, 0xF018);
+    }
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
