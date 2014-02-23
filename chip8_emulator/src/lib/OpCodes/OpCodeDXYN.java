@@ -46,14 +46,14 @@ public class OpCodeDXYN extends OpCodeVXVY {
             if (pixelX < 0 || pixelX > 63 || lineY < 0 || lineY > 31)
                 continue;
 
-            if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
-                display.setPixel(pixelX, lineY);
-                wasAnyPixelChanged = true;
-            }
-
-            if (display.isPixelSet(pixelX, lineY) && !isBitSet(i, rowValue)) {
+            if (isBitSet(i, rowValue) && display.isPixelSet(pixelX, lineY)) {
                 display.clearPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;
+                continue;
+            }
+
+            if (isBitSet(i, rowValue) && !display.isPixelSet(pixelX, lineY)) {
+                display.setPixel(pixelX, lineY);
             }
         }
     }

@@ -17,8 +17,8 @@ public class Main {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Memory memory = new Memory();
 
-        loadProgramFromFile("programs/zero_demo.ch8", memory);
-        PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 8);
+        loadProgramFromFile("programs/landing.ch8", memory);
+        PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 12);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();
         KeyboardHandler keyboardHandler = new KeyboardHandler(machineState);
