@@ -9,14 +9,16 @@ import lib.*;
 import lib.OpCodes.Timers;
 
 import java.awt.*;
+import java.io.IOException;
 
 @SuppressWarnings("UnusedDeclaration")
 public class Main {
     public static void main(String[] args) throws Exception {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Memory memory = new Memory();
-        loadProgram3(memory);
-        PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 16);
+
+        loadProgramFromFile("programs/particle_demo.ch8", memory);
+        PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 8);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();
         KeyboardHandler keyboardHandler = new KeyboardHandler(machineState);
@@ -37,6 +39,10 @@ public class Main {
             mainWindow.showBuffer();
             Thread.sleep(1);
         }
+    }
+
+    private static void loadProgramFromFile(String path, Memory memory) throws IOException {
+        new ProgramLoader(memory).loadFromFile(path);
     }
 
     private static void loadProgram(Memory memory) {
