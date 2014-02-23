@@ -47,6 +47,8 @@ public class OpCodeRegistryLoader {
         opCodeRegistry.registerOpCode(0xF007, new OpCodeFX07());
         opCodeRegistry.registerOpCode(0xF015, new OpCodeFX15());
         opCodeRegistry.registerOpCode(0xF018, new OpCodeFX18());
+        opCodeRegistry.registerOpCode(0xF01E, new OpCodeFX1E());
+        opCodeRegistry.registerOpCode(0xF029, new OpCodeFX29());
     }
 }
 

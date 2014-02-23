@@ -189,6 +189,19 @@ public class OpCodeResolverTest {
     }
 
     @Test
+    public void resolve_FX1E() throws Exception {
+        verifyResolution(0xF21E, 0xF01E);
+        verifyResolution(0xF31E, 0xF01E);
+    }
+
+    @Test
+    public void resolve_FX29() throws Exception {
+        verifyResolution(0xF229, 0xF029);
+        verifyResolution(0xF329, 0xF029);
+    }
+
+
+    @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
         verifyResolution(0x0000, -1);
     }

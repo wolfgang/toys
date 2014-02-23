@@ -71,6 +71,8 @@ public class OpCodeRegistryLoaderTest {
         registersOpCode(0xF007, OpCodeFX07.class);
         registersOpCode(0xF015, OpCodeFX15.class);
         registersOpCode(0xF018, OpCodeFX18.class);
+        registersOpCode(0xF01E, OpCodeFX1E.class);
+        registersOpCode(0xF029, OpCodeFX29.class);
     }
 
     @SuppressWarnings("unchecked")

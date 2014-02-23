@@ -1,5 +1,7 @@
 Fix KeyboardHandler bit indices
 
+Throw error if FX29 gets invalid character index
+
 ------
 
 Pixel size depends on Display width/height
