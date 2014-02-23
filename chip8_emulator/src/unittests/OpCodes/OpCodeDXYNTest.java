@@ -83,6 +83,22 @@ public class OpCodeDXYNTest extends OpCodeTest{
         assertVF(0);
     }
 
+    @Test
+    public void execute_SetAndClearPixels() throws Exception {
+        setupParameterRegisters();
+        machineState.V[15] = 0;
+        memory.set(0, 0b01000000);
+        when(display.isPixelSet(10, 20)).thenReturn(true);
+        when(display.isPixelSet(11, 20)).thenReturn(false);
+        when(display.isPixelSet(17, 20)).thenReturn(true);
+
+        executeOpCode(0xD011);
+        verify(display).clearPixel(10, 20);
+        verify(display).setPixel(11, 20);
+        verify(display).clearPixel(17, 20);
+        assertVF(1);
+    }
+
     private void setupParameterRegisters() {
         machineState.V[0] = 10;
         machineState.V[1] = 20;
