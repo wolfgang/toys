@@ -11,7 +11,7 @@ public class OpCode8XY4 extends OpCodeVXVY {
     @Override
     protected void execute(MachineState mc, int myCode, int vX, int vY) {
         int sum = mc.V[vX] + mc.V[vY];
-        int vF = (0x8000 & sum) == 0x8000 ? 1 : 0;
+        int vF = sum > 0xFF ? 1 : 0;
         mc.V[vX] = sum;
         mc.V[15] = vF;
     }

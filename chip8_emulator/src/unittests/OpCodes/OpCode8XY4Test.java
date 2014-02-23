@@ -17,27 +17,27 @@ public class OpCode8XY4Test extends OpCodeTest {
 
     @Test
     public void adds_VY_to_VX_sets_VF_to_1_becauseThereIsACarry() throws Exception {
-        givenV(5, 0xF000);
-        givenV(6, 0xF100);
+        givenV(5, 0xEF);
+        givenV(6, 0x1F);
         givenVF(0);
 
         executeOpCode(0x8564);
 
-        assertV(5, 0x1E100);
-        assertV(6, 0xF100);
+        assertV(5, 0xEF + 0x1F);
+        assertV(6, 0x1F);
         assertVF(1);
     }
 
     @Test
     public void adds_VY_to_VX_sets_VF_to_0_becauseThereIsNoCarry() throws Exception {
-        givenV(5, 0x1000);
-        givenV(6, 0x1000);
+        givenV(5, 0x10);
+        givenV(6, 0x10);
         givenVF(1);
 
         executeOpCode(0x8564);
 
-        assertV(5, 0x2000);
-        assertV(6, 0x1000);
+        assertV(5, 0x20);
+        assertV(6, 0x10);
         assertVF(0);
     }
 }
