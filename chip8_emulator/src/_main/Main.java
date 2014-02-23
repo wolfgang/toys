@@ -16,8 +16,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Memory memory = new Memory();
+        loadFont(memory);
 
-        loadProgramFromFile("programs/landing.ch8", memory);
+        loadProgramFromFile("programs/delay_timer_test.ch8", memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 12);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();
@@ -34,11 +35,37 @@ public class Main {
 
         //noinspection InfiniteLoopStatement
         while (true) {
-            emulator.tick();
             timers.tick();
+            emulator.tick();
             mainWindow.showBuffer();
             Thread.sleep(1);
         }
+    }
+
+    private static void loadFont(Memory memory) {
+
+        int fonts[] =
+        {
+                    0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+                    0x20, 0x60, 0x20, 0x20, 0x70, // 1
+                    0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
+                    0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
+                    0x90, 0x90, 0xF0, 0x10, 0x10, // 4
+                    0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
+                    0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
+                    0xF0, 0x10, 0x20, 0x40, 0x40, // 7
+                    0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
+                    0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
+                    0xF0, 0x90, 0xF0, 0x90, 0x90, // A
+                    0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
+                    0xF0, 0x80, 0x80, 0x80, 0xF0, // C
+                    0xE0, 0x90, 0x90, 0x90, 0xE0, // D
+                    0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
+                    0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+        };
+
+        for (int i = 0; i<fonts.length; ++i)
+            memory.set(i, fonts[i]);
     }
 
     private static void loadProgramFromFile(String path, Memory memory) throws IOException {

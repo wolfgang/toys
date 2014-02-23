@@ -14,6 +14,7 @@ public class OpCodeResolver {
             0xF01E,
             0xF018,
             0xF015,
+            0xF00A,
             0xF007,
             0xE0A1,
             0xE09E,

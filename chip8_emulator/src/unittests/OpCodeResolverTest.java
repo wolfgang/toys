@@ -219,6 +219,13 @@ public class OpCodeResolverTest {
     }
 
     @Test
+    public void resolve_F4XA() throws Exception {
+        verifyResolution(0xF40A, 0xF00A);
+        verifyResolution(0xF40A, 0xF00A);
+    }
+
+
+    @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
         verifyResolution(0x0000, -1);
     }

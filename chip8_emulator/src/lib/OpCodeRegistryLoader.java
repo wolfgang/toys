@@ -53,6 +53,7 @@ public class OpCodeRegistryLoader {
         opCodeRegistry.registerOpCode(0xF033, new OpCodeFX33(memory));
         opCodeRegistry.registerOpCode(0xF055, new OpCodeFX55(memory));
         opCodeRegistry.registerOpCode(0xF065, new OpCodeFX65(memory));
+        opCodeRegistry.registerOpCode(0xF00A, new OpCodeFX0A());
     }
 }
 
