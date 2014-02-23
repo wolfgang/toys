@@ -5,6 +5,7 @@
 
 package lib;
 
+import OpCodes.OpCodeFX65;
 import lib.OpCodes.*;
 
 public class OpCodeRegistryLoader {
@@ -50,6 +51,8 @@ public class OpCodeRegistryLoader {
         opCodeRegistry.registerOpCode(0xF01E, new OpCodeFX1E());
         opCodeRegistry.registerOpCode(0xF029, new OpCodeFX29());
         opCodeRegistry.registerOpCode(0xF033, new OpCodeFX33(memory));
+        opCodeRegistry.registerOpCode(0xF055, new OpCodeFX55(memory));
+        opCodeRegistry.registerOpCode(0xF065, new OpCodeFX65(memory));
     }
 }
 

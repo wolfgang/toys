@@ -206,6 +206,17 @@ public class OpCodeResolverTest {
         verifyResolution(0xF333, 0xF033);
     }
 
+    @Test
+    public void resolve_FX55() throws Exception {
+        verifyResolution(0xF255, 0xF055);
+        verifyResolution(0xF355, 0xF055);
+    }
+
+    @Test
+    public void resolve_FX65() throws Exception {
+        verifyResolution(0xF265, 0xF065);
+        verifyResolution(0xF365, 0xF065);
+    }
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {

@@ -5,6 +5,7 @@
 
 package unittests;
 
+import OpCodes.OpCodeFX65;
 import lib.*;
 import lib.OpCodes.*;
 import org.junit.Before;
@@ -46,6 +47,18 @@ public class OpCodeRegistryLoaderTest {
     @Test
     public void registersOpCodeFX33() throws Exception {
         OpCodeFX33 opCode = registersOpCode(0xF033, OpCodeFX33.class);
+        assertThat(opCode.getMemory(), is(memory));
+    }
+
+    @Test
+    public void registersOpCodeFX55() throws Exception {
+        OpCodeFX55 opCode = registersOpCode(0xF055, OpCodeFX55.class);
+        assertThat(opCode.getMemory(), is(memory));
+    }
+
+    @Test
+    public void registersOpCodeFX65() throws Exception {
+        OpCodeFX65 opCode = registersOpCode(0xF065, OpCodeFX65.class);
         assertThat(opCode.getMemory(), is(memory));
     }
 

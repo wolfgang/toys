@@ -21,4 +21,8 @@ public class OpCodeFX65 extends OpCodeVX {
         for (int i = 0; i<=vX; ++i)
             mc.V[i] = memory.get(mc.I + i);
     }
+
+    public Memory getMemory() {
+        return memory;
+    }
 }
