@@ -43,6 +43,9 @@ public class OpCodeDXYN extends OpCodeVXVY {
         int lineY = mc.V[y] + verticalIndex;
         for (int i = 7; i>=0; --i) {
             int pixelX = lineX + (7 - i);
+            if (pixelX < 0 || pixelX > 63 || lineY < 0 || lineY > 31)
+                continue;
+
             if (!display.isPixelSet(pixelX, lineY) && isBitSet(i, rowValue)) {
                 display.setPixel(pixelX, lineY);
                 wasAnyPixelChanged = true;

@@ -5,7 +5,7 @@
 
 package unittests;
 
-import OpCodes.OpCodeFX65;
+import lib.OpCodes.OpCodeFX65;
 import lib.*;
 import lib.OpCodes.*;
 import org.junit.Before;

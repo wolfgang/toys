@@ -99,6 +99,18 @@ public class OpCodeDXYNTest extends OpCodeTest {
         assertVF(1);
     }
 
+    @Test
+    public void execute_DontDrawOutOfBounds() throws Exception {
+        setupParameterRegisters();
+        memory.set(0, 0b01000000);
+        machineState.V[0] = 65;
+        machineState.V[1] = 10;
+
+        executeOpCode(0xD011);
+        assertVF(0);
+    }
+
+
     private void setupParameterRegisters() {
         machineState.V[0] = 10;
         machineState.V[1] = 20;

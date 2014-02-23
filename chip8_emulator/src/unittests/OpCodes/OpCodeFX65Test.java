@@ -5,7 +5,7 @@
 
 package unittests.OpCodes;
 
-import OpCodes.OpCodeFX65;
+import lib.OpCodes.OpCodeFX65;
 import org.junit.Test;
 
 public class OpCodeFX65Test extends OpCodeTest {

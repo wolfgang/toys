@@ -3,11 +3,10 @@
  * Created on 2/23/14 at 5:02 PM
  */
 
-package OpCodes;
+package lib.OpCodes;
 
 import lib.MachineState;
 import lib.Memory;
-import lib.OpCodes.OpCodeVX;
 
 public class OpCodeFX65 extends OpCodeVX {
     private Memory memory;

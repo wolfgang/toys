@@ -5,7 +5,7 @@
 
 package lib;
 
-import OpCodes.OpCodeFX65;
+import lib.OpCodes.OpCodeFX65;
 import lib.OpCodes.*;
 
 public class OpCodeRegistryLoader {
