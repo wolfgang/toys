@@ -40,7 +40,7 @@ public class OpCodeResolver {
             0x2000,
             0x1000,
             0x00EE,
-            0x00E0,
+            0x00E0
     };
 
 
