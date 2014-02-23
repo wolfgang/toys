@@ -17,7 +17,7 @@ public class Main {
         DoubleBufferedWindow mainWindow = new DoubleBufferedWindow("Chip8 Emulator", 10, 10, 1024, 768);
         Memory memory = new Memory();
 
-        loadProgramFromFile("programs/particle_demo.ch8", memory);
+        loadProgramFromFile("programs/sierpinsky.ch8", memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 8);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();

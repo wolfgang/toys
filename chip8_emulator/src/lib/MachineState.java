@@ -25,6 +25,11 @@ public class MachineState {
         stack.push(value);
     }
 
+    public boolean isStackEmpty()
+    {
+        return stack.empty();
+    }
+
     public int popFromStack() {
         if (!stack.empty())
             return stack.pop();
