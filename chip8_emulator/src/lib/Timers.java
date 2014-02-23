@@ -3,9 +3,7 @@
  * Created on 2/23/14 at 6:33 PM
  */
 
-package lib.OpCodes;
-
-import lib.MachineState;
+package lib;
 
 public class Timers {
     private long lastTick;
@@ -18,12 +16,15 @@ public class Timers {
 
     public void tick() {
         long now = System.currentTimeMillis();
-        if (now - lastTick>16) {
+        while (now - lastTick>=16) {
             lastTick += 16;
             if (machineState.sound_timer == 1)
                 System.out.println("BEEP!");
             if (machineState.delay_timer>0)
+            {
                 machineState.delay_timer--;
+                //System.out.println("Delay timer: " + machineState.delay_timer);
+            }
             if (machineState.sound_timer>0) {
                 machineState.sound_timer--;
             }
