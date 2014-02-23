@@ -42,4 +42,8 @@ public class OpCodeTest {
     protected void executeOpCode(int code) {
         opCode.execute(machineState, code);
     }
+
+    protected void givenDelayTimer(int value) {
+        machineState.delay_timer = value;
+    }
 }

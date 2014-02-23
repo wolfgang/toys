@@ -15,5 +15,5 @@ public abstract class OpCodeX implements OpCode {
 
     }
 
-    abstract protected void execute(MachineState machineState, int myCode, int vX);
+    abstract protected void execute(MachineState mc, int myCode, int vX);
 }

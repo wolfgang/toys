@@ -170,6 +170,12 @@ public class OpCodeResolverTest {
     }
 
 
+    @Test
+    public void resolve_FX07() throws Exception {
+        verifyResolution(0xF207, 0xF007);
+        verifyResolution(0xF307, 0xF007);
+    }
+
 
     @Test
     public void invalidCodeResultsInMinusOne() throws Exception {
