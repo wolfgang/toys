@@ -27,7 +27,7 @@ public class OpCodeEXA1Test extends OpCodeTest {
     @Test
     public void key_10_is_pressed() throws Exception {
         givenVX(5, 10);
-        machineState.keyboard = 0b0000000000100000;
+        machineState.keyboard = 0b0000010000100000;
         executeOpCode(0xE5A1);
         assertPC(0x200);
     }

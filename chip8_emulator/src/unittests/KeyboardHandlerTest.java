@@ -27,22 +27,22 @@ public class KeyboardHandlerTest {
     }
 
     @Test
-    public void onKeyPressed_VK_0_sets_bit_16() throws Exception {
+    public void onKeyPressed_VK_0_sets_bit_0() throws Exception {
         keyPressed(KeyEvent.VK_0);
-        assertEquals(0x8000, machineState.keyboard);
+        assertEquals(0x1, machineState.keyboard);
     }
 
     @Test
-    public void onKeyPressed_VK_1_sets_bit_15() throws Exception {
+    public void onKeyPressed_VK_1_sets_bit_1() throws Exception {
         keyPressed(KeyEvent.VK_1);
-        assertEquals(0b0100000000000000, machineState.keyboard);
+        assertEquals(0b10, machineState.keyboard);
     }
 
     @Test
     public void twoKeysPressed_twoBitsSet() throws Exception {
         keyPressed(KeyEvent.VK_0);
         keyPressed(KeyEvent.VK_1);
-        assertEquals(0b1100000000000000, machineState.keyboard);
+        assertEquals(0b11, machineState.keyboard);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class KeyboardHandlerTest {
         keyPressed(KeyEvent.VK_0);
         keyPressed(KeyEvent.VK_1);
         keyPressed(KeyEvent.VK_9);
-        assertEquals(0b1100000001000000, machineState.keyboard);
+        assertEquals(0b1000000011, machineState.keyboard);
     }
 
     @Test
@@ -65,25 +65,25 @@ public class KeyboardHandlerTest {
         keyPressed(KeyEvent.VK_7);
         keyPressed(KeyEvent.VK_8);
         keyPressed(KeyEvent.VK_9);
-        assertEquals(0b1111111111000000, machineState.keyboard);
+        assertEquals(0b0000001111111111, machineState.keyboard);
     }
 
     @Test
-    public void quertyKeys_set_bits_11_to_16() throws Exception {
+    public void quertyKeys_set_bits_10_to_15() throws Exception {
         keyPressed(KeyEvent.VK_Q);
         keyPressed(KeyEvent.VK_W);
         keyPressed(KeyEvent.VK_E);
         keyPressed(KeyEvent.VK_R);
         keyPressed(KeyEvent.VK_T);
         keyPressed(KeyEvent.VK_Y);
-        assertEquals(0b0000000000111111, machineState.keyboard);
+        assertEquals(0b1111110000000000, machineState.keyboard);
     }
 
     @Test
-    public void keyReleased_VK_0_clears_bit_16() throws Exception {
+    public void keyReleased_VK_0_clears_bit_0() throws Exception {
         machineState.keyboard = 0xFFFF;
         keyReleased(KeyEvent.VK_0);
-        assertEquals(0b0111111111111111, machineState.keyboard);
+        assertEquals(0xFFFE, machineState.keyboard);
     }
 
     @Test

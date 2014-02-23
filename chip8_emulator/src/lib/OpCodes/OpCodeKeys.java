@@ -11,7 +11,7 @@ public abstract class OpCodeKeys implements OpCode {
     protected boolean isKeyInVXPressed(MachineState mc, int myCode)
     {
         int vX = (0x0F00 & myCode) >> 8;
-        int keyIndex = 15 - mc.V[vX];
+        int keyIndex = mc.V[vX];
         int mask = 1 << keyIndex;
         return ((mc.keyboard & mask) == mask);
     }
