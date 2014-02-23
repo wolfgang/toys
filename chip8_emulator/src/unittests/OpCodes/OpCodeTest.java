@@ -46,4 +46,12 @@ public class OpCodeTest {
     protected void givenDelayTimer(int value) {
         machineState.delay_timer = value;
     }
+
+    protected void givenI(int value) {
+        machineState.I = value;
+    }
+
+    protected void assertI(int value) {
+        assertThat(machineState.I, is(value));
+    }
 }
