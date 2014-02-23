@@ -7,7 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCode5XY0 extends OpCodeXY {
+public class OpCode5XY0 extends OpCodeVXVY {
     @Override
     public void execute(MachineState mc, int myCode, int vx, int vy) {
         if (mc.V[vx] == mc.V[vy])

@@ -9,7 +9,7 @@ import lib.Display;
 import lib.MachineState;
 import lib.Memory;
 
-public class OpCodeDXYN extends OpCodeXY {
+public class OpCodeDXYN extends OpCodeVXVY {
     private int x;
     private int y;
     private boolean wasAnyPixelChanged;

@@ -7,7 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCodeFX18 extends OpCodeX {
+public class OpCodeFX18 extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
         mc.sound_timer = mc.V[vX];

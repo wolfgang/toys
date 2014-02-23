@@ -7,7 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public abstract class OpCodeX implements OpCode {
+public abstract class OpCodeVX implements OpCode {
     @Override
     public void execute(MachineState mc, int myCode) {
         int vX = (0x0F00 & myCode) >> 8;

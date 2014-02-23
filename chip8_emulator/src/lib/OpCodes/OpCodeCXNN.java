@@ -9,7 +9,7 @@ import lib.MachineState;
 
 import java.util.Random;
 
-public class OpCodeCXNN extends OpCodeXNN {
+public class OpCodeCXNN extends OpCodeVXNN {
     private Random random;
 
     public OpCodeCXNN() {

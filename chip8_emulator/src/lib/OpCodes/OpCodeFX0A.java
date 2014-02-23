@@ -7,7 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCodeFX0A extends OpCodeX {
+public class OpCodeFX0A extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
         if (mc.keyboard > 0) {

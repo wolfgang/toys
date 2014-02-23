@@ -7,7 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCodeFX07 extends OpCodeX
+public class OpCodeFX07 extends OpCodeVX
 {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
