@@ -16,28 +16,28 @@ public class OpCode8XY5Test extends OpCodeTest {
     }
 
     @Test
-    public void subtract_VY_from_VX_set_VF_to_1_becauseThereIsABorrow() throws Exception {
+    public void subtract_VY_from_VX_set_VF_to_0_becauseThereIsABorrow() throws Exception {
         givenV(5, 0x10);
         givenV(12, 0x20);
-        givenVF(0);
+        givenVF(1);
 
         executeOpCode(0x85C5);
 
         assertV(5, 0x10 - 0x20);
         assertV(12, 0x20);
-        assertVF(1);
+        assertVF(0);
     }
 
     @Test
-    public void subtract_VY_from_VX_set_VF_to_0_becauseThereIsNoBorrow() throws Exception {
+    public void subtract_VY_from_VX_set_VF_to_1_becauseThereIsNoBorrow() throws Exception {
         givenV(5, 0x30);
         givenV(12, 0x10);
-        givenVF(1);
+        givenVF(0);
 
         executeOpCode(0x85C5);
 
         assertV(5, 0x30 - 0x10);
         assertV(12, 0x10);
-        assertVF(0);
+        assertVF(1);
     }
 }

@@ -13,7 +13,7 @@ public class OpCode8XY5 extends OpCodeVXVY {
         int valueX = mc.V[vX];
         int valueY = mc.V[vY];
 
-        mc.V[15] = valueX<valueY ? 1 : 0;
+        mc.V[15] = valueX>valueY ? 1 : 0;
         mc.V[vX] = valueX - valueY;
     }
 }
