@@ -27,7 +27,7 @@
 [X] EX9E	Skips the next instruction if the key stored in VX is pressed.
 [X] EXA1	Skips the next instruction if the key stored in VX isn't pressed.
 [X] FX07	Sets VX to the value of the delay timer.
-    FX0A	A key press is awaited, and then stored in VX.
+[X] FX0A	A key press is awaited, and then stored in VX.
     FX15	Sets the delay timer to VX.
     FX18	Sets the sound timer to VX.
     FX1E	Adds VX to I.
