@@ -25,4 +25,8 @@ public class OpCodeFX33 extends OpCodeVX {
         memory.set(mc.I + 1, d2);
         memory.set(mc.I + 2, d3);
     }
+
+    public Memory getMemory() {
+        return memory;
+    }
 }

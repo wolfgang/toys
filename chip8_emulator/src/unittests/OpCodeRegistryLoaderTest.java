@@ -44,6 +44,12 @@ public class OpCodeRegistryLoaderTest {
     }
 
     @Test
+    public void registersOpCodeFX33() throws Exception {
+        OpCodeFX33 opCode = registersOpCode(0xF033, OpCodeFX33.class);
+        assertThat(opCode.getMemory(), is(memory));
+    }
+
+    @Test
     public void registersSimpleOpCodes() throws Exception {
         registersOpCode(0x00EE, OpCode00EE.class);
         registersOpCode(0x1000, OpCode1NNN.class);
