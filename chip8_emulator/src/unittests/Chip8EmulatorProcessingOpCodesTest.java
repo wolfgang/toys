@@ -35,4 +35,12 @@ public class Chip8EmulatorProcessingOpCodesTest {
         verify(opCodeExecutor).executeNext(machineState);
         assertThat(machineState.pc, is(0x202));
     }
+
+    @Test
+    public void tick_dontAdvancePCIfMachineStateWaitIsTrue() throws Exception {
+        machineState.wait = true;
+        emulator.tick();
+        assertThat(machineState.pc, is(0x200));
+    }
+
 }
