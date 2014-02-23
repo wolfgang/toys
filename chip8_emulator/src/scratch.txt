@@ -1,4 +1,10 @@
+Add timer handling
 Fix KeyboardHandler bit indices
+Load font set
+
+
+
+
 
 Throw error if FX29 gets invalid character index
 

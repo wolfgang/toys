@@ -6,6 +6,7 @@
 package _main;
 
 import lib.*;
+import lib.OpCodes.Timers;
 
 import java.awt.*;
 
@@ -27,10 +28,12 @@ public class Main {
         OpCodeExecutor opCodeExecutor = new OpCodeExecutor(opCodeRegistry, memory);
         Chip8Emulator emulator = new Chip8Emulator(machineState, opCodeExecutor, display);
         mainWindow.clear(Color.black);
+        Timers timers = new Timers(machineState);
 
         //noinspection InfiniteLoopStatement
         while (true) {
             emulator.tick();
+            timers.tick();
             mainWindow.showBuffer();
             Thread.sleep(1);
         }
