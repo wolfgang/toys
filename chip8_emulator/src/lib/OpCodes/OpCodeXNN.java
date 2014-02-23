@@ -7,14 +7,12 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public abstract class OpCodeXNN implements OpCode {
+public abstract class OpCodeXNN extends OpCodeX {
     @Override
-    public void execute(MachineState mc, int myCode) {
-        int vX = (0x0F00 & myCode) >> 8;
+    public void execute(MachineState mc, int myCode, int vX) {
         int NN = 0x00FF & myCode;
         execute(mc, myCode, vX, NN);
-
-    }
+   }
 
     abstract protected void execute(MachineState machineState, int myCode, int vX, int NN);
 }
