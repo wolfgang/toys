@@ -24,7 +24,7 @@ public class OpCodeRegistry {
 
     public OpCode getOpCode(int code) throws InvalidOpCode {
         int id = opCodeResolver.getOpCodeId(code);
-        if (id!= -1)
+        if (id != -1)
             return opCodesById.get(id);
 
         throw new InvalidOpCode(code);

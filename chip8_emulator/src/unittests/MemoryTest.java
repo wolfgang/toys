@@ -23,12 +23,12 @@ public class MemoryTest {
 
     @Test
     public void get_initially_0() throws Exception {
-        assertThat(memory.get(0x200), is((byte)0));
+        assertThat(memory.get(0x200), is((byte) 0));
     }
 
     @Test
     public void set_then_get() throws Exception {
         memory.set(0x200, 123);
-        assertThat(memory.get(0x200), is((byte)123));
+        assertThat(memory.get(0x200), is((byte) 123));
     }
 }

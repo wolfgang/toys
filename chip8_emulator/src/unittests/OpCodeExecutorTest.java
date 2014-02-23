@@ -12,9 +12,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class OpCodeExecutorTest {
     private Memory memory;
@@ -48,6 +46,6 @@ public class OpCodeExecutorTest {
     }
 
     private void memoryAt(int address, int value) {
-        when(memory.get(address)).thenReturn((byte)value);
+        when(memory.get(address)).thenReturn((byte) value);
     }
 }

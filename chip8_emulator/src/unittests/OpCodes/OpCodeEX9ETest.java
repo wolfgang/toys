@@ -9,7 +9,7 @@ import lib.OpCodes.OpCodeEX9E;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OpCodeEX9ETest extends OpCodeTest{
+public class OpCodeEX9ETest extends OpCodeTest {
     //Skips the next instruction if the key stored in VX is pressed
     @Before
     public void createOpCode() {
@@ -63,7 +63,6 @@ public class OpCodeEX9ETest extends OpCodeTest{
         executeOpCode(0xE59E);
         assertPC(0x200);
     }
-
 
 
 }

@@ -18,6 +18,6 @@ public class PixelRenderer {
 
     public void drawPixel(int x, int y, int color) {
         graphics.setColor(color == 1 ? Color.white : Color.black);
-        graphics.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+        graphics.fillRect(x*pixelSize, y*pixelSize, pixelSize, pixelSize);
     }
 }

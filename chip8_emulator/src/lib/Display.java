@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Display {
     public static final int Width = 64;
     public static final int Height = 32;
-    byte pixels[] = new byte[Width * Height];
+    byte pixels[] = new byte[Width*Height];
     private PixelRenderer pixelRenderer;
 
     public Display(PixelRenderer pixelRenderer) {
@@ -38,17 +38,16 @@ public class Display {
         setPixelValue(x, y, 0b10);
     }
 
-    public void clear()
-    {
-        Arrays.fill(pixels, (byte)0b10);
+    public void clear() {
+        Arrays.fill(pixels, (byte) 0b10);
     }
 
     private void setPixelValue(int x, int y, int value) {
-        pixels[x + y * Width] = (byte) value;
+        pixels[x + y*Width] = (byte) value;
     }
 
     private byte getPixelValue(int x, int y) {
-        return pixels[x + y * Width];
+        return pixels[x + y*Width];
     }
 
     public boolean isPixelSet(int x, int y) {

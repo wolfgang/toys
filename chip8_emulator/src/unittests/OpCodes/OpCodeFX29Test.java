@@ -11,8 +11,7 @@ import org.junit.Test;
 
 public class OpCodeFX29Test extends OpCodeTest {
     @Before
-    public void setUp()
-    {
+    public void setUp() {
         opCode = new OpCodeFX29();
         givenI(0x100);
     }

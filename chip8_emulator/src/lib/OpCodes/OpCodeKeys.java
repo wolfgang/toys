@@ -8,8 +8,7 @@ package lib.OpCodes;
 import lib.MachineState;
 
 public abstract class OpCodeKeys implements OpCode {
-    protected boolean isKeyInVXPressed(MachineState mc, int myCode)
-    {
+    protected boolean isKeyInVXPressed(MachineState mc, int myCode) {
         int vX = (0x0F00 & myCode) >> 8;
         int keyIndex = mc.V[vX];
         int mask = 1 << keyIndex;

@@ -12,8 +12,7 @@ import org.junit.Test;
 // Sets VX to VY minus VX. VF is set to 0 when there's a borrow, and 1 when there isn't.
 public class OpCode8XY7Test extends OpCodeTest {
     @Before
-    public void createOpCode()
-    {
+    public void createOpCode() {
         opCode = new OpCode8XY7();
     }
 

@@ -22,7 +22,7 @@ public class Chip8Emulator {
         if (!machineState.wait && machineState.pc == oldPC)
             machineState.pc += 2;
 
-        if (machineState.V[15]==1)
+        if (machineState.V[15] == 1)
             display.draw();
     }
 }

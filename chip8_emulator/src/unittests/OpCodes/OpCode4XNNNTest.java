@@ -10,7 +10,7 @@ import lib.OpCodes.OpCode4XNN;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OpCode4XNNNTest extends OpCodeTest{
+public class OpCode4XNNNTest extends OpCodeTest {
     @Before
     public void setUp() throws Exception {
         opCode = new OpCode4XNN();

@@ -11,7 +11,7 @@ public class OpCodeFX0A extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
         if (mc.keyboard > 0) {
-            mc.V[vX] = (int) (Math.log(mc.keyboard) / Math.log(2));
+            mc.V[vX] = (int) (Math.log(mc.keyboard)/Math.log(2));
             mc.wait = false;
         } else
             mc.wait = true;

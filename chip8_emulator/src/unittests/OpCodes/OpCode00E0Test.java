@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class OpCode00E0Test extends OpCodeTest{
+public class OpCode00E0Test extends OpCodeTest {
 
     private Display display;
 

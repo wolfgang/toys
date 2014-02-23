@@ -7,7 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCode00EE implements OpCode{
+public class OpCode00EE implements OpCode {
     @Override
     public void execute(MachineState mc, int myCode) {
         mc.pc = mc.popFromStack();

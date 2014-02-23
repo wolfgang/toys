@@ -6,9 +6,9 @@
 package unittests;
 
 import lib.Chip8Emulator;
+import lib.Display;
 import lib.MachineState;
 import lib.OpCodeExecutor;
-import lib.Display;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -11,10 +11,10 @@ import org.junit.Test;
 
 public class OpCode8XY5Test extends OpCodeTest {
     @Before
-    public void createOpCode()
-    {
+    public void createOpCode() {
         opCode = new OpCode8XY5();
     }
+
     @Test
     public void subtract_VY_from_VX_set_VF_to_1_becauseThereIsABorrow() throws Exception {
         givenVX(5, 0x10);

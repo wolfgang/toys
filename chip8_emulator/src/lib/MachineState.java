@@ -19,15 +19,13 @@ public class MachineState {
     public int sound_timer = 0;
     public boolean wait = false;
 
-    public void pushOntoStack(int value)
-    {
+    public void pushOntoStack(int value) {
         if (stack.size() == MaxStackSize)
             throw new StackOverflowError();
         stack.push(value);
     }
 
-    public int popFromStack()
-    {
+    public int popFromStack() {
         if (!stack.empty())
             return stack.pop();
         else

@@ -7,8 +7,7 @@ package lib.OpCodes;
 
 import lib.MachineState;
 
-public class OpCodeFX07 extends OpCodeVX
-{
+public class OpCodeFX07 extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
         mc.V[vX] = mc.delay_timer;

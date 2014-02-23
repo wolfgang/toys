@@ -20,7 +20,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class OpCodeDXYNTest extends OpCodeTest{
+public class OpCodeDXYNTest extends OpCodeTest {
 
     private Display display;
     private Memory memory;

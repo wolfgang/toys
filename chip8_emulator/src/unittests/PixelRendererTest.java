@@ -40,15 +40,14 @@ public class PixelRendererTest {
     public void renderPixelWithColor_0_drawBlackRect() throws Exception {
         pixelRenderer.drawPixel(11, 21, 0);
         verifySetColor(Color.black);
-        verifyPixelSizedFillRect(11 * pixelSize, 21 * pixelSize);
+        verifyPixelSizedFillRect(11*pixelSize, 21*pixelSize);
     }
 
     private void verifySetColor(Color color) {
         graphicsOrder.verify(graphics).setColor(color);
     }
 
-    private void verifyPixelSizedFillRect(int x, int y)
-    {
+    private void verifyPixelSizedFillRect(int x, int y) {
         graphicsOrder.verify(graphics).fillRect(x, y, pixelSize, pixelSize);
     }
 }

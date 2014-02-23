@@ -7,11 +7,12 @@ package lib;
 
 public class Memory {
     byte values[] = new byte[4096];
+
     public byte get(int address) {
         return values[address];
     }
 
     public void set(int address, int value) {
-        values[address] = (byte)value;
+        values[address] = (byte) value;
     }
 }

@@ -36,21 +36,18 @@ public class DoubleBufferedWindow extends JFrame {
         canvas.createBufferStrategy(2);
     }
 
-    public void addKeyListener(KeyListener listener)
-    {
+    public void addKeyListener(KeyListener listener) {
         super.addKeyListener(listener);
         canvas.addKeyListener(listener);
     }
 
-    public void addMouseListener(MouseListener listener)
-    {
+    public void addMouseListener(MouseListener listener) {
         super.addMouseListener(listener);
         canvas.addMouseListener(listener);
 
     }
 
-    public void addMouseMotionListener(MouseMotionListener listener)
-    {
+    public void addMouseMotionListener(MouseMotionListener listener) {
         super.addMouseMotionListener(listener);
         canvas.addMouseMotionListener(listener);
     }

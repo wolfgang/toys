@@ -29,8 +29,7 @@ public class Main {
         mainWindow.clear(Color.black);
 
         //noinspection InfiniteLoopStatement
-        while(true)
-        {
+        while (true) {
             emulator.tick();
             mainWindow.showBuffer();
             Thread.sleep(1);

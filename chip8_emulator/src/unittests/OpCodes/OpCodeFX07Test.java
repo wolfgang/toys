@@ -8,7 +8,7 @@ package unittests.OpCodes;
 import lib.OpCodes.OpCodeFX07;
 import org.junit.Test;
 
-public class OpCodeFX07Test extends OpCodeTest{
+public class OpCodeFX07Test extends OpCodeTest {
     @Test
     public void sets_VX_to_delay_timer_value() throws Exception {
         opCode = new OpCodeFX07();

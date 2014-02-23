@@ -8,8 +8,7 @@ package unittests.OpCodes;
 import lib.OpCodes.OpCode8XY3;
 import org.junit.Test;
 
-public class OpCode8XY3Test extends OpCodeTest
-{
+public class OpCode8XY3Test extends OpCodeTest {
     @Test
     public void execute_sets_VX_to_VX_xor_VY() throws Exception {
         opCode = new OpCode8XY3();
