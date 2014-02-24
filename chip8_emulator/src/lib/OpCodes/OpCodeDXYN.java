@@ -47,17 +47,6 @@ public class OpCodeDXYN extends OpCodeVXVY {
             if (pixelX < 0 || pixelX > 63 || lineY < 0 || lineY > 31)
                 continue;
 
-            /*
-
-            if((pixel & (0x80 >> xline)) != 0)
-            {
-                if(gfx[(x + xline + ((y + yline) * 64))] == 1)
-                    V[0xF] = 1;
-                gfx[x + xline + ((y + yline) * 64)] ^= 1;
-            }
-              */
-
-
             if (isBitSet(i, rowValue)) {
                 if (display.isPixelSet(pixelX, lineY))
                     wasAnyPixelChanged = true;

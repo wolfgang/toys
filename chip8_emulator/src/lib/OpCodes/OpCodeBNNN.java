@@ -10,7 +10,7 @@ import lib.MachineState;
 public class OpCodeBNNN implements OpCode {
     @Override
     public void execute(MachineState mc, int myCode) {
-        int v0Value = mc.V[0];
+        char v0Value = (char) mc.V[0];
         int NNN = 0x0FFF & myCode;
         mc.pc = v0Value + NNN;
     }
