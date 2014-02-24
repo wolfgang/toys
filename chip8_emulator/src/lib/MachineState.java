@@ -15,8 +15,8 @@ public class MachineState {
     public int I = 0;
     private Stack<Integer> stack = new Stack<>();
     public int keyboard = 0;
-    public int delay_timer = 0;
-    public int sound_timer = 0;
+    public byte delay_timer = 0;
+    public byte sound_timer = 0;
     public boolean wait = false;
     public boolean draw = false;
 

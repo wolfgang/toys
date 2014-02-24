@@ -18,6 +18,6 @@ public class OpCodeFX18Test extends OpCodeTest {
         machineState.sound_timer = 0x30;
         givenV(12, 0x81);
         executeOpCode(0xFC18);
-        assertThat(machineState.sound_timer, is(0x81));
+        assertThat(machineState.sound_timer, is((byte)0x81));
     }
 }

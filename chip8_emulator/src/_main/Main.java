@@ -17,7 +17,7 @@ public class Main {
         Memory memory = new Memory();
         loadFont(memory);
 
-        loadProgramFromFile("programs/fishie.ch8", memory);
+        loadProgramFromFile("programs/space_invaders.ch8", memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 12);
         Display display = new Display(mainWindow, pixelRenderer);
         MachineState machineState = new MachineState();
@@ -34,8 +34,8 @@ public class Main {
 
         long lastTick = System.currentTimeMillis();
 
-        //noinspection InfiniteLoopStatement
         int tick = 0;
+        //noinspection InfiniteLoopStatement
         while (true) {
             long now = System.currentTimeMillis();
             while (now - lastTick>=1) {
