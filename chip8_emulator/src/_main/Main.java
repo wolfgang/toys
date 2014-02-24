@@ -17,7 +17,7 @@ public class Main {
         Memory memory = new Memory();
         loadFont(memory);
 
-        loadProgramFromFile("programs/particle_demo.ch8", memory);
+        loadProgramFromFile("programs/delay_timer_test.ch8", memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 12);
         Display display = new Display(mainWindow, pixelRenderer);
         MachineState machineState = new MachineState();

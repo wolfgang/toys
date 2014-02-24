@@ -10,6 +10,6 @@ import lib.MachineState;
 public class OpCodeFX29 extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
-        mc.I = vX*5;
+        mc.I = (0xFF & mc.V[vX])*5;
     }
 }

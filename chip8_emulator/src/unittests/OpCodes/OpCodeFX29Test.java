@@ -18,26 +18,30 @@ public class OpCodeFX29Test extends OpCodeTest {
 
     @Test
     public void sets_I_to_location_of_sprite_for_0() throws Exception {
+        givenV(0, 0);
         executeOpCode(0xF029);
         assertI(0x0);
     }
 
     @Test
     public void sets_I_to_location_of_sprite_for_1() throws Exception {
+        givenV(1, 1);
         executeOpCode(0xF129);
         assertI(5);
     }
 
     @Test
     public void sets_I_to_location_of_sprite_for_A() throws Exception {
+        givenV(10, 5);
         executeOpCode(0xFA29);
-        assertI(50);
+        assertI(25);
     }
 
     @Test
     public void sets_I_to_location_of_sprite_for_F() throws Exception {
+        givenV(15, 10);
         executeOpCode(0xFF29);
-        assertI(75);
+        assertI(50);
     }
 
 
