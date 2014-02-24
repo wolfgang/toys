@@ -40,8 +40,8 @@ public class OpCodeDXYN extends OpCodeVXVY {
 
     private void drawSpriteRow(MachineState mc, int verticalIndex) {
         int rowValue = memory.get(mc.I + verticalIndex);
-        int lineX = mc.V[x];
-        int lineY = mc.V[y] + verticalIndex;
+        int lineX = mc.V[x] & 0xFF;
+        int lineY = (mc.V[y] &0xFF) + verticalIndex;
         for (int i = 7; i>=0; --i) {
             int pixelX = lineX + (7 - i);
             if (pixelX < 0 || pixelX > 63 || lineY < 0 || lineY > 31)

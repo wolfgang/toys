@@ -14,6 +14,6 @@ public class OpCode8XY5 extends OpCodeVXVY {
         int valueY = mc.V[vY];
 
         mc.V[15] = (byte) (valueX>valueY ? 1 : 0);
-        mc.V[vX] = (byte) (valueX - valueY);
+        mc.V[vX] = (byte) ((valueX - valueY) & 0xFF);
     }
 }

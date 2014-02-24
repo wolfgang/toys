@@ -12,7 +12,7 @@ public class OpCode8XY7 extends OpCodeVXVY {
     protected void execute(MachineState mc, int myCode, int vX, int vY) {
         int vXValue = mc.V[vX];
         int vYValue = mc.V[vY];
-        mc.V[vX] = (byte) (vYValue - vXValue);
+        mc.V[vX] = (byte) ((vYValue - vXValue) & 0xFF);
         mc.V[15] = (byte) (vYValue<vXValue ? 0 : 1);
     }
 }
