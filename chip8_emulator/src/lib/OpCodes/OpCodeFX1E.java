@@ -11,5 +11,10 @@ public class OpCodeFX1E extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
         mc.I += mc.V[vX];
+        if (mc.I > 0xFFF)
+            mc.V[15] = 1;
+        else
+            mc.V[15] = 0;
+
     }
 }

@@ -11,6 +11,7 @@ public class OpCode7XNN extends OpCodeVXNN {
     @Override
     public void execute(MachineState mc, int myCode, int vX, int NN) {
         mc.V[vX] += NN;
+        mc.V[vX] = mc.V[vX] % 0xFF;
 
     }
 }
