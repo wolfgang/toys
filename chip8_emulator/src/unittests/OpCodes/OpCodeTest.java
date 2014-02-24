@@ -26,7 +26,7 @@ public class OpCodeTest {
     }
 
     protected void givenV(int index, int value) {
-        machineState.V[index] = value;
+        machineState.V[index] = (byte)value;
     }
 
     protected void assertPC(int pc) {
@@ -38,7 +38,7 @@ public class OpCodeTest {
     }
 
     protected void assertV(int index, int value) {
-        assertThat(machineState.V[index], is(value));
+        assertThat(machineState.V[index], is((byte)value));
     }
 
     protected void executeOpCode(int code) {

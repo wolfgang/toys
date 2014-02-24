@@ -17,7 +17,7 @@ public class OpCodeFX33 extends OpCodeVX {
 
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
-        int vXValue = mc.V[vX];
+        int vXValue = mc.V[vX] & 0xFF;
         int d1 = vXValue/100;
         int d2 = (vXValue - d1*100)/10;
         int d3 = (vXValue - d1*100 - d2*10);

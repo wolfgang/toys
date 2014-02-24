@@ -10,9 +10,9 @@ import lib.MachineState;
 public class OpCode8XY4 extends OpCodeVXVY {
     @Override
     protected void execute(MachineState mc, int myCode, int vX, int vY) {
-        int sum = mc.V[vX] + mc.V[vY];
+        int sum = (char)mc.V[vX] + (char)mc.V[vY];
         int vF = sum > 0xFF ? 1 : 0;
-        mc.V[vX] = sum;
-        mc.V[15] = vF;
+        mc.V[vX] = (byte) sum;
+        mc.V[15] = (byte) vF;
     }
 }

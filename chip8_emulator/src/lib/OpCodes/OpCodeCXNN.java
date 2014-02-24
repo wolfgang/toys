@@ -21,8 +21,8 @@ public class OpCodeCXNN extends OpCodeVXNN {
     }
 
     @Override
-    protected void execute(MachineState mc, int myCode, int vX, int NN) {
+    protected void execute(MachineState mc, int myCode, int vX, byte NN) {
         int randomInt = random.nextInt();
-        mc.V[vX] = (0x000000FF & randomInt) & NN;
+        mc.V[vX] = (byte) (((0x000000FF & randomInt) & NN) % 0xFF);
     }
 }

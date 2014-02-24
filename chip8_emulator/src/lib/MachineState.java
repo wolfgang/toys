@@ -11,7 +11,7 @@ import java.util.Stack;
 public class MachineState {
     private static final int MaxStackSize = 64;
     public int pc = 0x200;
-    public int[] V = new int[16];
+    public byte[] V = new byte[16];
     public int I = 0;
     private Stack<Integer> stack = new Stack<>();
     public int keyboard = 0;

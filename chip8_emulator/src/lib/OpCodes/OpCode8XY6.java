@@ -12,8 +12,8 @@ public class OpCode8XY6 extends OpCodeVXVY {
     protected void execute(MachineState mc, int myCode, int vX, int vY) {
         int vxValue = mc.V[vX];
         int lsb = 0x0001 & vxValue;
-        mc.V[vX] = vxValue >> 1;
-        mc.V[15] = lsb;
+        mc.V[vX] = (byte) (vxValue >> 1);
+        mc.V[15] = (byte) lsb;
 
     }
 }

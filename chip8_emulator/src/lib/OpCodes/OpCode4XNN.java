@@ -9,7 +9,7 @@ import lib.MachineState;
 
 public class OpCode4XNN extends OpCodeVXNN {
     @Override
-    public void execute(MachineState mc, int myCode, int vX, int NN) {
+    public void execute(MachineState mc, int myCode, int vX, byte NN) {
         if (NN != mc.V[vX])
             mc.pc += 4;
     }

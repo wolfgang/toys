@@ -35,7 +35,7 @@ public class OpCodeDXYN extends OpCodeVXVY {
     }
 
     private void setVF(MachineState mc) {
-        mc.V[15] = wasAnyPixelChanged ? 1 : 0;
+        mc.V[15] = (byte) (wasAnyPixelChanged ? 1 : 0);
     }
 
     private void drawSpriteRow(MachineState mc, int verticalIndex) {

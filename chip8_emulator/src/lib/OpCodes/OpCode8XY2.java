@@ -10,6 +10,6 @@ import lib.MachineState;
 public class OpCode8XY2 extends OpCodeVXVY {
     @Override
     protected void execute(MachineState mc, int myCode, int vX, int vY) {
-        mc.V[vX] = mc.V[vX] & mc.V[vY];
+        mc.V[vX] = (byte) (mc.V[vX] & mc.V[vY]);
     }
 }

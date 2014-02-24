@@ -29,12 +29,12 @@ public class OpCode8XY7Test extends OpCodeTest {
 
     @Test
     public void execute_with_no_borrow_set_to_VF_1() throws Exception {
-        givenV(5, 0x50);
-        givenV(10, 0x100);
+        givenV(5, 0x10);
+        givenV(10, 0x50);
         givenVF(0);
         executeOpCode(0x85A7);
-        assertV(5, 0x100 - 0x50);
-        assertV(10, 0x100);
+        assertV(5, 0x50 - 0x10);
+        assertV(10, 0x50);
         assertVF(1);
     }
 

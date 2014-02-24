@@ -10,9 +10,9 @@ import lib.MachineState;
 public abstract class OpCodeVXNN extends OpCodeVX {
     @Override
     public void execute(MachineState mc, int myCode, int vX) {
-        int NN = 0x00FF & myCode;
+        byte NN = (byte) (0x00FF & myCode);
         execute(mc, myCode, vX, NN);
     }
 
-    abstract protected void execute(MachineState machineState, int myCode, int vX, int NN);
+    abstract protected void execute(MachineState machineState, int myCode, int vX, byte NN);
 }
