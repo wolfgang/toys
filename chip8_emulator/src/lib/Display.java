@@ -5,15 +5,20 @@
 
 package lib;
 
+import _main.DoubleBufferedWindow;
+
+import java.awt.*;
 import java.util.Arrays;
 
 public class Display {
     public static final int Width = 64;
     public static final int Height = 32;
     byte pixels[] = new byte[Width*Height];
+    private DoubleBufferedWindow window;
     private PixelRenderer pixelRenderer;
 
-    public Display(PixelRenderer pixelRenderer) {
+    public Display(DoubleBufferedWindow window, PixelRenderer pixelRenderer) {
+        this.window = window;
 
         this.pixelRenderer = pixelRenderer;
     }
@@ -39,7 +44,8 @@ public class Display {
     }
 
     public void clear() {
-        Arrays.fill(pixels, (byte) 0b10);
+        Arrays.fill(pixels, (byte) 0b00);
+        window.clear(Color.black);
     }
 
     private void setPixelValue(int x, int y, int value) {

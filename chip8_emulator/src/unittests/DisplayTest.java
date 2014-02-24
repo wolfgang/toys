@@ -22,7 +22,7 @@ public class DisplayTest {
     @Before
     public void setUp() throws Exception {
         pixelRenderer = mock(PixelRenderer.class);
-        display = new Display(pixelRenderer);
+        display = new Display(null, pixelRenderer);
     }
 
     @Test
