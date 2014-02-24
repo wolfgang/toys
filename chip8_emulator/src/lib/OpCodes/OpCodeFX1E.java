@@ -10,7 +10,7 @@ import lib.MachineState;
 public class OpCodeFX1E extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
-        mc.I += mc.V[vX];
+        mc.I += (mc.V[vX] & 0xFF);
         if (mc.I > 0xFFF)
             mc.V[15] = 1;
         else
