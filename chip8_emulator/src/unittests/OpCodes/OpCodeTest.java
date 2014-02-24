@@ -46,7 +46,7 @@ public class OpCodeTest {
     }
 
     protected void givenDelayTimer(int value) {
-        machineState.delay_timer = (byte)value;
+        machineState.delay_timer = (char) value;
     }
 
     protected void givenI(int value) {

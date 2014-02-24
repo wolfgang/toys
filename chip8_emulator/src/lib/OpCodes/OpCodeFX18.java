@@ -10,6 +10,6 @@ import lib.MachineState;
 public class OpCodeFX18 extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
-        mc.sound_timer = mc.V[vX];
+        mc.sound_timer = (char) (mc.V[vX] & 0xFF);
     }
 }

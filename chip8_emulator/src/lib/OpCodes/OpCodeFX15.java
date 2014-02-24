@@ -10,6 +10,6 @@ import lib.MachineState;
 public class OpCodeFX15 extends OpCodeVX {
     @Override
     protected void execute(MachineState mc, int myCode, int vX) {
-        mc.delay_timer = mc.V[vX];
+        mc.delay_timer = (char) (mc.V[vX] & 0xFF);
     }
 }

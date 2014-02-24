@@ -18,6 +18,6 @@ public class OpCodeFX15Test extends OpCodeTest {
         machineState.delay_timer = 0x20;
         givenV(11, 0x40);
         executeOpCode(0xFB15);
-        assertThat(machineState.delay_timer, is((byte)0x40));
+        assertThat(machineState.delay_timer, is((char)0x40));
     }
 }
