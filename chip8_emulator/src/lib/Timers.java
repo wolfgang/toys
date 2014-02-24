@@ -6,18 +6,16 @@
 package lib;
 
 public class Timers {
-    private long lastTick;
     private MachineState machineState;
+    private int ticks = 0;
 
     public Timers(MachineState machineState) {
         this.machineState = machineState;
-        lastTick = System.currentTimeMillis();
     }
 
     public void tick() {
-        long now = System.currentTimeMillis();
-        while (now - lastTick>=16) {
-            lastTick += 16;
+        if (++ticks == 16) {
+            ticks = 0;
             if (machineState.sound_timer == 1)
                 System.out.println("BEEP!");
             if (machineState.delay_timer>0)

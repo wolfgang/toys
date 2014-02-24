@@ -6,7 +6,6 @@
 package _main;
 
 import lib.*;
-import lib.Timers;
 
 import java.awt.*;
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class Main {
         Memory memory = new Memory();
         loadFont(memory);
 
-        loadProgramFromFile("programs/space_invaders.ch8", memory);
+        loadProgramFromFile("programs/pong.ch8", memory);
         PixelRenderer pixelRenderer = new PixelRenderer(mainWindow.getDrawGraphics(), 12);
         Display display = new Display(pixelRenderer);
         MachineState machineState = new MachineState();
@@ -33,36 +32,44 @@ public class Main {
         mainWindow.clear(Color.black);
         Timers timers = new Timers(machineState);
 
+        long lastTick = System.currentTimeMillis();
+
         //noinspection InfiniteLoopStatement
+        int tick = 0;
         while (true) {
-            timers.tick();
-            emulator.tick();
+            long now = System.currentTimeMillis();
+            while (now - lastTick>=1) {
+                //System.out.println("TICK " + now + " " + tick++);
+                lastTick += 1;
+                timers.tick();
+                emulator.tick();
+            }
             mainWindow.showBuffer();
-            Thread.sleep(1);
+            //Thread.sleep(1);
         }
     }
 
     private static void loadFont(Memory memory) {
 
         int fonts[] =
-        {
-                    0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
-                    0x20, 0x60, 0x20, 0x20, 0x70, // 1
-                    0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
-                    0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
-                    0x90, 0x90, 0xF0, 0x10, 0x10, // 4
-                    0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
-                    0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
-                    0xF0, 0x10, 0x20, 0x40, 0x40, // 7
-                    0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
-                    0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
-                    0xF0, 0x90, 0xF0, 0x90, 0x90, // A
-                    0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
-                    0xF0, 0x80, 0x80, 0x80, 0xF0, // C
-                    0xE0, 0x90, 0x90, 0x90, 0xE0, // D
-                    0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
-                    0xF0, 0x80, 0xF0, 0x80, 0x80  // F
-        };
+                {
+                        0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+                        0x20, 0x60, 0x20, 0x20, 0x70, // 1
+                        0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
+                        0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
+                        0x90, 0x90, 0xF0, 0x10, 0x10, // 4
+                        0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
+                        0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
+                        0xF0, 0x10, 0x20, 0x40, 0x40, // 7
+                        0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
+                        0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
+                        0xF0, 0x90, 0xF0, 0x90, 0x90, // A
+                        0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
+                        0xF0, 0x80, 0x80, 0x80, 0xF0, // C
+                        0xE0, 0x90, 0x90, 0x90, 0xE0, // D
+                        0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
+                        0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+                };
 
         for (int i = 0; i<fonts.length; ++i)
             memory.set(i, fonts[i]);
