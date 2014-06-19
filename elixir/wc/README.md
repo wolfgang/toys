@@ -1,4 +1,4 @@
 Wc
 ==
 
-** TODO: Add description **
+Incomplete toy implementation of the wc utility
