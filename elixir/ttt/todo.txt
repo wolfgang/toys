@@ -1,0 +1,6 @@
+x print empty board on start and exit
+* print empty board and ask for move
+* execute given move
+* execute "ai" move
+* repeat loop until game over
+

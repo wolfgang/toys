@@ -5,6 +5,7 @@ defmodule Ttt.Mixfile do
     [app: :ttt,
      version: "0.0.1",
      elixir: "~> 0.14.0",
+     escript_main_module: Ttt,
      deps: deps]
   end
 
