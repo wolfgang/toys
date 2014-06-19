@@ -3,5 +3,6 @@ defmodule Ttt do
     IO.puts ". . ."
     IO.puts ". . ."
     IO.puts ". . ."
+    IO.gets "> "
   end
 end
