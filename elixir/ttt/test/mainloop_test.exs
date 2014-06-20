@@ -10,19 +10,17 @@ defmodule MainLoopTest do
   
   test "main loop returns 0 if handle_input returns :quit" do
     handle_input_returns :quit
-    result = MainLoop.run :board, &mock_display/1, &mock_handle_input/1
-    assert result == 0
-    assert Process.get(:boards_handled) == [:board]
-    assert Process.get(:boards_displayed) == [:board]
+    run
+    assert_boards_handled [:board]
+    assert_boards_displayed [:board]
   end
 
   test "main loop calls itself again if handle_input returns a new board" do
     handle_input_returns {:ok, :new_board}
     handle_input_returns :quit
-    result = MainLoop.run :board, &mock_display/1, &mock_handle_input/1
-    assert result == 0
-    assert Process.get(:boards_handled) == [:board, :new_board]
-    assert Process.get(:boards_displayed) == [:board, :new_board]
+    run
+    assert_boards_handled [:board, :new_board]
+    assert_boards_displayed [:board, :new_board]
   end
 
   def mock_display(board) do
@@ -50,4 +48,18 @@ defmodule MainLoopTest do
     Process.put(key, tl(old))
     head
   end
+
+  defp run do
+    result = MainLoop.run :board, &mock_display/1, &mock_handle_input/1
+    assert result == 0
+  end
+
+  defp assert_boards_handled (lst) do
+    assert Process.get(:boards_handled) == lst
+  end
+
+  defp assert_boards_displayed (lst) do
+    assert Process.get(:boards_displayed) == lst
+  end
+
 end
