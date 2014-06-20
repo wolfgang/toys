@@ -26,6 +26,8 @@ defmodule Ttt.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+    #     {:amrita, "~>0.3", github: "josephwilk/amrita"}
+    ]
   end
 end

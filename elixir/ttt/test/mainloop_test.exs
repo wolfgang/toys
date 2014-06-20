@@ -1,0 +1,53 @@
+defmodule MainLoopTest do
+  use ExUnit.Case
+
+  setup do
+    Process.put(:boards_displayed, [])
+    Process.put(:handle_input_returns, [])
+    Process.put(:boards_handled, [])
+    :ok
+  end
+  
+  test "main loop returns 0 if handle_input returns :quit" do
+    handle_input_returns :quit
+    result = MainLoop.run :board, &mock_display/1, &mock_handle_input/1
+    assert result == 0
+    assert Process.get(:boards_handled) == [:board]
+    assert Process.get(:boards_displayed) == [:board]
+  end
+
+  test "main loop calls itself again if handle_input returns a new board" do
+    handle_input_returns {:ok, :new_board}
+    handle_input_returns :quit
+    result = MainLoop.run :board, &mock_display/1, &mock_handle_input/1
+    assert result == 0
+    assert Process.get(:boards_handled) == [:board, :new_board]
+    assert Process.get(:boards_displayed) == [:board, :new_board]
+  end
+
+  def mock_display(board) do
+    append_to_process_key :boards_displayed, board
+  end
+
+  def mock_handle_input(board) do
+    append_to_process_key :boards_handled, board
+    take_from_process_key :handle_input_returns
+  end
+
+  defp handle_input_returns(value) do
+    old = Process.get(:handle_input_returns)
+    Process.put(:handle_input_returns, old ++ [value])
+  end
+
+  defp append_to_process_key(key, value) do
+    old = Process.get(key)
+    Process.put key, old ++ [value]
+  end
+
+  defp take_from_process_key(key) do
+    old = Process.get(key)
+    head = hd(old)
+    Process.put(key, tl(old))
+    head
+  end
+end

@@ -15,7 +15,7 @@ Feature: Tic Tac Toe
             >.*
             """
 
-    Scenario: Display make a move then quit
+    Scenario: Make a move as X at 1-1 then quit
         When I run the program
         When I enter "1 1"
         When I enter "q"
@@ -31,5 +31,21 @@ Feature: Tic Tac Toe
             >.*
             """
 
+
+    Scenario: Make a move as X at 0-0 then quit
+        When I run the program
+        When I enter "0 0"
+        When I enter "q"
+        Then The final output should match:
+            """
+            . . .
+            . . .
+            . . .
+            >.*
+            X . .
+            . . .
+            . . .
+            >.*
+            """
 
 
