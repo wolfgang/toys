@@ -7,28 +7,28 @@ Feature: Tic Tac Toe
     Scenario: Run: Display empty board and quit when entering 'q'
         When I run the program
         When I enter "q"
-        Then I should see:
+        Then The final output should match:
             """
             . . .
             . . .
             . . .
-            >
+            >.*
             """
 
     Scenario: Display make a move then quit
         When I run the program
         When I enter "1 1"
         When I enter "q"
-        Then I should see:
+        Then The final output should match:
             """
             . . .
             . . .
             . . .
-            > 
+            >.*
             . . .
             . X .
             . . .
-            >
+            >.*
             """
 
 

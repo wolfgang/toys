@@ -26,6 +26,6 @@ And /^I enter "([^"]*)"$/ do |input|
     type(input)
 end
 
-Then(/^I should see:$/) do |expected_output|
-    assert_exact_output(expected_output, all_output.strip)
+Then(/^The final output should match:$/) do |expected_output|
+    assert_matching_output(expected_output, all_output.strip)
 end
