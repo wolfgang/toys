@@ -30,7 +30,7 @@ Feature: Tic Tac Toe
             >.*
             """
 
-
+    @ignore
     Scenario: Make a move as X at 0-0 then quit
         When I run the program
         When I enter "0 0"

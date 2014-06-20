@@ -1,8 +1,8 @@
 defmodule Ttt do
   def main(_args) do
     MainLoop.run(
-      [". . .", ". . .", ". . ."], 
-      &display_board/1, 
+      [[:e, :e, :e], [:e, :e, :e], [:e, :e, :e]],
+      &Board.display/1, 
       &handle_input/1)
   end
 
@@ -13,7 +13,7 @@ defmodule Ttt do
   def handle_input(_board) do
     case IO.gets "> " do
       "q\n" -> :quit
-      _ -> {:ok, [". . .", ". X .", ". . ."]}
+      _ -> {:ok, [[:e, :e, :e], [:e, :x, :e], [:e, :e, :e]]}
     end
   end
 end
