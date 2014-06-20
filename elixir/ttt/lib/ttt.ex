@@ -10,10 +10,16 @@ defmodule Ttt do
     Enum.map board, &IO.puts/1
   end
 
-  def handle_input(_board) do
+  def handle_input(board) do
     case IO.gets "> " do
       "q\n" -> :quit
-      _ -> {:ok, [[:e, :e, :e], [:e, :x, :e], [:e, :e, :e]]}
+      str ->
+        [x,y] = Enum.map(String.split(str), &String.to_integer/1)
+
+        row = :lists.nth(x+1, board)
+        new_row = List.replace_at(row, y, :x)
+        new_board = List.replace_at(board, x, new_row)
+        {:ok, new_board}
     end
   end
 end
