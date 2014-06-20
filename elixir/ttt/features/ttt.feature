@@ -12,7 +12,6 @@ Feature: Tic Tac Toe
             . . .
             . . .
             . . .
-            >.*
             """
 
     Scenario: Make a move as X at 1-1 then quit
@@ -24,10 +23,10 @@ Feature: Tic Tac Toe
             . . .
             . . .
             . . .
-            >.*. . .
+            .* 
+            . . .
             . X .
             . . .
-            >.*
             """
 
     Scenario: Make a move as X at 0-0 then quit
@@ -39,10 +38,32 @@ Feature: Tic Tac Toe
             . . .
             . . .
             . . .
-            >.* . . .
+            .* 
+            . . .
             X . .
             . . .
-            >.*
             """
+
+    Scenario: Make a move as X at 0-0 then make a move as 0 at 1 1 then quit
+        When I run the program
+        When I enter "0 0"
+        When I enter "1 1"
+        When I enter "q"
+        Then The final output should match:
+            """
+            . . .
+            . . .
+            . . .
+            .* 
+            X . .
+            . . .
+            . . .
+            .* 
+            X . .
+            . O .
+            . . .
+            """
+
+
 
 

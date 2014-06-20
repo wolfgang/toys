@@ -1,9 +1,9 @@
 defmodule MainLoop do
-  def run(board, display_fn, handle_input_fn) do
+  def run({board, player}, display_fn, handle_input_fn) do
     display_fn. (board)
-    case handle_input_fn. (board) do
+    case handle_input_fn. ({board, player}) do
       :quit -> 0
-      {:ok, new_board} -> run new_board, display_fn, handle_input_fn
+      {new_board, new_player} -> run {new_board, new_player}, display_fn, handle_input_fn
     end
   end
 

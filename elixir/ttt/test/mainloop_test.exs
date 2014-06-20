@@ -11,15 +11,15 @@ defmodule MainLoopTest do
   test "main loop returns 0 if handle_input returns :quit" do
     handle_input_returns :quit
     run
-    assert_boards_handled [:board]
+    assert_boards_handled [{:board, :x}]
     assert_boards_displayed [:board]
   end
 
   test "main loop calls itself again if handle_input returns a new board" do
-    handle_input_returns {:ok, :new_board}
+    handle_input_returns {:new_board, :o}
     handle_input_returns :quit
     run
-    assert_boards_handled [:board, :new_board]
+    assert_boards_handled [{:board, :x}, {:new_board, :o}]
     assert_boards_displayed [:board, :new_board]
   end
 
@@ -50,7 +50,7 @@ defmodule MainLoopTest do
   end
 
   defp run do
-    result = MainLoop.run :board, &mock_display/1, &mock_handle_input/1
+    result = MainLoop.run {:board, :x}, &mock_display/1, &mock_handle_input/1
     assert result == 0
   end
 

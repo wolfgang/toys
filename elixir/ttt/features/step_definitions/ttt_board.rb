@@ -23,7 +23,8 @@ When(/^I run the program$/) do
 end
 
 And /^I enter "([^"]*)"$/ do |input|
-    type(input)
+    type("#{input}\n")
+    print "\n"
 end
 
 Then(/^The final output should match:$/) do |expected_output|

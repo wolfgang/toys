@@ -1,5 +1,6 @@
 defmodule Board do
   def display board do
+    IO.puts ""
     Enum.map(board, &display_row/1)
   end
 
