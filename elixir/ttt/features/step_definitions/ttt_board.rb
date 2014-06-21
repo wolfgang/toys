@@ -1,13 +1,11 @@
 #encoding: utf-8
 require 'rspec/expectations'
-
+ 
 require 'aruba/api'
 require 'aruba/cucumber/hooks'
 require 'aruba/reporting'
 
 World(Aruba::Api)
-
-output = ""
 
 When(/^I build the program$/) do
     run("mix escriptize")
