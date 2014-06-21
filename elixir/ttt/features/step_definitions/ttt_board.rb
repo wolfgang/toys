@@ -51,3 +51,20 @@ Then(/^The last board should contain (\d+) X and (\d+) O$/) do |expected_num_x, 
 end
 
 
+Then(/^The last board should contain (\d+) O and otherwise match:$/) do |exp_num_o, exp_last_board|
+    output_flat = all_output.strip.delete "\n"
+    last_board = output_flat[output_flat.length()-16 .. output_flat.length-2]
+    exp_last_board.strip!
+    exp_last_board.delete! "\n"
+    assert_matching_output(exp_last_board, last_board)
+    #print "\n#{expected_last_board}\n"
+    #print "\n#{last_board}\n"
+    num_o = 0
+    last_board.each_char do |c|
+        num_o += 1 if c=='O' 
+    end
+
+    expect(num_o).to eq exp_num_o.to_i
+end
+
+
