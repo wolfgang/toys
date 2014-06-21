@@ -11,11 +11,9 @@ defmodule Ttt do
       "q\n" -> :quit
       str ->
         [x,y] = Enum.map(String.split(str), &String.to_integer/1)
-
-        row = :lists.nth(x+1, board)
-        new_row = List.replace_at(row, y, player)
-        new_board = List.replace_at(board, x, new_row)
-        {new_board, next_player player}
+        board1 = Board.set(board, x, y, player)
+        board2 = Board.set(board1, 1, 1, next_player player)
+        {board2, next_player player}
     end
   end
 

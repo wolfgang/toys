@@ -30,3 +30,24 @@ end
 Then(/^The final output should match:$/) do |expected_output|
     assert_matching_output(expected_output, all_output.strip)
 end
+
+Then(/^The last board should contain (\d+) X and (\d+) O$/) do |expected_num_x, expected_num_o|
+    chars =  all_output.strip.split
+    num_x = 0
+    num_o = 0
+    Range.new(chars.count-10, chars.count-2).each do |elem|
+        c = chars[elem]
+        if c == "X"
+            num_x = num_x + 1
+        end
+        if c == "O"
+            num_o = num_o + 1
+        end
+
+    end
+
+    expect(num_x).to eq expected_num_x.to_i
+    expect(num_o).to eq expected_num_o.to_i
+end
+
+

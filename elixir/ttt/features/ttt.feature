@@ -1,5 +1,5 @@
 @no-clobber
-Feature: Tic Tac Toe
+Feature: Basic board rendering and player moves
     Scenario: Build the program
         When I build the program
         Then The exit status should be "0"
@@ -9,61 +9,44 @@ Feature: Tic Tac Toe
         When I enter "q"
         Then The final output should match:
             """
-            . . .
-            . . .
-            . . .
+            - - -
+            - - -
+            - - -
             """
 
-    Scenario: Make a move as X at 1-1 then quit
+    Scenario: Make a move as X at 2-2 then quit
         When I run the program
-        When I enter "1 1"
+        When I enter "2 2"
         When I enter "q"
         Then The final output should match:
             """
-            . . .
-            . . .
-            . . .
+            - - -
+            - - -
+            - - -
             .* 
-            . . .
-            . X .
-            . . .
+            - - -
+            - O -
+            - - X
             """
 
-    Scenario: Make a move as X at 0-0 then quit
+    Scenario: Make a move as X at 1-0 then quit
         When I run the program
         When I enter "1 0"
         When I enter "q"
         Then The final output should match:
             """
-            . . .
-            . . .
-            . . .
+            - - -
+            - - -
+            - - -
             .* 
-            . . .
-            X . .
-            . . .
+            - - -
+            X O -
+            - - -
             """
 
-    Scenario: Make a move as X at 0-0 then make a move as 0 at 1 1 then quit
+    Scenario: Make a move as X at 0-0 then AI makes a move as 0 at 1 1 then quit
         When I run the program
         When I enter "0 0"
-        When I enter "1 1"
         When I enter "q"
-        Then The final output should match:
-            """
-            . . .
-            . . .
-            . . .
-            .* 
-            X . .
-            . . .
-            . . .
-            .* 
-            X . .
-            . O .
-            . . .
-            """
-
-
-
+        Then The last board should contain 1 X and 1 O
 

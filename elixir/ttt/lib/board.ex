@@ -4,6 +4,12 @@ defmodule Board do
     Enum.map(board, &display_row/1)
   end
 
+  def set board, x, y, player do
+    row = :lists.nth(x+1, board)
+    new_row = List.replace_at(row, y, player)
+    List.replace_at(board, x, new_row)
+  end
+
   defp display_row row do
      Enum.map(
       1..3, 
@@ -18,7 +24,7 @@ defmodule Board do
 
   defp display_string elem do
     case elem do
-      :e -> "."
+      :e -> "-"
       :x -> "X"
       :o -> "O"
       _ -> ""
