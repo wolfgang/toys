@@ -1,5 +1,6 @@
 defmodule MoveEval do
-	def get_moves board, move_gen_fun, eval_board_fun do
+	def get_moves board, move_gen_fun \\ &MoveGen.get_available_moves/1, eval_board_fun \\ &const_eval/3 do
+				
 		available_moves = move_gen_fun.(board)
 
 		movesAsSelf = eval_moves board, available_moves, :o, eval_board_fun
@@ -23,6 +24,7 @@ defmodule MoveEval do
 		best = Enum.filter(sorted_scored_moves, fn({score, _}) -> score==max_score end)
 		Enum.map best, fn {_, move} -> move end
 	end
-  
+
+	def const_eval _board, _move, _player do 10 end
  
 end
