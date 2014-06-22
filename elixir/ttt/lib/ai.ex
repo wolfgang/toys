@@ -1,4 +1,11 @@
 defmodule Ai do
+	def get_move board, move_gen_fn, random_fn do
+    possible_moves = move_gen_fn.(board)
+    :lists.nth(random_fn.(length(possible_moves)), possible_moves)
+		
+	end
+	
+	
 	
 	def move board, player, random_fn do
 		possible_moves = get_possible_moves board
@@ -22,6 +29,7 @@ defmodule Ai do
 										end
 							 end)										
 	end
+	
 	
 
 end
