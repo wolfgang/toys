@@ -1,6 +1,5 @@
 #encoding: utf-8
 require 'rspec/expectations'
- 
 require 'aruba/api'
 require 'aruba/cucumber/hooks'
 require 'aruba/reporting'

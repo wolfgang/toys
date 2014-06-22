@@ -12,11 +12,11 @@ defmodule Ttt do
       str ->
         [x,y] = Enum.map(String.split(str), &String.to_integer/1)
         board1 = Board.set(board, x, y, player)
-        board2 = Board.set(board1, 1, 1, next_player player)
+        board2 = Ai.move(board1, next_player player)
         {board2, next_player player}
     end
   end
 
-  defp next_player :x do :o end
+	defp next_player :x do :o end
   defp next_player :o do :x end
 end
