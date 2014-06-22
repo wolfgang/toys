@@ -1,5 +1,7 @@
 defmodule Ai do
-	def get_move board, move_gen_fn \\ &MoveEval.get_moves/1, random_fn \\&:random.uniform/1 do
+	def get_move(board,
+							 move_gen_fn \\ &MoveEval.get_moves/1,
+							 random_fn \\&:random.uniform/1) do
     possible_moves = move_gen_fn.(board)
 
 		#output_moves possible_moves
