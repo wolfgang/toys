@@ -10,7 +10,12 @@ defmodule Board do
     List.replace_at(board, x, new_row)
   end
 
-  defp display_row row do
+  def get board, x, y do
+    row = :lists.nth(x+1, board)
+		:lists.nth(y+1, row)
+	end
+
+	defp display_row row do
      Enum.map(
       1..3, 
       fn index ->
