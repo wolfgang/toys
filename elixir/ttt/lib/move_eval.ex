@@ -1,5 +1,5 @@
 defmodule MoveEval do
-	def get_moves board, move_gen_fun \\ &MoveGen.get_available_moves/1, eval_board_fun \\ &const_eval/3 do
+	def get_moves board, move_gen_fun \\ &MoveGen.get_available_moves/1, eval_board_fun \\ &BoardEval.eval/3 do
 				
 		available_moves = move_gen_fun.(board)
 

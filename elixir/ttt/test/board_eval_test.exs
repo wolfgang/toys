@@ -75,10 +75,19 @@ defmodule BoardEvalTest do
               [:e, :e, :x],
               [:e, :e, :o]
              ]
+
+		board2 = [
+              [:e, :x, :e],
+              [:o, :x, :e],
+              [:x, :o, :e]
+             ]
+    
     
     
     assert BoardEval.eval(board1, {0, 2}, :x) == 100
-		
+		assert BoardEval.eval(board2, {0, 2}, :x) == 100
+		assert BoardEval.eval(board2, {2, 2}, :o) == 0
+    
   end
   
 	

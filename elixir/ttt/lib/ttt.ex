@@ -12,7 +12,7 @@ defmodule Ttt do
       str ->
         [x,y] = Enum.map(String.split(str), &String.to_integer/1)
         board1 = Board.set(board, x, y, player)
-				{ai_x,ai_y} = Ai.get_move board1, &MoveGen.get_available_moves/1, &:random.uniform/1
+				{ai_x,ai_y} = Ai.get_move board1
 				board2 = Board.set(board1, ai_x, ai_y, next_player player)
         {board2, player}
     end
