@@ -5,9 +5,9 @@ defmodule HangmanTest do
   test "print initial screen to the console, with N dashes for a word with length N" do
     output = capture_io(fn -> print_initial_screen("1234") end)
     assert output ===
-      """
+"""
 =====|    Word:    ----
-|    |    Guess:   
+|    |    Guess:
      |    Misses:
      |
      |
