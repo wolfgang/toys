@@ -28,6 +28,20 @@ defmodule ScreenPrintingTest do
      |
 ========
 """
- end
+  end
+
+  test "if given a correct guess, put it in the word and display it as a guess" do
+    output = capture_io(fn -> Screen.process_guess("i", "elixir") end)
+    assert output ===
+    """
+=====|    Word:    --i-i-
+|    |    Guess:   i
+     |    Misses:
+     |
+     |
+     |
+========
+"""
+  end
   
 end
