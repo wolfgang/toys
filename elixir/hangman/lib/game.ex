@@ -2,6 +2,7 @@ defmodule Game do
   def process_guess guess, word, misses, word_progress \\"" do
     {word_display, misses2} = calc_word_display(word, guess, misses, word_progress)
     Screen.display word_display, guess, misses2
+    {word_display, misses2}
   end
 
   defp calc_word_display word, guess, misses, word_progress do

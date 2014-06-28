@@ -103,6 +103,19 @@ defmodule GameTest do
 """
   end
 
+  test "process_guess returns word progress and misses" do
+    capture_io(
+               fn ->
+                    result1 = Game.process_guess("", "elixir", [])
+                    assert result1 == {"------", []}
+                    result2 = Game.process_guess("i", "elixir", [], "------")
+                    assert result2 == {"--i-i-", []}
+                    result3 = Game.process_guess("y", "elixir", [], "--i-i-")
+                    assert result3 == {"--i-i-", ["y"]}
+               end)
+
+  end
+
   
   
   
