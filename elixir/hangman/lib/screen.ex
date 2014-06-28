@@ -5,13 +5,14 @@ defmodule Screen do
     ltorso = if length(misses)>1 do "(" else " " end
     rtorso = if length(misses)>2 do ")" else " " end
     lleg = if length(misses)>3 do "/" else " " end
+    rleg = if length(misses)>4 do "|" else " " end
     misses = printable_list misses
     
     IO.puts "   =====|    Word:    #{word_display}"
     IO.puts "   |    |    Guess:   #{last_guess}"
     IO.puts "   #{head}    |    Misses:  #{misses}"
     IO.puts "  #{ltorso} #{rtorso}   |"
-    IO.puts "  #{lleg}     |"
+    IO.puts "  #{lleg} #{rleg}   |"
     IO.puts "        |"
     IO.puts "   ========"
   end

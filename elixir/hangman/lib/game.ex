@@ -5,9 +5,8 @@ defmodule Game do
   end
 
   defp calc_word_display word, guess, misses, word_progress do
-    dashes = to_dashes word
     if guess=="" do
-      {dashes, []}
+      {to_dashes(word), []}
     else 
       result = merge_strings(word_progress, List.to_string(replace_dashes word, guess))
       {result, if result==word_progress do misses ++ [guess] else misses end}
@@ -19,7 +18,6 @@ defmodule Game do
   end
   
   defp replace_dashes word, guess do
-    
     Enum.map(
              String.to_char_list(word),
              fn(c) ->

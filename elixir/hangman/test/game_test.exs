@@ -86,25 +86,23 @@ defmodule GameTest do
 """
   end
 
-  test "merge strings" do
-    str1 = "e-----"
-    str2 = "--i-i-"
-
-    assert merge_strings(str1, str2) == "e-i-i-"
+  test "if given an incorrect guess for the 5th time, add right leg" do
+    output = capture_io(
+                        fn ->
+                             Game.process_guess("u", "elixir", ["a", "y", "b", "c"], "-i--ir")
+                        end)
+    assert output ===
+      """
+   =====|    Word:    -i--ir
+   |    |    Guess:   u
+   O    |    Misses:  a,y,b,c,u
+  ( )   |
+  / |   |
+        |
+   ========
+"""
   end
 
-  defp merge_strings s1, s2 do
-    l1 = String.to_char_list s1
-    l2 = String.to_char_list s2
-    List.to_string(Enum.map(1..length(l1),
-             fn(i) ->
-                 if :lists.nth(i, l1) == ?- do
-                   :lists.nth(i, l2)
-                 else
-                   :lists.nth(i, l1)
-                 end
-             end))
-  end
   
   
   
