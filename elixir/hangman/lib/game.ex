@@ -1,5 +1,5 @@
 defmodule Game do
-  def process_guess guess, word do
+  def process_guess guess, word, misses do
     word_display = calc_word_display(word, guess)
     Screen.display word_display, guess, (!(guess=="") && word_display=="------")
   end
