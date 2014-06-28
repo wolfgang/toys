@@ -5,6 +5,7 @@ defmodule Hangman.Mixfile do
     [app: :hangman,
      version: "0.0.1",
      elixir: "~> 0.14.0",
+     escript_main_module: Main,
      deps: deps]
   end
 

@@ -2,10 +2,9 @@ defmodule GameTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
 
-  test "if given an empty guess, the word display is all dashes" do
-    output = capture_io(fn -> Game.process_guess("", "elixir", []) end)
-    assert output ===
-      """
+  test "if given an empty guess, the word display is all dashes and empty galgen" do
+    assert output_of_process_guess("", "elixir", [], "") ===
+    """
    =====|    Word:    ------
    |    |    Guess:   
         |    Misses:  
@@ -17,9 +16,8 @@ defmodule GameTest do
   end
   
   test "if given a correct guess, the word display contains the guess + the guess is displayed" do
-    output = capture_io(fn -> Game.process_guess("i", "elixir", [], "------") end)
-    assert output ===
-    """
+    assert output_of_process_guess("i", "elixir", [], "------") ===
+      """
    =====|    Word:    --i-i-
    |    |    Guess:   i
         |    Misses:  
@@ -31,8 +29,7 @@ defmodule GameTest do
   end
 
   test "if given an incorrect guess for the first time, add the head, add guess to misses" do
-    output = capture_io(fn -> Game.process_guess("a", "elixir", [], "------") end)
-    assert output ===
+    assert output_of_process_guess("a", "elixir", [], "------") ===
       """
    =====|    Word:    ------
    |    |    Guess:   a
@@ -45,9 +42,8 @@ defmodule GameTest do
   end
   
   test "if given an incorrect guess for the second time, add let torso" do
-    output = capture_io(fn -> Game.process_guess("a", "elixir", ["y"], "------") end)
-    assert output ===
-      """
+    assert output_of_process_guess("a", "elixir", ["y"], "------") ===
+    """
    =====|    Word:    ------
    |    |    Guess:   a
    O    |    Misses:  y,a
@@ -59,8 +55,7 @@ defmodule GameTest do
   end
   
   test "if given an incorrect guess for the third time, add right torso" do
-    output = capture_io(fn -> Game.process_guess("b", "elixir", ["a", "y"], "------") end)
-    assert output ===
+    assert output_of_process_guess("b", "elixir", ["a", "y"], "------") ===
       """
    =====|    Word:    ------
    |    |    Guess:   b
@@ -73,8 +68,7 @@ defmodule GameTest do
   end
   
   test "if given an incorrect guess for the 4th time, add left leg" do
-    output = capture_io(fn -> Game.process_guess("c", "elixir", ["a", "y", "b"], "-i--ir") end)
-    assert output ===
+    assert output_of_process_guess("c", "elixir", ["a", "y", "b"], "-i--ir") ===
       """
    =====|    Word:    -i--ir
    |    |    Guess:   c
@@ -87,11 +81,7 @@ defmodule GameTest do
   end
 
   test "if given an incorrect guess for the 5th time, add right leg" do
-    output = capture_io(
-                        fn ->
-                             Game.process_guess("u", "elixir", ["a", "y", "b", "c"], "-i--ir")
-                        end)
-    assert output ===
+    assert output_of_process_guess("u", "elixir", ["a", "y", "b", "c"], "-i--ir") ===
       """
    =====|    Word:    -i--ir
    |    |    Guess:   u
@@ -107,16 +97,18 @@ defmodule GameTest do
     capture_io(
                fn ->
                     result1 = Game.process_guess("", "elixir", [])
-                    assert result1 == {"------", []}
+                    assert  result1 === {"------", []}
                     result2 = Game.process_guess("i", "elixir", [], "------")
-                    assert result2 == {"--i-i-", []}
+                    assert result2 === {"--i-i-", []}
                     result3 = Game.process_guess("y", "elixir", [], "--i-i-")
-                    assert result3 == {"--i-i-", ["y"]}
+                    assert result3 === {"--i-i-", ["y"]}
                end)
 
   end
 
-  
+  defp output_of_process_guess guess, word, misses, progress do
+    capture_io(fn -> Game.process_guess(guess, word, misses, progress) end)
+  end
   
   
 
