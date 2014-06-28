@@ -1,13 +1,14 @@
 defmodule Game do
   def process_guess guess, word do
-    Screen.display calc_word_display(word, guess), guess
+    word_display = calc_word_display(word, guess)
+    Screen.display word_display, guess, (!(guess=="") && word_display=="------")
   end
 
   defp calc_word_display word, guess do
     if guess=="" do
       List.to_string(List.duplicate("-", String.length(word)))
     else 
-      replace_dashes word, guess
+      List.to_string(replace_dashes word, guess)
     end
   end
   

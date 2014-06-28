@@ -8,7 +8,7 @@ defmodule GameTest do
       """
 =====|    Word:    ------
 |    |    Guess:   
-     |    Misses:
+     |    Misses:  
      |
      |
      |
@@ -22,12 +22,29 @@ defmodule GameTest do
     """
 =====|    Word:    --i-i-
 |    |    Guess:   i
-     |    Misses:
+     |    Misses:  
      |
      |
      |
 ========
 """
   end
+
+  test "if given an incorrect guess, add the head, add guess to misses" do
+    output = capture_io(fn -> Game.process_guess("a", "elixir") end)
+    assert output ===
+      """
+=====|    Word:    ------
+|    |    Guess:   a
+O    |    Misses:  a
+     |
+     |
+     |
+========
+"""
+    
+
+  end
+  
 
 end
